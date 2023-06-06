@@ -116,7 +116,9 @@ const EmptyStatePresets = {
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-EmptyState.md)
  */
 export function EmptyState(props: EmptyStateProps) {
-  const preset = EmptyStatePresets[props.preset] ? EmptyStatePresets[props.preset] : undefined
+  const preset = EmptyStatePresets[props.preset as any]
+    ? EmptyStatePresets[props.preset as any]
+    : undefined
 
   const {
     button = preset?.button,

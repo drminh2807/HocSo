@@ -65,7 +65,7 @@ export function AutoImage(props: AutoImageProps) {
       web: (source?.uri as string) ?? (source as string),
       default: source?.uri as string,
     }),
-    [maxWidth, maxHeight],
+    [maxWidth as any, maxHeight as any],
   )
 
   return <Image {...ImageProps} style={[{ width, height }, props.style]} />

@@ -148,7 +148,7 @@ export function Card(props: CardProps) {
     ...WrapperProps
   } = props
 
-  const preset: Presets = $containerPresets[props.preset] ? props.preset : "default"
+  const preset: Presets = $containerPresets[props.preset as any] ? props.preset : ("default" as any)
   const isPressable = !!WrapperProps.onPress
   const isHeadingPresent = !!(HeadingComponent || heading || headingTx)
   const isContentPresent = !!(ContentComponent || content || contentTx)

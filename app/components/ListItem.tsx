@@ -139,7 +139,7 @@ export function ListItem(props: ListItemProps) {
         <ListItemAction
           side="left"
           size={height}
-          icon={leftIcon}
+          icon={leftIcon as any}
           iconColor={leftIconColor}
           Component={LeftComponent}
         />
@@ -151,7 +151,7 @@ export function ListItem(props: ListItemProps) {
         <ListItemAction
           side="right"
           size={height}
-          icon={rightIcon}
+          icon={rightIcon as any}
           iconColor={rightIconColor}
           Component={RightComponent}
         />

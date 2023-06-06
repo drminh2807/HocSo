@@ -49,7 +49,7 @@ if (__DEV__) {
   console.tron = Reactotron // attach reactotron to `console.tron`
 } else {
   // attach a mock so if things sneak by our __DEV__ guards, we won't crash.
-  console.tron = fakeReactotron
+  console.tron = fakeReactotron as any
 }
 
 const config = DEFAULT_REACTOTRON_CONFIG
@@ -77,7 +77,7 @@ export function setReactotronRootStore(rootStore: RootStore, initialData: RootSt
     }
 
     // tracks the current MobX-State-Tree tree in Reactotron's "State" tab
-    Reactotron.trackMstNode(rootStore)
+    Reactotron.trackMstNode?.(rootStore)
   }
 }
 
@@ -105,7 +105,7 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
     // hookup middleware
     if (Platform.OS !== "web") {
       if (config.useAsyncStorage) {
-        Reactotron.setAsyncStorageHandler(AsyncStorage)
+        Reactotron.setAsyncStorageHandler?.(AsyncStorage)
       }
       Reactotron.useReactNative({
         asyncStorage: config.useAsyncStorage ? undefined : false,
@@ -138,7 +138,7 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       description: "Resets the MST store",
       command: "resetStore",
       handler: () => {
-        Reactotron.log("resetting store")
+        Reactotron.log?.("resetting store")
         clear()
       },
     })
@@ -148,7 +148,7 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       description: "Resets the navigation state",
       command: "resetNavigation",
       handler: () => {
-        Reactotron.log("resetting navigation state")
+        Reactotron.log?.("resetting navigation state")
         resetRoot({ index: 0, routes: [] })
       },
     })
@@ -179,14 +179,14 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       description: "Goes back",
       command: "goBack",
       handler: () => {
-        Reactotron.log("Going back")
+        Reactotron.log?.("Going back")
         goBack()
       },
     })
 
     // clear if we should
     if (config.clearOnLoad) {
-      Reactotron.clear()
+      Reactotron.clear?.()
     }
 
     _reactotronIsSetUp = true

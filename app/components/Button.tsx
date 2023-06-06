@@ -88,7 +88,7 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props
 
-  const preset: Presets = $viewPresets[props.preset] ? props.preset : "default"
+  const preset: Presets = $viewPresets[props.preset as any] ? props.preset : ("default" as any)
   function $viewStyle({ pressed }) {
     return [
       $viewPresets[preset],

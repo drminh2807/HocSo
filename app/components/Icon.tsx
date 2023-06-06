@@ -74,7 +74,7 @@ export function Icon(props: IconProps) {
       <Image
         style={[
           $imageStyle,
-          color && { tintColor: color },
+          color && ({ tintColor: color } as any),
           size && { width: size, height: size },
           $imageStyleOverride,
         ]}
