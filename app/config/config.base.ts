@@ -2,6 +2,8 @@ export interface ConfigBaseProps {
   persistNavigation: "always" | "dev" | "prod" | "never"
   catchErrors: "always" | "dev" | "prod" | "never"
   exitRoutes: string[]
+  YOUTUBE_API_KEY: string
+  API_URL: string
 }
 
 export type PersistNavigationConfig = ConfigBaseProps["persistNavigation"]
@@ -21,6 +23,10 @@ const BaseConfig: ConfigBaseProps = {
    * is pressed while in that screen. Only affects Android.
    */
   exitRoutes: ["Welcome"],
+
+  YOUTUBE_API_KEY: "",
+
+  API_URL: "https://www.googleapis.com",
 }
 
 export default BaseConfig

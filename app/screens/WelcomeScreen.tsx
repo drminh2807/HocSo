@@ -1,79 +1,83 @@
 import { observer } from "mobx-react-lite"
-import React, { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import { Text } from "../components"
-import { isRTL } from "../i18n"
+import React, { FC, useEffect } from "react"
+// import { FlatList, StyleSheet, TouchableOpacity, View, useWindowDimensions } from "react-native"
+import { Alert, StyleSheet, View } from "react-native"
 import { AppStackScreenProps } from "../navigators" // @demo remove-current-line
-import { colors, spacing } from "../theme"
-import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
-
-const welcomeLogo = require("../../assets/images/logo.png")
-const welcomeFace = require("../../assets/images/welcome-face.png")
+// import { useAsync } from "react-async-hook"
+// import { api } from "@services/api"
+// import FastImage from "react-native-fast-image"
+import { Button, Screen, TextField } from "@components"
+import { Audio } from "expo-av"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
-export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen() {
-  const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
+const getVideoId = (url: string) => {
+  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+  const match = url.match(regExp)
+  if (match && match[2].length === 11) {
+    return match[2]
+  } else {
+    return undefined
+  }
+}
 
+export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen({
+  navigation,
+}) {
+  const [search, setSearch] = React.useState("")
+  useEffect(() => {
+    Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
+  }, [])
+  // const { result, error } = useAsync((q) => api.getVideos(q), [search])
+  // const window = useWindowDimensions()
+  // const width = useMemo(() => window.width / 3, [window])
+  // const height = useMemo(() => width / (16 / 9), [width])
   return (
-    <View style={$container}>
-      <View style={$topContainer}>
-        <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
-        <Text
-          testID="welcome-heading"
-          style={$welcomeHeading}
-          tx="welcomeScreen.readyForLaunch"
-          preset="heading"
+    <Screen preset="fixed" safeAreaEdges={["left", "right", "top", "bottom"]}>
+      <View style={styles.container}>
+        <TextField placeholder="Dán link video vào đây" value={search} onChangeText={setSearch} />
+        <Button
+          text="Tìm kiếm"
+          onPress={() => {
+            const videoId = getVideoId(search)
+            if (videoId) {
+              navigation.navigate("Player", { videoId })
+            } else {
+              Alert.alert("Lỗi", "Link video không hợp lệ")
+            }
+          }}
         />
-        <Text tx="welcomeScreen.exciting" preset="subheading" />
-        <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
       </View>
-
-      <View style={[$bottomContainer, $bottomContainerInsets]}>
-        <Text tx="welcomeScreen.postscript" size="md" />
-      </View>
-    </View>
+      {/* <ErrorText error={error} />
+      <FlatList
+        data={result?.data?.items || []}
+        horizontal
+        keyExtractor={(item) => item.id?.videoId || ""}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.item, { width }]}
+            onPress={() => navigation.navigate("Player", { videoId: item.id?.videoId ?? "" })}
+          >
+            <FastImage
+              source={{ uri: item.snippet?.thumbnails?.high?.url }}
+              style={{ height, width }}
+            />
+            <Text numberOfLines={1}>{item.snippet?.title}</Text>
+          </TouchableOpacity>
+        )}
+      /> */}
+    </Screen>
   )
 })
 
-const $container: ViewStyle = {
-  flex: 1,
-  backgroundColor: colors.background,
-}
-
-const $topContainer: ViewStyle = {
-  flexShrink: 1,
-  flexGrow: 1,
-  flexBasis: "57%",
-  justifyContent: "center",
-  paddingHorizontal: spacing.lg,
-}
-
-const $bottomContainer: ViewStyle = {
-  flexShrink: 1,
-  flexGrow: 0,
-  flexBasis: "43%",
-  backgroundColor: colors.palette.neutral100,
-  borderTopLeftRadius: 16,
-  borderTopRightRadius: 16,
-  paddingHorizontal: spacing.lg,
-  justifyContent: "space-around",
-}
-const $welcomeLogo: ImageStyle = {
-  height: 88,
-  width: "100%",
-  marginBottom: spacing.xxl,
-}
-
-const $welcomeFace: ImageStyle = {
-  height: 169,
-  width: 269,
-  position: "absolute",
-  bottom: -47,
-  right: -80,
-  transform: [{ scaleX: isRTL ? -1 : 1 }],
-}
-
-const $welcomeHeading: TextStyle = {
-  marginBottom: spacing.md,
-}
+const styles = StyleSheet.create({
+  container: {
+    gap: 16,
+    justifyContent: "center",
+    margin: 16,
+  },
+  item: {
+    justifyContent: "center",
+    marginRight: 16,
+  },
+})

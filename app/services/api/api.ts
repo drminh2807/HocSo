@@ -7,7 +7,7 @@
  */
 import { ApisauceInstance, create } from "apisauce"
 import Config from "../../config"
-import type { ApiConfig } from "./api.types"
+import type { ApiConfig, GetVideosResponse } from "./api.types"
 
 /**
  * Configuring the apisauce instance.
@@ -37,6 +37,17 @@ export class Api {
         Accept: "application/json",
       },
     })
+  }
+
+  // call api to get youtube videos
+  async getVideos(search: string) {
+    const response = await this.apisauce.get<null, GetVideosResponse>(`/youtube/v3/search`, {
+      key: Config.YOUTUBE_API_KEY,
+      maxResults: 20,
+      part: "snippet",
+      q: search,
+    })
+    return response
   }
 }
 

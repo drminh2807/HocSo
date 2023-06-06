@@ -29,6 +29,7 @@ import { colors } from "app/theme"
  */
 export type AppStackParamList = {
   Welcome: undefined
+  Player: { videoId: string }
 }
 
 /**
@@ -49,6 +50,7 @@ const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false, navigationBarColor: colors.background }}>
       <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
+      <Stack.Screen name="Player" component={Screens.PlayerScreen} />
     </Stack.Navigator>
   )
 })

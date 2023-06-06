@@ -48,3 +48,52 @@ export interface ApiConfig {
    */
   timeout: number
 }
+
+export interface GetVideosResponse {
+  kind?: string
+  etag?: string
+  nextPageToken?: string
+  regionCode?: string
+  pageInfo?: PageInfo
+  items?: VideoItem[]
+}
+
+export interface VideoItem {
+  kind?: string
+  etag?: string
+  id?: VideoId
+  snippet?: VideoSnippet
+}
+
+export interface VideoId {
+  kind?: string
+  videoId?: string
+}
+
+export interface PageInfo {
+  totalResults?: number
+  resultsPerPage?: number
+}
+
+export interface VideoSnippet {
+  publishedAt?: Date
+  channelId?: string
+  title?: string
+  description?: string
+  thumbnails?: VideoThumbnails
+  channelTitle?: string
+  liveBroadcastContent?: string
+  publishTime?: Date
+}
+
+export interface VideoThumbnails {
+  default?: VideoThumbnail
+  medium?: VideoThumbnail
+  high?: VideoThumbnail
+}
+
+export interface VideoThumbnail {
+  url?: string
+  width?: number
+  height?: number
+}
