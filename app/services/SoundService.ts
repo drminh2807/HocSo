@@ -27,7 +27,9 @@ export const playSound = async (name: SoundName) => {
   try {
     await sound.sound.stopAsync()
   } catch (error) {}
-  await Audio.Sound.createAsync({ uri: allSounds[name] }, { shouldPlay: true })
+  try {
+    await Audio.Sound.createAsync({ uri: allSounds[name] }, { shouldPlay: true })
+  } catch (error) {}
 }
 // let sound: Audio.SoundObject
 // export const playSound = async (name: SoundName) =>

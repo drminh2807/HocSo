@@ -31,17 +31,13 @@ export const LearningStoreModel = types
     checkAnswer: flow(function* (number: number) {
       self.selectedNumber = number
       if (number === self.number) {
-        yield Promise.all([
-          sleep(2000),
-          playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2]),
-        ])
+        playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
+        yield sleep(2000)
         self.learnCount++
         self.correctArray[self.number]++
       } else {
-        yield Promise.all([
-          sleep(2000),
-          playSound(<EffectSound>["sai1", "sai2"][self.learnCount % 2]),
-        ])
+        playSound(<EffectSound>["sai1", "sai2"][self.learnCount % 2])
+        yield sleep(2000)
         self.learnCount -= 0.5
         self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)
       }
