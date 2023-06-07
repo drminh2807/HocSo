@@ -17,9 +17,10 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
   const [playing, setPlaying] = useState(true)
   const [layout, setLayout] = useState<LayoutRectangle>()
   const [showHeader, setShowHeader] = useState(false)
+  const [appState, setAppState] = useState(AppState.currentState)
   useEffect(() => {
     const subscrible = AppState.addEventListener("change", (state) => {
-      setPlaying(state === "active")
+      setAppState(state)
     })
     return () => {
       subscrible.remove()
@@ -27,8 +28,8 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
   }, [])
 
   useEffect(() => {
-    setPlaying(!showModal)
-  }, [showModal])
+    setPlaying(!showModal && appState === "active")
+  }, [showModal, appState])
 
   return (
     <Screen

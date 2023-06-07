@@ -8,8 +8,6 @@ const allNumbers = Array(10)
   .fill(0)
   .map((_, i) => i)
 const MAX_OPTIONS = 4
-const MAX_CORRECT = 5
-const LEARN_PER_TURN = 5
 
 export const LearningStoreModel = types
   .model("LearningStore")
@@ -23,6 +21,9 @@ export const LearningStoreModel = types
     nextLearn: types.optional(types.Date, new Date(0)),
     now: types.optional(types.Date, new Date()),
     showModal: false,
+    MAX_CORRECT: 5,
+    LEARN_PER_TURN: 5,
+    MINUTE_PER_TURN: 1,
   })
   .actions(withSetPropAction)
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -31,26 +32,27 @@ export const LearningStoreModel = types
       self.selectedNumber = number
       if (number === self.number) {
         yield Promise.all([
-          sleep(1000),
+          sleep(2000),
           playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2]),
         ])
         self.learnCount++
         self.correctArray[self.number]++
       } else {
         yield Promise.all([
-          sleep(1000),
+          sleep(2000),
           playSound(<EffectSound>["sai1", "sai2"][self.learnCount % 2]),
         ])
+        self.learnCount -= 0.5
         self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)
       }
       let newNumber
       do {
         const sortedArray = lodash(allNumbers)
-          .filter((i) => i < self.maxNumber && self.correctArray[i] < MAX_CORRECT)
+          .filter((i) => i < self.maxNumber && self.correctArray[i] < self.MAX_CORRECT)
           .sortBy((a) => self.correctArray[a])
         newNumber = sortedArray.first()
         if (newNumber === undefined) {
-          if (self.correctArray.filter((i) => i < MAX_CORRECT).length === 0) {
+          if (self.correctArray.filter((i) => i < self.MAX_CORRECT).length === 0) {
             self.correctArray = cast(Array(10).fill(0))
             self.maxNumber = 2
           } else {
@@ -69,9 +71,9 @@ export const LearningStoreModel = types
           .shuffle()
           .value(),
       )
-      if (self.learnCount >= LEARN_PER_TURN) {
+      if (self.learnCount >= self.LEARN_PER_TURN) {
         self.learnCount = 0
-        self.nextLearn = addMinutes(new Date(), 1)
+        self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
         self.showModal = false
       } else {
         playSound(self.number)
@@ -86,7 +88,7 @@ export const LearningStoreModel = types
     },
     firstLaunch() {
       playSound(self.number)
-    }
+    },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 
 export interface LearningStore extends Instance<typeof LearningStoreModel> {}

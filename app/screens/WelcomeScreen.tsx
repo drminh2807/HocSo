@@ -47,6 +47,12 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
             }
           }}
         />
+        <Button
+          text="Cài đặt"
+          onPress={() => {
+            navigation.navigate("ParentPass")
+          }}
+        />
       </View>
       {/* <ErrorText error={error} />
       <FlatList
