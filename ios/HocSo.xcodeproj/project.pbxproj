@@ -60,6 +60,7 @@
 		0641ED792A2F5D6500A143C9 /* 4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 4.wav; sourceTree = "<group>"; };
 		0641ED7A2A2F5D6500A143C9 /* dung2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dung2.wav; sourceTree = "<group>"; };
 		0641ED872A2F75BE00A143C9 /* 0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 0.wav; sourceTree = "<group>"; };
+		0641ED892A3012C900A143C9 /* HocSo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HocSo.entitlements; path = HocSo/HocSo.entitlements; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* HocSo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HocSo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HocSo/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = HocSo/AppDelegate.mm; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		13B07FAE1A68108700A75B9A /* HocSo */ = {
 			isa = PBXGroup;
 			children = (
+				0641ED892A3012C900A143C9 /* HocSo.entitlements */,
 				0641ED6C2A2F596000A143C9 /* Audio */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -587,15 +589,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = HocSo/HocSo.entitlements;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4R6ETCM6VA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HocSo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Học Số";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -616,14 +621,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = HocSo/HocSo.entitlements;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4R6ETCM6VA;
 				INFOPLIST_FILE = HocSo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Học Số";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
