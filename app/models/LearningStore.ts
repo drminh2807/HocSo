@@ -21,7 +21,6 @@ export const LearningStoreModel = types
     nextLearn: types.optional(types.Date, new Date(0)),
     now: types.optional(types.Date, new Date()),
     showModal: false,
-    MAX_CORRECT: 5,
     LEARN_PER_TURN: 5,
     MINUTE_PER_TURN: 1,
   })
@@ -43,16 +42,16 @@ export const LearningStoreModel = types
       }
       let newNumber
       do {
-        const sortedArray = lodash(allNumbers)
-          .filter((i) => i < self.maxNumber && self.correctArray[i] < self.MAX_CORRECT)
-          .sortBy((a) => self.correctArray[a])
-        newNumber = sortedArray.first()
+        newNumber = lodash(allNumbers)
+          .filter((i) => i < self.maxNumber && self.correctArray[i] < self.maxNumber)
+          .shuffle()
+          .first()
         if (newNumber === undefined) {
-          if (self.correctArray.filter((i) => i < self.MAX_CORRECT).length === 0) {
+          if (self.correctArray.filter((i) => i < self.maxNumber).length === 0) {
             self.correctArray = cast(Array(10).fill(0))
             self.maxNumber = 2
           } else {
-            self.maxNumber += 3
+            self.maxNumber++
           }
         } else {
           self.number = newNumber
@@ -62,7 +61,8 @@ export const LearningStoreModel = types
       self.options = cast(
         lodash(allNumbers)
           .filter((i) => i < self.maxNumber && i !== self.number)
-          .take(Math.min(self.correctArray[self.number], MAX_OPTIONS - 1))
+          .shuffle()
+          .take(Math.min(self.correctArray[self.number] + 1, MAX_OPTIONS - 1))
           .push(self.number)
           .shuffle()
           .value(),

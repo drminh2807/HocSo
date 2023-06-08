@@ -14,21 +14,12 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
   navigation,
 }) {
   const {
-    learningStore: { MAX_CORRECT, MINUTE_PER_TURN, LEARN_PER_TURN, setProp },
+    learningStore: { MINUTE_PER_TURN, LEARN_PER_TURN, setProp },
   } = useStores()
   return (
     <Screen style={$root} safeAreaEdges={["left", "right"]}>
       <Header leftIcon="back" onLeftPress={() => navigation.goBack()} />
       <View style={$container}>
-        <View style={$item}>
-          <CounterButton
-            value={MAX_CORRECT}
-            onChange={(value) => setProp("MAX_CORRECT", value)}
-            min={5}
-            max={10}
-          />
-          <Text text="Số lần học 1 số (càng lớn học 1 số càng kỹ)" />
-        </View>
         <View style={$item}>
           <CounterButton
             value={MINUTE_PER_TURN}
@@ -55,10 +46,14 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
               "Bạn có chắc chắn muốn khôi phục cài đặt gốc và tiến trình học?",
               [
                 { text: "Hủy", style: "cancel" },
-                { text: "Khôi phục", onPress: async () => {
-                  await AsyncStorage.clear()
-                  RNRestart.restart()
-                }, style: "destructive" },
+                {
+                  text: "Khôi phục",
+                  onPress: async () => {
+                    await AsyncStorage.clear()
+                    RNRestart.restart()
+                  },
+                  style: "destructive",
+                },
               ],
             )
           }}
