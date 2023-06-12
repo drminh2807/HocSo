@@ -8,6 +8,7 @@ import { AppStackScreenProps } from "../navigators" // @demo remove-current-line
 // import FastImage from "react-native-fast-image"
 import { Button, Screen, TextField } from "@components"
 import { Audio } from "expo-av"
+import { playSound } from "@services/SoundService"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
