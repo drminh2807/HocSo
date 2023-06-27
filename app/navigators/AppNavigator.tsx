@@ -29,8 +29,8 @@ import { colors } from "app/theme"
  */
 export type AppStackParamList = {
   Welcome: undefined
-  Player: { videoId: string }
-  ParentPass: undefined
+  Player: undefined
+  ParentPass: { mode: "setting" | "player" }
   Setting: undefined
 }
 

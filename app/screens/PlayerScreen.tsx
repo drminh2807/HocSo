@@ -8,12 +8,8 @@ import { useStores } from "@models"
 
 interface PlayerScreenProps extends AppStackScreenProps<"Player"> {}
 
-export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScreen({
-  route,
-  navigation,
-}) {
-  const { showModal } = useStores().learningStore
-  const { videoId } = route.params
+export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScreen({ navigation }) {
+  const { showModal, videoId } = useStores().learningStore
   const [playing, setPlaying] = useState(true)
   const [layout, setLayout] = useState<LayoutRectangle>()
   const [showHeader, setShowHeader] = useState(false)
@@ -50,6 +46,7 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
             width={layout?.width ?? 200}
             play={playing}
             videoId={videoId}
+            webViewProps={{ mediaPlaybackRequiresUserAction: true }}
             onChangeState={(event) => {
               if (event === "ended") {
                 setPlaying(false)

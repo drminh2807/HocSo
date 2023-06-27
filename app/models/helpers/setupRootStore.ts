@@ -49,3 +49,14 @@ export async function setupRootStore(rootStore: RootStore) {
 
   return { rootStore, restoredState, unsubscribe }
 }
+
+export const clearRootStore = async () => {
+  try {
+    await storage.remove(ROOT_STATE_STORAGE_KEY)
+  } catch (e) {
+    // if there's any problems loading, then inform the dev what happened
+    if (__DEV__) {
+      console.tron.error?.(e.message, null)
+    }
+  }
+}

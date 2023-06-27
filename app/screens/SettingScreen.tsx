@@ -4,8 +4,7 @@ import { Alert, View, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, CounterButton, Header, Screen, Text } from "@components"
-import { useStores } from "app/models"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import { clearRootStore, useStores } from "app/models"
 import RNRestart from "react-native-restart"
 
 interface SettingScreenProps extends NativeStackScreenProps<AppStackScreenProps<"Setting">> {}
@@ -49,7 +48,7 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
                 {
                   text: "Khôi phục",
                   onPress: async () => {
-                    await AsyncStorage.clear()
+                    await clearRootStore()
                     RNRestart.restart()
                   },
                   style: "destructive",

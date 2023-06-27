@@ -23,6 +23,7 @@ export const LearningStoreModel = types
     showModal: false,
     LEARN_PER_TURN: 5,
     MINUTE_PER_TURN: 1,
+    videoId: "",
   })
   .actions(withSetPropAction)
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -43,7 +44,9 @@ export const LearningStoreModel = types
       let newNumber
       do {
         newNumber = lodash(allNumbers)
-          .filter((i) => i < self.maxNumber && self.correctArray[i] < self.maxNumber)
+          .filter(
+            (i) => i < self.maxNumber && self.correctArray[i] < self.maxNumber && i !== self.number,
+          )
           .shuffle()
           .first()
         if (newNumber === undefined) {

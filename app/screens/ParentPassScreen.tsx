@@ -9,9 +9,11 @@ interface ParentPassScreenProps extends AppStackScreenProps<"ParentPass"> {}
 
 export const ParentPassScreen: FC<ParentPassScreenProps> = observer(function ParentPassScreen({
   navigation,
+  route,
 }) {
-  const number1 = useMemo(() => random(5, 9), [])
-  const number2 = useMemo(() => random(5, 9), [])
+  const { mode } = route.params
+  const number1 = useMemo(() => random(3, 6), [])
+  const number2 = useMemo(() => random(4, 6), [])
   const [text, setText] = useState("")
   return (
     <Screen style={$root} preset="scroll" safeAreaEdges={["left", "right"]}>
@@ -27,10 +29,10 @@ export const ParentPassScreen: FC<ParentPassScreenProps> = observer(function Par
           autoFocus
         />
         <Button
-          text="Đi tới cài đặt"
+          text={mode === "setting" ? "Đi tới cài đặt" : "Bắt đầu học"}
           onPress={() => {
             if (number1 * number2 === Number(text)) {
-              navigation.replace("Setting")
+              navigation.replace(mode === "setting" ? "Setting" : "Player")
             }
           }}
         />

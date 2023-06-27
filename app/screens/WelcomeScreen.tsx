@@ -1,14 +1,10 @@
 import { observer } from "mobx-react-lite"
 import React, { FC, useEffect } from "react"
-// import { FlatList, StyleSheet, TouchableOpacity, View, useWindowDimensions } from "react-native"
-import { Alert, StyleSheet, View } from "react-native"
-import { AppStackScreenProps } from "../navigators" // @demo remove-current-line
-// import { useAsync } from "react-async-hook"
-// import { api } from "@services/api"
-// import FastImage from "react-native-fast-image"
+import { StyleSheet, View, Alert } from "react-native"
+import { AppStackScreenProps } from "../navigators"
 import { Button, Screen, TextField } from "@components"
 import { Audio } from "expo-av"
-import { playSound } from "@services/SoundService"
+import { useStores } from "@models/index"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -25,14 +21,11 @@ const getVideoId = (url: string) => {
 export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen({
   navigation,
 }) {
+  const { learningStore } = useStores()
   const [search, setSearch] = React.useState("")
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
   }, [])
-  // const { result, error } = useAsync((q) => api.getVideos(q), [search])
-  // const window = useWindowDimensions()
-  // const width = useMemo(() => window.width / 3, [window])
-  // const height = useMemo(() => width / (16 / 9), [width])
   return (
     <Screen preset="fixed" safeAreaEdges={["left", "right", "top", "bottom"]}>
       <View style={styles.container}>
@@ -42,7 +35,8 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
           onPress={() => {
             const videoId = getVideoId(search)
             if (videoId) {
-              navigation.navigate("Player", { videoId })
+              learningStore.setProp("videoId", videoId)
+              navigation.navigate("ParentPass", { mode: "player" })
             } else {
               Alert.alert("Lỗi", "Link video không hợp lệ")
             }
@@ -51,28 +45,10 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
         <Button
           text="Cài đặt"
           onPress={() => {
-            navigation.navigate("ParentPass")
+            navigation.navigate("ParentPass", { mode: "setting" })
           }}
         />
       </View>
-      {/* <ErrorText error={error} />
-      <FlatList
-        data={result?.data?.items || []}
-        horizontal
-        keyExtractor={(item) => item.id?.videoId || ""}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[styles.item, { width }]}
-            onPress={() => navigation.navigate("Player", { videoId: item.id?.videoId ?? "" })}
-          >
-            <FastImage
-              source={{ uri: item.snippet?.thumbnails?.high?.url }}
-              style={{ height, width }}
-            />
-            <Text numberOfLines={1}>{item.snippet?.title}</Text>
-          </TouchableOpacity>
-        )}
-      /> */}
     </Screen>
   )
 })
