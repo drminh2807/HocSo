@@ -40,6 +40,7 @@ export const LearningStoreModel = types
         yield sleep(2000)
         self.learnCount -= 0.5
         self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)
+        self.correctArray[self.selectedNumber] = Math.max(0, self.correctArray[self.selectedNumber] - 1)
       }
       let newNumber
       do {
