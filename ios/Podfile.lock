@@ -372,7 +372,7 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - ReactCommon/turbomodule/core
-  - react-native-webview (12.2.0):
+  - react-native-webview (12.1.0):
     - React-Core
   - React-perflogger (0.71.7)
   - React-RCTActionSheet (0.71.7):
@@ -777,7 +777,7 @@ SPEC CHECKSUMS:
   React-logger: 3f8ebad1be1bf3299d1ab6d7f971802d7395c7ef
   react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
-  react-native-webview: 35e076d88994c63f4435de2058e4091d1c92415e
+  react-native-webview: 13db17f7c7fe8f91c826e9afcc369cbc74507ea0
   React-perflogger: 2d505bbe298e3b7bacdd9e542b15535be07220f6
   React-RCTActionSheet: 0e96e4560bd733c9b37efbf68f5b1a47615892fb
   React-RCTAnimation: fd138e26f120371c87e406745a27535e2c8a04ef
@@ -804,6 +804,6 @@ SPEC CHECKSUMS:
   Yoga: d56980c8914db0b51692f55533409e844b66133c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: ff237c7133b2f8839cc5706100752aad7343ef32
+PODFILE CHECKSUM: c0a331e7495aac31a5b29e4322c8592d5a9534c6
 
 COCOAPODS: 1.12.1

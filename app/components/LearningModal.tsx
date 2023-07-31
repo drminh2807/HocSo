@@ -21,7 +21,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
   }, [])
 
   return (
-    <Modal visible={showModal} supportedOrientations={["landscape"]}>
+    <Modal visible={showModal} supportedOrientations={["landscape"]} statusBarTranslucent>
       <View style={styles.container}>
         {options.map((option) => (
           <TouchableOpacity
