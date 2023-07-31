@@ -1,4 +1,5 @@
-import { Audio } from "expo-av"
+import { words } from "@models/Database"
+import { AVPlaybackSource, Audio } from "expo-av"
 // import Sound from "react-native-sound"
 
 export type EffectSound = "dung1" | "dung2" | "sai2" | "sai1"
@@ -21,12 +22,26 @@ const allSounds: Record<SoundName, number> = {
   sai2: require("../../assets/audio/sai2.wav"),
 }
 let sound: Audio.SoundObject
-export const playSound = async (name: SoundName) => {
+export const playSound = async (name: SoundName, vi = false) => {
   try {
     await sound.sound.stopAsync()
   } catch (error) {}
   try {
-    await Audio.Sound.createAsync(allSounds[name], { shouldPlay: true })
+    let soundFile: AVPlaybackSource
+    if (typeof name === "number" && name > 9) {
+      if (vi) {
+        soundFile = words[name - 10].viSound
+      } else {
+        soundFile = {
+          uri: `https://d1qx7pbj0dvboc.cloudfront.net/${encodeURIComponent(
+            words[name - 10].en,
+          )}.mp3`,
+        }
+      }
+    } else {
+      soundFile = allSounds[name]
+    }
+    sound = await Audio.Sound.createAsync(soundFile, { shouldPlay: true })
   } catch (error) {
     console.log("Play sound error", error)
   }
