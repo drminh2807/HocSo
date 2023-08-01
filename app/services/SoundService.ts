@@ -1,6 +1,7 @@
 import { words } from "@models/Database"
 import { AVPlaybackSource, Audio } from "expo-av"
-// import Sound from "react-native-sound"
+import * as Speech from "expo-speech"
+import lodash from "lodash"
 
 export type EffectSound = "dung1" | "dung2" | "sai2" | "sai1"
 
@@ -32,11 +33,8 @@ export const playSound = async (name: SoundName, vi = false) => {
       if (vi) {
         soundFile = words[name - 10].viSound
       } else {
-        soundFile = {
-          uri: `https://d1qx7pbj0dvboc.cloudfront.net/${encodeURIComponent(
-            words[name - 10].en,
-          )}.mp3`,
-        }
+        Speech.speak(words[name - 10].en)
+        return
       }
     } else {
       soundFile = allSounds[name]
