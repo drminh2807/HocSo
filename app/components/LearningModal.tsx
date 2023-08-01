@@ -39,53 +39,47 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
   return (
     <Modal visible={showModal} supportedOrientations={["landscape"]} statusBarTranslucent>
       <View style={[styles.container, { paddingLeft: left, paddingRight: right }]}>
-        {options.map((option) => (
-          <TouchableOpacity
-            disabled={selectedNumber !== null}
-            key={String(option)}
-            onPress={() => {
-              checkAnswer(option)
-            }}
-            style={styles.option}
-          >
-            {option < 10 ? (
-              <RNText
-                style={[
-                  styles.text,
-                  // eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals
-                  {
-                    color:
-                      option === selectedNumber
-                        ? selectedNumber === number
-                          ? "green"
-                          : "red"
-                        : "black",
-                  },
-                ]}
-              >
-                {option}
-              </RNText>
-            ) : (
-              <Image
-                source={words[option - 10].image}
-                resizeMode="contain"
-                style={[
-                  {
-                    width: width * 0.2,
-                    height: width * 0.28,
-                    borderColor:
-                      option === selectedNumber
-                        ? selectedNumber === number
-                          ? "green"
-                          : "red"
-                        : "black",
-                  },
-                  styles.image,
-                ]}
-              />
-            )}
-          </TouchableOpacity>
-        ))}
+        {options.map((option) => {
+          const color =
+            option === selectedNumber ? (selectedNumber === number ? "green" : "red") : "black"
+          return (
+            <TouchableOpacity
+              disabled={selectedNumber !== null}
+              key={String(option)}
+              onPress={() => {
+                checkAnswer(option)
+              }}
+              style={styles.option}
+            >
+              {option < 10 ? (
+                <RNText
+                  style={[
+                    styles.text,
+                    // eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals
+                    {
+                      color,
+                    },
+                  ]}
+                >
+                  {option}
+                </RNText>
+              ) : (
+                <Image
+                  source={words[option - 10].image}
+                  resizeMode="contain"
+                  style={[
+                    {
+                      width: width * 0.2,
+                      height: width * 0.28,
+                      borderColor: color,
+                    },
+                    styles.image,
+                  ]}
+                />
+              )}
+            </TouchableOpacity>
+          )
+        })}
       </View>
       <TouchableOpacity
         style={[styles.soundButton, { right: right + 10, bottom: bottom + 10 }]}

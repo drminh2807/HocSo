@@ -1,6 +1,13 @@
 import React, { FC, useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { AppState, LayoutRectangle, TouchableOpacity, View, ViewStyle } from "react-native"
+import {
+  AppState,
+  LayoutRectangle,
+  Platform,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native"
 import { AppStackScreenProps } from "@navigators"
 import { Header, LearningModal, Screen } from "@components"
 import YoutubePlayer from "react-native-youtube-iframe"
@@ -46,11 +53,14 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
             width={layout?.width ?? 200}
             play={playing}
             videoId={videoId}
-            webViewProps={{ mediaPlaybackRequiresUserAction: true }}
+            webViewProps={{ mediaPlaybackRequiresUserAction: Platform.OS === "ios" }}
             onChangeState={(event) => {
               if (event === "ended") {
                 setPlaying(false)
               }
+            }}
+            onError={(error) => {
+              console.log(error)
             }}
           />
         </View>

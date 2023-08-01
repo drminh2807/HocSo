@@ -51,7 +51,7 @@ export const LearningStoreModel = types
         self.learnCount++
         self.correctArray[self.number]++
       } else {
-        playSound(<EffectSound>["sai1", "sai2"][self.learnCount % 2])
+        playSound("sai1")
         yield sleep(2000)
         self.learnCount -= 0.5
         self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)

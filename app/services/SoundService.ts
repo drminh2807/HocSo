@@ -1,9 +1,8 @@
 import { words } from "@models/Database"
 import { AVPlaybackSource, Audio } from "expo-av"
 import * as Speech from "expo-speech"
-import lodash from "lodash"
 
-export type EffectSound = "dung1" | "dung2" | "sai2" | "sai1"
+export type EffectSound = "dung1" | "dung2" | "sai1"
 
 type SoundName = EffectSound | number
 const allSounds: Record<SoundName, number> = {
@@ -20,7 +19,6 @@ const allSounds: Record<SoundName, number> = {
   dung1: require("../../assets/audio/dung1.wav"),
   dung2: require("../../assets/audio/dung2.wav"),
   sai1: require("../../assets/audio/sai1.wav"),
-  sai2: require("../../assets/audio/sai2.wav"),
 }
 let sound: Audio.SoundObject
 export const playSound = async (name: SoundName, vi = false) => {
