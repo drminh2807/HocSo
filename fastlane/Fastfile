@@ -31,3 +31,10 @@ platform :ios do
     push_to_git_remote
   end
 end
+
+platform :android do
+  lane :playstore do
+    gradle(task: "clean bundleRelease", project_dir: "./android")
+    # upload_to_play_store
+  end
+end
