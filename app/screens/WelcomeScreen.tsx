@@ -9,10 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native"
 import { AppStackScreenProps } from "../navigators"
-import { Button, Screen, TextField } from "@components"
+import { Button, Screen, Text, TextField } from "@components"
 import { Audio } from "expo-av"
 import { useStores } from "@models/index"
 import FastImage from "react-native-fast-image"
+import * as WebBrowser from "expo-web-browser"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -79,6 +80,16 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
             navigation.navigate("ParentPass", { mode: "setting" })
           }}
         />
+        <Text
+          onPress={() =>
+            WebBrowser.openBrowserAsync(
+              "https://docs.google.com/document/d/1Y0m1m4UO1Q1UBdAPwNTQDHlopXT66l2SQkumpBotpVg",
+            )
+          }
+          style={styles.privacyUrl}
+        >
+          Chính sách quyền riêng tư
+        </Text>
       </View>
     </Screen>
   )
@@ -86,12 +97,16 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
 
 const styles = StyleSheet.create({
   container: {
-    gap: 16,
+    flex: 1,
+    gap: 8,
     justifyContent: "center",
-    margin: 16,
+    margin: 8,
   },
   item: {
     justifyContent: "center",
     marginRight: 16,
+  },
+  privacyUrl: {
+    textAlign: "center",
   },
 })
