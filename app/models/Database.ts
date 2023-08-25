@@ -3,122 +3,58 @@ interface Word {
   viSound: number
   image: number
 }
-/**
-alligator
-frog
-octopus
-skunk
-anteater
-girraffe
-ostritch
-sloth
-arctic fox
-goat
-otter
-badger
-gorrilla
-owl
-bat
-guinea pig
-panda
-bear
-hawk
-parrot
-squid
-beaver
-hedgehog
-peacock
-squirrel
-bird
-hen
-penguin
-starfish
-bison
-hippo
-pig
-stingray
-bugs
-horse
-pigeon
-swordfish
-camel
-hyena
-plankton
-tarantular
-cat
-iguana
-platypus
-tiger
-chicken
-jellyfish
-polar bear
-toucan
-cow
-kangaroo
-puffin
-turtle
-coyote
-killer whale
-quail
-urchin
-crab
-koala
-queen bee
-vulture
-crocodile
-lemur
-rabbit
-walrus
-deer
-leopard
-racoon
-whale
-dog
-lion
-rat
-wolf
-dolphin
-lizard
-rhino
-x-ray fish
-donkey
-llama
-rooster
-yak
-duck
-lobster
-scorpion
-zebra
-eagle
-mole
-seagul
-eel
-monkey
-seahorse
-elephant
-moose
-seal
-fish
-mouse
-shark
-flamingo
-narwhal
-sheep
-fox
-newt
-shrimp
- */
-// Fill in the following array with your words.
-// Example:
-// export const words: Word[] = [
-//   {
-//     en: "alligator",
-//     viSound: require("../../assets/audio/animal_1/Animal01.wav"),
-//     image: require("assets/images/animal_1/alligator.jpeg"),
-//   },
-// ]
 
 export const words: Word[] = [
+  {
+    en: "1",
+    viSound: require("assets/audio/number/1.wav"),
+    image: require("assets/images/number/1.jpg"),
+  },
+  {
+    en: "2",
+    viSound: require("assets/audio/number/2.wav"),
+    image: require("assets/images/number/2.jpg"),
+  },
+  {
+    en: "3",
+    viSound: require("assets/audio/number/3.wav"),
+    image: require("assets/images/number/3.jpg"),
+  },
+  {
+    en: "4",
+    viSound: require("assets/audio/number/4.wav"),
+    image: require("assets/images/number/4.jpg"),
+  },
+  {
+    en: "5",
+    viSound: require("assets/audio/number/5.wav"),
+    image: require("assets/images/number/5.jpg"),
+  },
+  {
+    en: "6",
+    viSound: require("assets/audio/number/6.wav"),
+    image: require("assets/images/number/6.jpg"),
+  },
+  {
+    en: "7",
+    viSound: require("assets/audio/number/7.wav"),
+    image: require("assets/images/number/7.jpg"),
+  },
+  {
+    en: "8",
+    viSound: require("assets/audio/number/8.wav"),
+    image: require("assets/images/number/8.jpg"),
+  },
+  {
+    en: "9",
+    viSound: require("assets/audio/number/9.wav"),
+    image: require("assets/images/number/9.jpg"),
+  },
+  {
+    en: "10",
+    viSound: require("assets/audio/number/10.wav"),
+    image: require("assets/images/number/10.jpg"),
+  },
   {
     en: "alligator",
     viSound: require("../../assets/audio/animal_1/Animal01.wav"),

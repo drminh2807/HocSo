@@ -4,34 +4,23 @@ import * as Speech from "expo-speech"
 
 export type EffectSound = "dung1" | "dung2" | "sai1"
 
-type SoundName = EffectSound | number
-const allSounds: Record<SoundName, number> = {
-  0: require("../../assets/audio/0.wav"),
-  1: require("../../assets/audio/1.wav"),
-  2: require("../../assets/audio/2.wav"),
-  3: require("../../assets/audio/3.wav"),
-  4: require("../../assets/audio/4.wav"),
-  5: require("../../assets/audio/5.wav"),
-  6: require("../../assets/audio/6.wav"),
-  7: require("../../assets/audio/7.wav"),
-  8: require("../../assets/audio/8.wav"),
-  9: require("../../assets/audio/9.wav"),
-  dung1: require("../../assets/audio/dung1.wav"),
-  dung2: require("../../assets/audio/dung2.wav"),
-  sai1: require("../../assets/audio/sai1.wav"),
+const allSounds: Record<EffectSound, number> = {
+  dung1: require("assets/audio/dung1.wav"),
+  dung2: require("assets/audio/dung2.wav"),
+  sai1: require("assets/audio/sai1.wav"),
 }
 let sound: Audio.SoundObject
-export const playSound = async (name: SoundName, vi = false) => {
+export const playSound = async (name: EffectSound | number, vi = false) => {
   try {
     await sound.sound.stopAsync()
   } catch (error) {}
   try {
     let soundFile: AVPlaybackSource
-    if (typeof name === "number" && name > 9) {
+    if (typeof name === "number") {
       if (vi) {
-        soundFile = words[name - 10].viSound
+        soundFile = words[name].viSound
       } else {
-        Speech.speak(words[name - 10].en)
+        Speech.speak(words[name].en)
         return
       }
     } else {

@@ -1,15 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import React, { useEffect } from "react"
-import {
-  Modal,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text as RNText,
-  Image,
-  useWindowDimensions,
-} from "react-native"
+import { Modal, StyleSheet, TouchableOpacity, View, Image, useWindowDimensions } from "react-native"
 import { observer } from "mobx-react-lite"
 import { colors } from "@theme/colors"
 import { useStores } from "@models"
@@ -25,7 +17,16 @@ export interface LearningModalProps {}
  */
 export const LearningModal = observer(function LearningModal(_: LearningModalProps) {
   const {
-    learningStore: { number, tick, showModal, options, checkAnswer, selectedNumber, firstLaunch },
+    learningStore: {
+      number,
+      tick,
+      showModal,
+      options,
+      checkAnswer,
+      selectedNumber,
+      firstLaunch,
+      LANGUAGE,
+    },
   } = useStores()
 
   useEffect(() => {
@@ -51,32 +52,18 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
               }}
               style={styles.option}
             >
-              {option < 10 ? (
-                <RNText
-                  style={[
-                    styles.text,
-                    // eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals
-                    {
-                      color,
-                    },
-                  ]}
-                >
-                  {option}
-                </RNText>
-              ) : (
-                <Image
-                  source={words[option - 10].image}
-                  resizeMode="contain"
-                  style={[
-                    {
-                      width: width * 0.2,
-                      height: width * 0.28,
-                      borderColor: color,
-                    },
-                    styles.image,
-                  ]}
-                />
-              )}
+              <Image
+                source={words[option].image}
+                resizeMode="contain"
+                style={[
+                  {
+                    width: width * 0.2,
+                    height: width * 0.28,
+                    borderColor: color,
+                  },
+                  styles.image,
+                ]}
+              />
             </TouchableOpacity>
           )
         })}
@@ -84,7 +71,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
       <TouchableOpacity
         style={[styles.soundButton, { right: right + 10, bottom: bottom + 10 }]}
         onPress={() => {
-          playSound(number)
+          playSound(number, LANGUAGE === "vi")
         }}
       >
         <Ionicons name="volume-high" size={40} color="black" />

@@ -4,7 +4,7 @@ import lodash from "lodash"
 import { addMinutes } from "date-fns"
 import { EffectSound, playSound, sleep } from "@services/SoundService"
 const MAX_NUMBER = 113
-const MAX_NUMBER_NUMBER = 10
+
 const allNumbers = Array(MAX_NUMBER)
   .fill(0)
   .map((_, i) => i)
@@ -34,6 +34,7 @@ export const LearningStoreModel = types
     showModal: false,
     LEARN_PER_TURN: 5,
     MINUTE_PER_TURN: 1,
+    LANGUAGE: "en",
     videoId: "",
   })
   .actions(withSetPropAction)
@@ -42,7 +43,7 @@ export const LearningStoreModel = types
     checkAnswer: flow(function* (number: number) {
       self.selectedNumber = number
       if (number === self.number) {
-        if (number >= 10) {
+        if (self.LANGUAGE === "en") {
           playSound(self.number, true)
         } else {
           playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
@@ -83,7 +84,7 @@ export const LearningStoreModel = types
       self.options = cast(
         lodash(allNumbers)
           .filter(
-            (i) => i < self.maxNumber && i !== self.number && (self.number < 10 ? i < 10 : i >= 10),
+            (i) => i < self.maxNumber && i !== self.number,
           )
           .shuffle()
           .take(Math.min(self.correctArray[self.number] + 1, MAX_OPTIONS - 1))
@@ -96,18 +97,18 @@ export const LearningStoreModel = types
         self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
         self.showModal = false
       } else {
-        playSound(self.number)
+        playSound(self.number, self.LANGUAGE === "vi")
       }
     }),
     tick() {
       self.now = new Date()
       if (!self.showModal && self.nextLearn < self.now) {
         self.showModal = true
-        playSound(self.number)
+        playSound(self.number, self.LANGUAGE === "vi")
       }
     },
     firstLaunch() {
-      playSound(self.number)
+      playSound(self.number, self.LANGUAGE === "vi")
     },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 
