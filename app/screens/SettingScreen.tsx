@@ -103,6 +103,7 @@ const $root: ViewStyle = {
 const $container: ViewStyle = {
   flex: 1,
   gap: 16,
+  padding: 16,
 }
 
 const $item: ViewStyle = {
