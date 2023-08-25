@@ -7,14 +7,7 @@ import { withSetPropAction } from "./helpers/withSetPropAction"
 export const VideoStoreModel = types
   .model("VideoStore")
   .props({
-    videos: types.optional(types.array(types.string), [
-      "wWulIYjyUiA",
-      "tFoUuFq3vHw",
-      "AbY2Pjyg5CE",
-      "iWowDC3x0hE",
-      "tgF1Enrgo2g",
-      "N7y3kbZEfCc",
-    ]),
+    videos: types.optional(types.array(types.string), []),
   })
   .actions(withSetPropAction)
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
