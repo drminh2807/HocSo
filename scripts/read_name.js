@@ -1,13 +1,15 @@
-const folder = '/Users/minhdrminh/Documents/flashcards/alphabet'
+const folder = '/Users/minhdrminh/Documents/flashcards/adjective'
 const fs = require('fs')
 function pbcopy(data) {
     var proc = require('child_process').spawn('pbcopy');
     proc.stdin.write(data); proc.stdin.end();
     console.log("copied to clipboard")
 }
-const lines = fs.readdirSync(folder).map(element => {
+const lines = fs.readdirSync(folder).filter(e => e !== ".DS_Store").map(element => {
 
-    return "chữ " + element.split('.')[0].toLocaleLowerCase() + "<break time=0.5s/>"
+    // return element.split('.')[0].replace(/-/g, ' ')
+    return element.split('.')[0].toLocaleLowerCase() + ". "
+    // return element.split('.')[0].toLocaleLowerCase() + "<break time='0.2s'/>"
 
 })
 
