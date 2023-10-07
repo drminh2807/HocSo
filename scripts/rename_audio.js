@@ -1,7 +1,7 @@
-const category = "adjective"
-const language = "en"
+const category = "activity"
+const language = "vi"
 const imagePath = `/Users/minhdrminh/Documents/flashcards/${category}`
-const audioPath = `/Users/minhdrminh/Downloads/audio/${category}/${language}`
+const audioPath = `/Users/minhdrminh/Documents/audio/${category}/${language}`
 const fs = require("fs");
 const imageName = fs.readdirSync(imagePath).map(element => element.split('.')[0]).filter(e => e)
 const dir = fs.readdirSync(audioPath).filter(e => e.split('.')[0])

@@ -9,7 +9,7 @@ const allNumbers = Array(MAX_NUMBER)
   .fill(0)
   .map((_, i) => i)
 const MAX_OPTIONS = 4
-const MAX_CORRECT = 3
+const MAX_CORRECT = __DEV__ ? 1 : 3
 
 export const LearningStoreModel = types
   .model("LearningStore")
@@ -83,9 +83,7 @@ export const LearningStoreModel = types
       } while (newNumber === undefined)
       self.options = cast(
         lodash(allNumbers)
-          .filter(
-            (i) => i < self.maxNumber && i !== self.number,
-          )
+          .filter((i) => i < self.maxNumber && i !== self.number)
           .shuffle()
           .take(Math.min(self.correctArray[self.number] + 1, MAX_OPTIONS - 1))
           .push(self.number)

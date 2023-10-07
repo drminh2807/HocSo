@@ -1,6 +1,5 @@
 import { words } from "@models/Database"
 import { AVPlaybackSource, Audio } from "expo-av"
-import * as Speech from "expo-speech"
 
 export type EffectSound = "dung1" | "dung2" | "sai1"
 
@@ -20,8 +19,7 @@ export const playSound = async (name: EffectSound | number, vi = false) => {
       if (vi) {
         soundFile = words[name].viSound
       } else {
-        Speech.speak(words[name].en)
-        return
+        soundFile = words[name].enSound
       }
     } else {
       soundFile = allSounds[name]
