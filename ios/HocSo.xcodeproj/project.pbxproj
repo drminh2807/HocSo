@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		060A21F12AC1881300B6A8F0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A21F02AC1881300B6A8F0 /* ShareViewController.swift */; };
-		060A21F42AC1881300B6A8F0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 060A21F22AC1881300B6A8F0 /* MainInterface.storyboard */; };
-		060A21F82AC1881300B6A8F0 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 060A21EE2AC1881300B6A8F0 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0641ED6E2A2F597800A143C9 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0641ED6D2A2F597800A143C9 /* 1.wav */; };
 		0641ED7B2A2F5D6500A143C9 /* sai1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0641ED6F2A2F5D6400A143C9 /* sai1.wav */; };
 		0641ED7C2A2F5D6500A143C9 /* dung1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0641ED702A2F5D6400A143C9 /* dung1.wav */; };
@@ -32,16 +29,6 @@
 		BE406F562862D73000A81E39 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE406F552862D73000A81E39 /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		060A21F62AC1881300B6A8F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 060A21ED2AC1881300B6A8F0;
-			remoteInfo = ShareExtension;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		060A21F92AC1881300B6A8F0 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -49,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				060A21F82AC1881300B6A8F0 /* ShareExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,10 +45,6 @@
 /* Begin PBXFileReference section */
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* HocSoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HocSoTests.m; sourceTree = "<group>"; };
-		060A21EE2AC1881300B6A8F0 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		060A21F02AC1881300B6A8F0 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		060A21F32AC1881300B6A8F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		060A21F52AC1881300B6A8F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0641ED6D2A2F597800A143C9 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		0641ED6F2A2F5D6400A143C9 /* sai1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sai1.wav; sourceTree = "<group>"; };
 		0641ED702A2F5D6400A143C9 /* dung1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dung1.wav; sourceTree = "<group>"; };
@@ -96,13 +78,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		060A21EB2AC1881300B6A8F0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,16 +104,6 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		060A21EF2AC1881300B6A8F0 /* ShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				060A21F02AC1881300B6A8F0 /* ShareViewController.swift */,
-				060A21F22AC1881300B6A8F0 /* MainInterface.storyboard */,
-				060A21F52AC1881300B6A8F0 /* Info.plist */,
-			);
-			path = ShareExtension;
 			sourceTree = "<group>";
 		};
 		0641ED6C2A2F596000A143C9 /* Audio */ = {
@@ -216,7 +181,6 @@
 				13B07FAE1A68108700A75B9A /* HocSo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* HocSoTests */,
-				060A21EF2AC1881300B6A8F0 /* ShareExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -231,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* HocSo.app */,
-				060A21EE2AC1881300B6A8F0 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,23 +213,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		060A21ED2AC1881300B6A8F0 /* ShareExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 060A21FC2AC1881300B6A8F0 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
-			buildPhases = (
-				060A21EA2AC1881300B6A8F0 /* Sources */,
-				060A21EB2AC1881300B6A8F0 /* Frameworks */,
-				060A21EC2AC1881300B6A8F0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ShareExtension;
-			productName = ShareExtension;
-			productReference = 060A21EE2AC1881300B6A8F0 /* ShareExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		13B07F861A680F5B00A75B9A /* HocSo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HocSo" */;
@@ -284,7 +230,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				060A21F72AC1881300B6A8F0 /* PBXTargetDependency */,
 			);
 			name = HocSo;
 			productName = HocSo;
@@ -300,9 +245,6 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					060A21ED2AC1881300B6A8F0 = {
-						CreatedOnToolsVersion = 15.0;
-					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
 					};
@@ -322,20 +264,11 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* HocSo */,
-				060A21ED2AC1881300B6A8F0 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		060A21EC2AC1881300B6A8F0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				060A21F42AC1881300B6A8F0 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,14 +389,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		060A21EA2AC1881300B6A8F0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				060A21F12AC1881300B6A8F0 /* ShareViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		13B07F871A680F5B00A75B9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,110 +401,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		060A21F72AC1881300B6A8F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 060A21ED2AC1881300B6A8F0 /* ShareExtension */;
-			targetProxy = 060A21F62AC1881300B6A8F0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		060A21F22AC1881300B6A8F0 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				060A21F32AC1881300B6A8F0 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		060A21FA2AC1881300B6A8F0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APP_BUILD = 2;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4R6ETCM6VA;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minhdv.hocso.ShareExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		060A21FB2AC1881300B6A8F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APP_BUILD = 2;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4R6ETCM6VA;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minhdv.hocso.ShareExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-HocSo.debug.xcconfig */;
@@ -590,9 +412,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HocSo/HocSo.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 4R6ETCM6VA;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HocSo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Học Số";
@@ -626,9 +448,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HocSo/HocSo.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 4R6ETCM6VA;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 3;
 				INFOPLIST_FILE = HocSo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Học Số";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
@@ -791,15 +613,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		060A21FC2AC1881300B6A8F0 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				060A21FA2AC1881300B6A8F0 /* Debug */,
-				060A21FB2AC1881300B6A8F0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HocSo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
