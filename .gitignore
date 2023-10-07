@@ -85,3 +85,4 @@ web-build/
 # Configurations
 !env.js
 HocSo.app.dSYM.zip
+fastlane/service_account.json

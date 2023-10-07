@@ -28,6 +28,14 @@ Push a new beta build to TestFlight
 
 ## Android
 
+### android apk
+
+```sh
+[bundle exec] fastlane android apk
+```
+
+
+
 ### android playstore
 
 ```sh

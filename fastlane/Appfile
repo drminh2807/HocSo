@@ -3,6 +3,7 @@ apple_id("triminh6666v2@gmail.com") # Your Apple Developer Portal username
 
 itc_team_id("118842190") # App Store Connect Team ID
 team_id("4R6ETCM6VA") # Developer Portal Team ID
-
+json_key_file("fastlane/service_account.json")
+package_name("com.minhdv.hocso") # Android only: your package name
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile

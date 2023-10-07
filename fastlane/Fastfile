@@ -14,7 +14,8 @@
 # update_fastlane
 before_all do |_lane, options|
   ENV["FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT"]="1"
-  ENV["FASTLANE_ITUNES_TRANSPORTER_PATH"]="/Applications/Transporter.app/Contents/itms"
+  ENV["FASTLANE_ITUNES_TRANSPORTER_PATH"]="/Applications/Transporter.app/Contents/itms"  
+  update_fastlane
 end
 default_platform(:ios)
 
@@ -33,8 +34,22 @@ platform :ios do
 end
 
 platform :android do
+  lane :apk do
+    gradle(task: "clean assembleRelease", project_dir: "./android")
+    open "android/app/build/outputs/apk/release"
+  end
+
   lane :playstore do
+    ensure_git_status_clean
+    previous_build_number = google_play_track_version_codes()[0]
+
+    current_build_number = previous_build_number + 1
+
+    increment_version_code(
+      version_code: current_build_number
+    )
     gradle(task: "clean bundleRelease", project_dir: "./android")
-    # upload_to_play_store
+    upload_to_play_store
+    push_to_git_remote
   end
 end
