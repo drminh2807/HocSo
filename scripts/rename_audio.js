@@ -1,5 +1,5 @@
 const category = "activity"
-const language = "vi"
+const language = "en"
 const imagePath = `/Users/minhdrminh/Documents/flashcards/${category}`
 const audioPath = `/Users/minhdrminh/Documents/audio/${category}/${language}`
 const fs = require("fs");
