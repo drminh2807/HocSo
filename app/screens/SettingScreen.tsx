@@ -4,8 +4,7 @@ import { Alert, TextStyle, TouchableOpacity, View, ViewStyle } from "react-nativ
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, CounterButton, Header, Screen, Text } from "@components"
-import { clearRootStore, useStores } from "app/models"
-import RNRestart from "react-native-restart"
+import { useStores } from "app/models"
 import { colors } from "@theme/colors"
 import { typography } from "@theme/typography"
 
@@ -20,7 +19,7 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
   navigation,
 }) {
   const {
-    learningStore: { MINUTE_PER_TURN, LEARN_PER_TURN, setProp, LANGUAGE },
+    learningStore: { MINUTE_PER_TURN, LEARN_PER_TURN, setProp, LANGUAGE, reset },
   } = useStores()
   return (
     <Screen style={$root} safeAreaEdges={["left", "right"]}>
@@ -82,8 +81,8 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
                 {
                   text: "Khôi phục",
                   onPress: async () => {
-                    await clearRootStore()
-                    RNRestart.restart()
+                    reset()
+                    navigation.popToTop()
                   },
                   style: "destructive",
                 },

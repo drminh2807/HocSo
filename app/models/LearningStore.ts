@@ -1,15 +1,20 @@
-import { Instance, SnapshotIn, SnapshotOut, cast, flow, types } from "mobx-state-tree"
+import {
+  Instance,
+  SnapshotIn,
+  SnapshotOut,
+  applySnapshot,
+  cast,
+  flow,
+  types,
+} from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
 import lodash from "lodash"
 import { addMinutes } from "date-fns"
 import { EffectSound, playSound, sleep } from "@services/SoundService"
-const MAX_NUMBER = 113
+import { words } from "./Database"
 
-const allNumbers = Array(MAX_NUMBER)
-  .fill(0)
-  .map((_, i) => i)
 const MAX_OPTIONS = 4
-const MAX_CORRECT = __DEV__ ? 1 : 3
+const MAX_CORRECT = 4
 
 export const LearningStoreModel = types
   .model("LearningStore")
@@ -17,8 +22,7 @@ export const LearningStoreModel = types
     selectedNumber: types.maybeNull(types.number),
     options: types.optional(types.array(types.number), [0]),
     number: 0,
-    maxNumber: 3,
-    correctArray: types.optional(types.array(types.number), Array(MAX_NUMBER).fill(0)),
+    correctArray: types.optional(types.array(types.number), [0]),
     // options: types.optional(types.array(types.number), [10]),
     // number: 10,
     // maxNumber: 13,
@@ -28,6 +32,7 @@ export const LearningStoreModel = types
     //     .fill(0)
     //     .map((_, i) => (i < 10 ? MAX_CORRECT : 0)),
     // ),
+    learnNewWordAt: 4,
     learnCount: 0,
     nextLearn: types.optional(types.Date, new Date(0)),
     now: types.optional(types.Date, new Date()),
@@ -38,7 +43,13 @@ export const LearningStoreModel = types
     videoId: "",
   })
   .actions(withSetPropAction)
-  .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .views((self) => ({
+    shouldLearnNewWord: () => {
+      const total = self.correctArray.reduce((a, b) => a + b, 0)
+      console.log({ total, learnNewWordAt: self.learnNewWordAt, correctArray: self.correctArray })
+      return total >= self.learnNewWordAt
+    },
+  })) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({
     checkAnswer: flow(function* (number: number) {
       self.selectedNumber = number
@@ -61,35 +72,51 @@ export const LearningStoreModel = types
           self.correctArray[self.selectedNumber] - 1,
         )
       }
-      let newNumber
-      do {
-        newNumber = lodash(allNumbers)
-          .filter(
-            (i) => i < self.maxNumber && self.correctArray[i] < MAX_CORRECT && i !== self.number,
-          )
+      if (self.shouldLearnNewWord()) {
+        self.number = self.correctArray.length
+        self.learnNewWordAt += MAX_CORRECT
+        self.correctArray.push(0)
+      } else {
+        console.log(2)
+        const newNumber = lodash(
+          self.correctArray
+            .map((item, index) => ({ item, index }))
+            .filter((i) => i.item < MAX_CORRECT && i.index !== self.number),
+        )
           .shuffle()
-          .first()
+          .first()?.index
         if (newNumber === undefined) {
-          if (self.correctArray.filter((i) => i < MAX_CORRECT).length === 0) {
-            self.correctArray = cast(Array(MAX_NUMBER).fill(0))
-            self.maxNumber = 2
+          console.log(3)
+          if (self.correctArray.length < words.length) {
+            console.log(4)
+            self.number = self.correctArray.length
+            self.correctArray.push(0)
           } else {
-            self.maxNumber++
+            console.log(5)
+            // Reset
+            self.correctArray = cast([0])
+            self.number = 0
           }
         } else {
+          console.log(6)
           self.number = newNumber
-          self.selectedNumber = null
         }
-      } while (newNumber === undefined)
-      self.options = cast(
-        lodash(allNumbers)
-          .filter((i) => i < self.maxNumber && i !== self.number)
-          .shuffle()
-          .take(Math.min(self.correctArray[self.number] + 1, MAX_OPTIONS - 1))
-          .push(self.number)
-          .shuffle()
-          .value(),
-      )
+      }
+      self.selectedNumber = null
+      if (self.correctArray[self.number] === 0) {
+        console.log(7)
+        self.options = cast([self.number])
+      } else {
+        console.log(8)
+        self.options = cast(
+          lodash(self.correctArray.map((_, i) => i).filter((i) => i !== self.number))
+            .shuffle()
+            .take(Math.min(MAX_OPTIONS, self.correctArray.length) - 1)
+            .push(self.number)
+            .shuffle()
+            .value(),
+        )
+      }
       if (self.learnCount >= self.LEARN_PER_TURN) {
         self.learnCount = 0
         self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
@@ -97,6 +124,7 @@ export const LearningStoreModel = types
       } else {
         playSound(self.number, self.LANGUAGE === "vi")
       }
+      console.log(words[self.number].en)
     }),
     tick() {
       self.now = new Date()
@@ -107,6 +135,9 @@ export const LearningStoreModel = types
     },
     firstLaunch() {
       playSound(self.number, self.LANGUAGE === "vi")
+    },
+    reset() {
+      applySnapshot(self, {})
     },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 

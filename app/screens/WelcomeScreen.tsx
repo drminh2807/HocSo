@@ -12,7 +12,7 @@ import { AppStackScreenProps } from "../navigators"
 import { Button, Screen, Text, TextField } from "@components"
 import { Audio } from "expo-av"
 import { useStores } from "@models/index"
-import FastImage from "react-native-fast-image"
+import { Image } from "expo-image"
 import * as WebBrowser from "expo-web-browser"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
@@ -55,7 +55,7 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
             <TouchableOpacity style={[styles.item, { width }]} onPress={() => handleVideo(item)}>
-              <FastImage
+              <Image
                 source={{ uri: `https://img.youtube.com/vi/${item}/0.jpg` }}
                 style={{ height, width }}
               />

@@ -6,7 +6,7 @@
     "slug": "HocSo",
     "scheme": "hocso",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/images/app-icon-all.png",
     "splash": {
       "image": "./assets/images/splash-logo-all.png",
@@ -14,7 +14,8 @@
       "backgroundColor": "#191015"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/c819e7f4-eb74-4dc0-8ab9-7dd76fcee3c6"
     },
     "jsEngine": "hermes",
     "assetBundlePatterns": [
@@ -54,6 +55,12 @@
     },
     "plugins": [
       "expo-localization"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c819e7f4-eb74-4dc0-8ab9-7dd76fcee3c6"
+      }
+    },
+    "runtimeVersion": "1.0.0"
   }
 }
