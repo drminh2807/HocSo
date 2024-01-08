@@ -12,9 +12,8 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+ENV["RCT_NO_LAUNCH_PACKAGER"] = 1
 before_all do |_lane, options|
-  ENV["FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT"]="1"
-  ENV["FASTLANE_ITUNES_TRANSPORTER_PATH"]="/Applications/Transporter.app/Contents/itms"  
   update_fastlane
 end
 default_platform(:ios)
@@ -24,11 +23,11 @@ platform :ios do
   lane :beta do
     ensure_git_status_clean
     changelog_from_git_commits
-    increment_build_number(xcodeproj: "./ios/HocSo.xcodeproj")
-    build_app(workspace: "./ios/HocSo.xcworkspace", scheme: "HocSo")
+    build_app(
+      workspace: "./ios/HocSo.xcworkspace", 
+      scheme: "HocSo", 
+      xcargs: "-allowProvisioningUpdates")
     pilot
-    commit_version_bump(xcodeproj: "./ios/HocSo.xcodeproj")
-    add_git_tag
     push_to_git_remote
   end
 end

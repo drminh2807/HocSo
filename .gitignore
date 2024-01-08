@@ -87,3 +87,4 @@ web-build/
 HocSo.app.dSYM.zip
 fastlane/service_account.json
 dist/
+fastlane/.env.default
