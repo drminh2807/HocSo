@@ -5,7 +5,7 @@
     "name": "HocSo",
     "slug": "HocSo",
     "scheme": "hocso",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "landscape",
     "icon": "./assets/images/app-icon-all.png",
     "splash": {
