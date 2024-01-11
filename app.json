@@ -1,11 +1,11 @@
 {
   "name": "HocSo",
-  "displayName": "HocSo",
+  "displayName": "Học Số",
   "expo": {
-    "name": "HocSo",
+    "name": "Học Số",
     "slug": "HocSo",
     "scheme": "hocso",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "orientation": "landscape",
     "icon": "./assets/images/app-icon-all.png",
     "splash": {
@@ -18,9 +18,7 @@
       "url": "https://u.expo.dev/c819e7f4-eb74-4dc0-8ab9-7dd76fcee3c6"
     },
     "jsEngine": "hermes",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
       "package": "com.minhdv.hocso",
@@ -54,7 +52,23 @@
       }
     },
     "plugins": [
-      "expo-localization"
+      "expo-localization",
+      [
+        "./plugins/withAndroidShareExtension/index",
+        {
+          "androidIntentFilters": ["text/*"]
+        }
+      ],
+      [
+        "expo-config-plugin-ios-share-extension",
+        {
+          "activationRules": {
+            "NSExtensionActivationSupportsText": true,
+            "NSExtensionActivationSupportsWebURLWithMaxCount": 1,
+            "NSExtensionActivationSupportsWebPageWithMaxCount": 1
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
