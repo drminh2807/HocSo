@@ -14,6 +14,8 @@ import { Audio } from "expo-av"
 import { useStores } from "@models/index"
 import { Image } from "expo-image"
 import * as WebBrowser from "expo-web-browser"
+import ReceiveSharingIntent from "react-native-receive-sharing-intent"
+import Constants from "expo-constants"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -38,7 +40,31 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
   const height = useMemo(() => width / (16 / 9), [width])
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
+
+    // To get All Recived Urls
+    ReceiveSharingIntent.getReceivedFiles(
+      (files) => {
+        const link = files?.[0]?.weblink || files?.[0]?.text || ""
+        validateUrl(link)
+      },
+      (error) => {
+        console.log(error)
+      },
+      Constants.expoConfig?.scheme,
+    )
+    return () => {
+      ReceiveSharingIntent.clearReceivedFiles()
+    }
   }, [])
+
+  const validateUrl = (url: string) => {
+    const videoId = getVideoId(url)
+    if (videoId) {
+      handleVideo(videoId)
+    } else {
+      Alert.alert("Lỗi", "Link video không hợp lệ")
+    }
+  }
 
   const handleVideo = (videoId: string) => {
     learningStore.setProp("videoId", videoId)
@@ -63,17 +89,7 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
           )}
         />
         <TextField placeholder="Dán link video vào đây" value={search} onChangeText={setSearch} />
-        <Button
-          text="Tìm kiếm"
-          onPress={() => {
-            const videoId = getVideoId(search)
-            if (videoId) {
-              handleVideo(videoId)
-            } else {
-              Alert.alert("Lỗi", "Link video không hợp lệ")
-            }
-          }}
-        />
+        <Button text="Tìm kiếm" onPress={() => validateUrl(search)} />
         <Button
           text="Cài đặt"
           onPress={() => {
