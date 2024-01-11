@@ -67,6 +67,7 @@
     "react-native": "0.71.14",
     "react-native-bootsplash": "4.5.0",
     "react-native-gesture-handler": "~2.9.0",
+    "react-native-modal": "^13.0.1",
     "react-native-reanimated": "~2.14.4",
     "react-native-receive-sharing-intent": "^2.0.0",
     "react-native-root-toast": "^3.4.1",
