@@ -18,7 +18,11 @@ export const ParentPassScreen: FC<ParentPassScreenProps> = observer(function Par
   const [text, setText] = useState("")
   const onSubmit = () => {
     if (number1 * number2 === Number(text)) {
-      navigation.replace(mode === "setting" ? "Setting" : "Player")
+      if (mode === "welcome") {
+        navigation.navigate("Welcome")
+      } else {
+        navigation.replace(mode === "setting" ? "Setting" : "Player")
+      }
     } else {
       Toast.show("Sai rồi, thử lại nhé!")
     }
@@ -38,7 +42,7 @@ export const ParentPassScreen: FC<ParentPassScreenProps> = observer(function Par
           disableFullscreenUI
           onSubmitEditing={onSubmit}
         />
-        <Button text={mode === "setting" ? "Đi tới cài đặt" : "Bắt đầu học"} onPress={onSubmit} />
+        <Button text='Kiểm tra' onPress={onSubmit} />
       </View>
     </Screen>
   )

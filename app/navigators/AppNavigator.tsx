@@ -30,7 +30,7 @@ import { colors } from "app/theme"
 export type AppStackParamList = {
   Welcome: undefined
   Player: undefined
-  ParentPass: { mode: "setting" | "player" }
+  ParentPass: { mode: "setting" | "player" | "welcome" }
   Setting: undefined
 }
 

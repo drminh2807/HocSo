@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite"
-import React, { FC, useEffect, useMemo, useRef, useState } from "react"
+import React, { FC, useEffect, useMemo, useState } from "react"
 import {
   StyleSheet,
   View,

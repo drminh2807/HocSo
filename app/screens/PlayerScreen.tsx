@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import {
   AppState,
+  BackHandler,
   LayoutRectangle,
   Platform,
   TouchableOpacity,
@@ -34,13 +35,29 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
     setPlaying(!showModal && appState === "active")
   }, [showModal, appState])
 
+  const onBack = () => {
+    navigation.navigate("ParentPass", { mode: "welcome" })
+    return true
+  }
+
+  useEffect(() => {
+    const subscrible = AppState.addEventListener("change", (state) => {
+      setAppState(state)
+    })
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", onBack)
+    return () => {
+      subscrible.remove()
+      backHandler.remove()
+    }
+  }, [])
+
   return (
     <Screen
       style={$root}
       preset="fixed"
       safeAreaEdges={showHeader ? ["bottom", "left", "right", "top"] : []}
     >
-      {showHeader ? <Header leftIcon="back" onLeftPress={() => navigation.goBack()} /> : null}
+      {showHeader ? <Header leftIcon="back" onLeftPress={onBack} /> : null}
       <TouchableOpacity
         style={$root}
         onPress={() => setShowHeader((prev) => !prev)}
