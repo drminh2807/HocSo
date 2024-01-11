@@ -32,6 +32,7 @@ export type AppStackParamList = {
   Player: undefined
   ParentPass: { mode: "setting" | "player" | "welcome" }
   Setting: undefined
+  AllWords: undefined
 }
 
 /**
@@ -55,6 +56,7 @@ const AppStack = observer(function AppStack() {
       <Stack.Screen name="Player" component={Screens.PlayerScreen} />
       <Stack.Screen name="ParentPass" component={Screens.ParentPassScreen} />
       <Stack.Screen name="Setting" component={Screens.SettingScreen} />
+      <Stack.Screen name="AllWords" component={Screens.AllWordsScreen} />
     </Stack.Navigator>
   )
 })

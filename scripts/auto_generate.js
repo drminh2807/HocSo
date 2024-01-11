@@ -1,19 +1,20 @@
 const fs = require("fs");
-const categories = fs.readdirSync("/Users/minhdrminh/Documents/audio").filter(e => e !== ".DS_Store");
+const categories = fs.readdirSync("assets/flashcards").filter(e => e !== ".DS_Store");
 // Function to generate the words array
 function generateWordsArray(category) {
-    const folder = `/Users/minhdrminh/Documents/flashcards/${category}`
+    const folder = `assets/flashcards/${category}`
     return fs.readdirSync(folder).filter(e => e !== ".DS_Store").map(element => {
         const word = element.split('.')[0];
-        return `{ en: "${word}", viSound: require("assets/audio/${category}/vi/${word}.wav"), enSound: require("assets/audio/${category}/en/${word}.wav"), image: require("assets/images/${category}/${word}.jpg")  }, `
+        return `{ en: "${word}", viSound: require("assets/audio/${category}/vi/${word}.wav"), enSound: require("assets/audio/${category}/en/${word}.wav"), image: require("assets/flashcards/${category}/${word}.jpg"), category: "${category}"  }, `
     });
 }
 const firstLine = "\
-interface Word {\n\
+export interface Word {\n\
   en: string\n\
   viSound: number\n\
   enSound: number\n\
   image: number\n\
+  category: string\n\
 }\n\
 \n\
 export const words: Word[] = [\n\

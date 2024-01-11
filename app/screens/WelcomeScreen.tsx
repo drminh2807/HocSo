@@ -94,12 +94,22 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
         />
         <TextField placeholder="Dán link video vào đây" value={search} onChangeText={setSearch} />
         <Button text="Tìm kiếm" onPress={() => validateUrl(search)} />
-        <Button
-          text="Cài đặt"
-          onPress={() => {
-            navigation.navigate("ParentPass", { mode: "setting" })
-          }}
-        />
+        <View style={styles.rowBottom}>
+          <Button
+            style={styles.button}
+            text="Cài đặt"
+            onPress={() => {
+              navigation.navigate("ParentPass", { mode: "setting" })
+            }}
+          />
+          <Button
+            style={styles.button}
+            text="Bộ sưu tập từ"
+            onPress={() => {
+              navigation.navigate("AllWords")
+            }}
+          />
+        </View>
         <Text
           onPress={() =>
             WebBrowser.openBrowserAsync(
@@ -172,4 +182,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 16,
   },
+  rowBottom: {
+    flexDirection: 'row',
+    gap: 16,
+  }
 })

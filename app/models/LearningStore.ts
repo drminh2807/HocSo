@@ -14,7 +14,7 @@ import { EffectSound, playSound, sleep } from "@services/SoundService"
 import { words } from "./Database"
 
 const MAX_OPTIONS = 4
-const MAX_CORRECT = 4
+const MAX_CORRECT = __DEV__ ? 2 : 4
 
 export const LearningStoreModel = types
   .model("LearningStore")
