@@ -1,12 +1,20 @@
 const fs = require("fs");
-const categories = fs.readdirSync("assets/flashcards").filter(e => e !== ".DS_Store");
+const categories = [
+  "animal",
+  "bathroom",
+  "amusement-park",
+  "number",
+  "activity",
+  "adjective",
+  // "alphabet",
+]
 // Function to generate the words array
 function generateWordsArray(category) {
-    const folder = `assets/flashcards/${category}`
-    return fs.readdirSync(folder).filter(e => e !== ".DS_Store").map(element => {
-        const word = element.split('.')[0];
-        return `{ en: "${word}", viSound: require("assets/audio/${category}/vi/${word}.wav"), enSound: require("assets/audio/${category}/en/${word}.wav"), image: require("assets/flashcards/${category}/${word}.jpg"), category: "${category}"  }, `
-    });
+  const folder = `assets/flashcards/${category}`
+  return fs.readdirSync(folder).filter(e => e !== ".DS_Store").map(element => {
+    const word = element.split('.')[0];
+    return `{ en: "${word}", viSound: require("assets/audio/${category}/vi/${word}.wav"), enSound: require("assets/audio/${category}/en/${word}.wav"), image: require("assets/flashcards/${category}/${word}.jpg"), category: "${category}"  }, `
+  });
 }
 const firstLine = "\
 export interface Word {\n\

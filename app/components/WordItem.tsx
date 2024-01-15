@@ -20,7 +20,7 @@ export const WordItem = observer(function WordItem({
   borderColor,
 }: WordItemProps) {
   const { width } = useWindowDimensions()
-
+  const itemWidth = width * 0.2
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -28,8 +28,8 @@ export const WordItem = observer(function WordItem({
       style={[
         styles.option,
         {
-          width: width * 0.2,
-          height: width * 0.2,
+          width: itemWidth,
+          height: itemWidth,
           borderColor,
         },
       ]}
@@ -40,17 +40,10 @@ export const WordItem = observer(function WordItem({
         style={[
           styles.image,
           {
-            width: width * 0.2 - 16,
-            height: width * 0.28,
+            width: itemWidth,
+            height: (itemWidth / 212) * 300,
+            transform: [{ scale: word.category === "number" ? 1.16 : 1.3 }],
           },
-          word.category === "animal"
-            ? // eslint-disable-next-line react-native/no-inline-styles
-              { top: -4, width: width * 0.2 - 32, height: ((width * 0.2 - 32) / 212) * 300 }
-            : word.category === "alphabet"
-            ? // eslint-disable-next-line react-native/no-inline-styles
-              { bottom: -20, width: width * 0.2 - 16, height: ((width * 0.2) / 212) * 300 }
-            : // eslint-disable-next-line react-native/no-inline-styles
-              { top: -16, width: width * 0.2 - 16, height: width * 0.28 },
         ]}
       />
     </TouchableOpacity>
@@ -62,9 +55,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   option: {
-    alignItems: "center",
     borderWidth: 8,
-    justifyContent: "center",
     overflow: "hidden",
   },
 })

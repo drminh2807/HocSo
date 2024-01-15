@@ -22,7 +22,7 @@ export const AllWordsScreen: FC<AllWordsScreenProps> = observer(function AllWord
         horizontal
         keyExtractor={(item) => item.en}
         renderItem={({ item }) => (
-          <View>
+          <View style={styles.item}>
             <WordItem
               borderColor="transparent"
               word={item}
@@ -43,6 +43,10 @@ const $root: ViewStyle = {
 }
 
 const styles = StyleSheet.create({
+  item: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   text: {
     textAlign: "center",
   },

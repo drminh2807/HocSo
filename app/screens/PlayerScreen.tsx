@@ -5,6 +5,7 @@ import {
   BackHandler,
   LayoutRectangle,
   Platform,
+  StyleSheet,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -59,7 +60,7 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
     >
       {showHeader ? <Header leftIcon="back" onLeftPress={onBack} /> : null}
       <TouchableOpacity
-        style={$root}
+        style={styles.container}
         onPress={() => setShowHeader((prev) => !prev)}
         activeOpacity={1}
         onLayout={({ nativeEvent }) => setLayout(nativeEvent.layout)}
@@ -89,4 +90,13 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
 
 const $root: ViewStyle = {
   flex: 1,
+  backgroundColor: "black",
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+})
