@@ -12,7 +12,7 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
-ENV["RCT_NO_LAUNCH_PACKAGER"] = 1
+ENV["RCT_NO_LAUNCH_PACKAGER"] = "1"
 before_all do |_lane, options|
   update_fastlane
 end
@@ -24,8 +24,8 @@ platform :ios do
     ensure_git_status_clean
     changelog_from_git_commits
     build_app(
-      workspace: "./ios/HocSo.xcworkspace", 
-      scheme: "HocSo", 
+      workspace: "./ios/HcS.xcworkspace", 
+      scheme: "HcS", 
       xcargs: "-allowProvisioningUpdates")
     pilot
     push_to_git_remote

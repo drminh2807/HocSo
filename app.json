@@ -52,6 +52,14 @@
       }
     },
     "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ],
       "expo-localization",
       [
         "./plugins/withAndroidShareExtension/index",
