@@ -14,11 +14,12 @@ import { AppStackScreenProps } from "@navigators"
 import { Header, LearningModal, Screen } from "@components"
 import YoutubePlayer from "react-native-youtube-iframe"
 import { useStores } from "@models"
+import { useIsFocused } from "@react-navigation/native"
 
 interface PlayerScreenProps extends AppStackScreenProps<"Player"> {}
 
 export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScreen({ navigation }) {
-  const { showModal, videoId } = useStores().learningStore
+  const { showModal, videoId, setProp } = useStores().learningStore
   const [playing, setPlaying] = useState(true)
   const [layout, setLayout] = useState<LayoutRectangle>()
   const [showHeader, setShowHeader] = useState(false)
@@ -29,12 +30,13 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
     })
     return () => {
       subscrible.remove()
+      setProp("videoId", "")
     }
   }, [])
-
+  const isFocused = useIsFocused()
   useEffect(() => {
-    setPlaying(!showModal && appState === "active")
-  }, [showModal, appState])
+    setPlaying(!showModal && appState === "active" && isFocused)
+  }, [showModal, appState, isFocused])
 
   const onBack = () => {
     navigation.navigate("ParentPass", { mode: "welcome" })

@@ -1,148 +1,68 @@
 import { observer } from "mobx-react-lite"
-import React, { FC, useEffect, useMemo, useState } from "react"
-import {
-  StyleSheet,
-  View,
-  Alert,
-  FlatList,
-  useWindowDimensions,
-  TouchableOpacity,
-} from "react-native"
+import React, { FC, useEffect } from "react"
+import { StyleSheet, View, TouchableOpacity } from "react-native"
 import { AppStackScreenProps } from "../navigators"
-import { Button, Icon, Screen, Text, TextField } from "@components"
+import { Screen, Text } from "@components"
 import { Audio } from "expo-av"
-import { useStores } from "@models/index"
-import { Image } from "expo-image"
 import * as WebBrowser from "expo-web-browser"
-import ReceiveSharingIntent from "react-native-receive-sharing-intent"
-import Constants from "expo-constants"
-import Modal from "react-native-modal"
 import { colors } from "@theme/colors"
+import Ionicons from "@expo/vector-icons/Ionicons"
+import useScreenScale from "@utils/useScreenScale"
+import { useStores } from "@models/index"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
-
-const getVideoId = (url: string) => {
-  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-  const match = url.match(regExp)
-  if (match && match[2].length === 11) {
-    return match[2]
-  } else {
-    return undefined
-  }
-}
 
 export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen({
   navigation,
 }) {
-  const { learningStore, videoStore } = useStores()
-  const { videos } = videoStore
-  const [search, setSearch] = useState("")
-  const [pendingVideoId, setPendingVideoId] = useState("")
-  const window = useWindowDimensions()
-  const width = useMemo(() => window.width / 3, [window])
-  const height = useMemo(() => width / (16 / 9), [width])
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
-
-    // To get All Recived Urls
-    ReceiveSharingIntent.getReceivedFiles(
-      (files) => {
-        const link = files?.[0]?.weblink || files?.[0]?.text || ""
-        validateUrl(link)
-      },
-      (error) => {
-        console.log(error)
-      },
-      Constants.expoConfig?.scheme,
-    )
-    return () => {
-      ReceiveSharingIntent.clearReceivedFiles()
-    }
   }, [])
-
-  const validateUrl = (url: string) => {
-    const videoId = getVideoId(url)
-    if (videoId) {
-      setPendingVideoId(videoId)
-    } else {
-      Alert.alert("Lỗi", "Link video không hợp lệ")
-    }
-  }
-
-  const handleVideo = (videoId: string) => {
-    setPendingVideoId("")
-    learningStore.setProp("videoId", videoId)
-    videoStore.saveVideo(videoId)
-    navigation.navigate("ParentPass", { mode: "player" })
-  }
-
+  const { learningStore } = useStores()
+  const { scale } = useScreenScale()
   return (
-    <Screen preset="fixed" safeAreaEdges={["left", "right", "top", "bottom"]}>
+    <Screen preset="fixed">
       <View style={styles.container}>
-        <FlatList
-          data={videos}
-          horizontal
-          keyExtractor={(item) => item}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={[styles.item, { width }]} onPress={() => handleVideo(item)}>
-              <Image
-                source={{ uri: `https://img.youtube.com/vi/${item}/0.jpg` }}
-                style={{ height, width }}
-              />
-            </TouchableOpacity>
-          )}
-        />
-        <TextField placeholder="Dán link video vào đây" value={search} onChangeText={setSearch} />
-        <Button text="Tìm kiếm" onPress={() => validateUrl(search)} />
-        <View style={styles.rowBottom}>
-          <Button
-            style={styles.button}
-            text="Cài đặt"
-            onPress={() => {
-              navigation.navigate("ParentPass", { mode: "setting" })
-            }}
-          />
-          <Button
-            style={styles.button}
-            text="Bộ sưu tập từ"
-            onPress={() => {
-              navigation.navigate("AllWords")
-            }}
-          />
-        </View>
-        <Text
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              "https://docs.google.com/document/d/1Y0m1m4UO1Q1UBdAPwNTQDHlopXT66l2SQkumpBotpVg",
-            )
-          }
-          style={styles.privacyUrl}
+        <TouchableOpacity
+          style={styles.setting}
+          onPress={() => {
+            navigation.navigate("ParentPass", { mode: "setting" })
+          }}
         >
-          Chính sách quyền riêng tư
-        </Text>
+          <Ionicons size={scale(44)} name="settings" color={colors.text} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.playList}
+          onPress={() => {
+            navigation.navigate("AllWords")
+          }}
+        >
+          <Ionicons size={scale(44)} name="book" color={colors.text} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Playlist")}>
+          <Ionicons name="logo-youtube" size={scale(50)} color={colors.text} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            // learningStore.setProp("videoId", "")
+            // navigation.navigate("Player")
+            navigation.navigate("Playlist")
+          }}
+        >
+          <Ionicons name="play-circle" size={scale(150)} color={colors.text} />
+        </TouchableOpacity>
+        <TouchableOpacity></TouchableOpacity>
       </View>
-      <Modal
-        isVisible={!!pendingVideoId}
-        onBackButtonPress={() => setPendingVideoId("")}
-        onBackdropPress={() => setPendingVideoId("")}
+      <Text
+        onPress={() =>
+          WebBrowser.openBrowserAsync(
+            "https://docs.google.com/document/d/1Y0m1m4UO1Q1UBdAPwNTQDHlopXT66l2SQkumpBotpVg",
+          )
+        }
+        style={styles.privacyUrl}
       >
-        <View style={styles.modal}>
-          <Text>Xem video này?</Text>
-          <Image
-            source={{ uri: `https://img.youtube.com/vi/${pendingVideoId}/0.jpg` }}
-            style={[{ height, width }, styles.image]}
-          />
-          <View style={[styles.row, { width }]}>
-            <Button
-              style={styles.button}
-              text="Xem"
-              preset="filled"
-              onPress={() => handleVideo(pendingVideoId)}
-            />
-            <Icon icon="x" onPress={() => setPendingVideoId("")} />
-          </View>
-        </View>
-      </Modal>
+        Chính sách quyền riêng tư
+      </Text>
     </Screen>
   )
 })
@@ -152,13 +72,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
+    alignItems: "center",
     flex: 1,
-    gap: 8,
-    justifyContent: "center",
-    margin: 8,
-  },
-  image: {
-    marginTop: 16,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   item: {
     justifyContent: "center",
@@ -172,6 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 16,
   },
+  playList: {
+    left: 8,
+    position: "absolute",
+    top: 8,
+  },
   privacyUrl: {
     textAlign: "center",
   },
@@ -183,7 +105,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   rowBottom: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 16,
-  }
+  },
+  setting: {
+    position: "absolute",
+    right: 8,
+    top: 8,
+  },
 })

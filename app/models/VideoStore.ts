@@ -8,12 +8,16 @@ export const VideoStoreModel = types
   .model("VideoStore")
   .props({
     videos: types.optional(types.array(types.string), []),
+    pendingVideoId: types.optional(types.string, ""),
   })
   .actions(withSetPropAction)
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({
     saveVideo: (video: string) => {
       self.videos = cast([...new Set([video, ...self.videos])])
+    },
+    setPendingVideoId: (videoId: string) => {
+      self.pendingVideoId = videoId
     },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 

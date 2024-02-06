@@ -23,6 +23,7 @@ import { customFontsToLoad } from "./theme"
 import { setupReactotron } from "./services/reactotron"
 import Config from "./config"
 import { RootSiblingParent } from "react-native-root-siblings"
+import { PreviewVideoModal } from "./components"
 
 // Set up Reactotron, which is a free desktop app for inspecting and debugging
 // React Native apps. Learn more here: https://github.com/infinitered/reactotron
@@ -112,6 +113,7 @@ function App(props: AppProps) {
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
           />
+          <PreviewVideoModal />
         </ErrorBoundary>
       </SafeAreaProvider>
     </RootSiblingParent>

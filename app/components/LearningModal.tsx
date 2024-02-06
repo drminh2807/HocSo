@@ -10,6 +10,8 @@ import Ionicons from "@expo/vector-icons/Ionicons"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { playSound } from "@services/SoundService"
 import { WordItem } from "./WordItem"
+import { Header } from "./Header"
+import { navigationRef } from "@navigators/navigationUtilities"
 
 export interface LearningModalProps {}
 
@@ -27,6 +29,8 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
       selectedNumber,
       firstLaunch,
       LANGUAGE,
+      videoId,
+      setProp,
     },
   } = useStores()
 
@@ -34,11 +38,21 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
     const timer = setInterval(tick, 1000)
     firstLaunch()
     return () => clearInterval(timer)
-  }, [])
+  }, [videoId])
 
   const { right, left, bottom } = useSafeAreaInsets()
   return (
     <Modal visible={showModal} supportedOrientations={["landscape"]} statusBarTranslucent>
+      {!videoId && (
+        <Header
+          leftIcon="back"
+          safeAreaEdges={["left"]}
+          onLeftPress={() => {
+            navigationRef.navigate("Welcome")
+            setProp("showModal", false)
+          }}
+        />
+      )}
       <View style={[styles.container, { paddingLeft: left, paddingRight: right }]}>
         {options.map((option) => {
           const color =
@@ -75,6 +89,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    backgroundColor: colors.background,
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-around",

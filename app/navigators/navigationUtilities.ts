@@ -174,7 +174,10 @@ export function goBack() {
  * resetRoot will reset the root navigation state to the given params.
  */
 export function resetRoot(
-  state: Parameters<typeof navigationRef.resetRoot>[0] = { index: 0, routes: [] },
+  state: Parameters<typeof navigationRef.resetRoot>[0] = {
+    index: 0,
+    routes: [{ name: "Welcome" }],
+  },
 ) {
   if (navigationRef.isReady()) {
     navigationRef.resetRoot(state)

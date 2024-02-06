@@ -14,6 +14,7 @@ import { Icon, IconTypes } from "./Icon"
 import { Text, TextProps } from "./Text"
 
 export interface HeaderProps {
+  TitleComponent?: ReactElement
   /**
    * The layout of the title relative to the action components.
    * - `center` will force the title to always be centered relative to the header. If the title or the action buttons are too long, the title will be cut off.
@@ -144,6 +145,7 @@ interface HeaderActionProps {
  */
 export function Header(props: HeaderProps) {
   const {
+    TitleComponent,
     backgroundColor = colors.background,
     LeftActionComponent,
     leftIcon,
@@ -205,6 +207,7 @@ export function Header(props: HeaderProps) {
             />
           </View>
         )}
+        {!!TitleComponent && TitleComponent}
 
         <HeaderAction
           tx={rightTx}

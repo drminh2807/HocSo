@@ -134,7 +134,11 @@ export const LearningStoreModel = types
       }
     },
     firstLaunch() {
-      playSound(self.number, self.LANGUAGE === "vi")
+      if (self.videoId) {
+        self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
+      } else {
+        self.showModal = true
+      }
     },
     reset() {
       applySnapshot(self, {})
