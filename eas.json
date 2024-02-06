@@ -1,6 +1,7 @@
 {
   "cli": {
     "version": ">= 5.9.3",
+    "appVersionSource": "local",
     "promptToConfigurePushNotifications": false
   },
   "build": {
@@ -12,12 +13,19 @@
       "distribution": "internal"
     },
     "production": {
+      "autoIncrement": true,
       "env": {
         "RCT_NO_LAUNCH_PACKAGER": "true"
       }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "triminh6666v2@gmail.com",
+        "ascAppId": "6449979650",
+        "appleTeamId": "4R6ETCM6VA"
+      }
+    }
   }
 }
