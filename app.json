@@ -33,7 +33,7 @@
       }
     },
     "ios": {
-      "buildNumber": "5",
+      "buildNumber": "6",
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
       "bundleIdentifier": "com.minhdv.hocso",

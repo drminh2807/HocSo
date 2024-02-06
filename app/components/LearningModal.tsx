@@ -72,7 +72,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
     return () => clearInterval(timer)
   }, [videoId])
 
-  const { right, left, bottom } = useSafeAreaInsets()
+  const { right, left } = useSafeAreaInsets()
   const { hScale, scale } = useScreenScale()
   if (!showModal) return null
 
@@ -113,12 +113,12 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           onPress={() => playSound(number, true)}
         />
         <View style={styles.row}>
-          {renderEnText(options[0])}
-          {renderEnText(options[1])}
+          {options.length > 0 ? renderEnText(options[0]) : undefined}
+          {options.length > 1 ? renderEnText(options[1]) : undefined}
         </View>
         <View style={styles.row}>
-          {renderEnText(options[2])}
-          {renderEnText(options[3])}
+          {options.length > 2 ? renderEnText(options[2]) : undefined}
+          {options.length > 3 ? renderEnText(options[3]) : undefined}
         </View>
         {selectedNumber !== null ? (
           <BorderButton

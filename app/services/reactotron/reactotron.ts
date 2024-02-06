@@ -12,7 +12,7 @@
  *
  * @refresh reset
  */
-import { Platform } from "react-native"
+import { Platform, NativeModules } from "react-native"
 import { Reactotron } from "./reactotronClient"
 import { ArgType } from "reactotron-core-client"
 import AsyncStorage from "@react-native-async-storage/async-storage"
@@ -96,10 +96,15 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
     // merge the passed in config with our default config
     Object.assign(config, customConfig)
 
+    let scriptHostname
+    if (__DEV__) {
+      const scriptURL = NativeModules.SourceCode.scriptURL
+      scriptHostname = scriptURL.split("://")[1].split(":")[0]
+    }
     // configure reactotron
     Reactotron.configure({
       name: config.name || require("../../../package.json").name,
-      host: config.host,
+      host: scriptHostname,
     })
 
     // hookup middleware
