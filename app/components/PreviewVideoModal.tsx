@@ -32,17 +32,20 @@ export const PreviewVideoModal = observer(function PreviewVideoModal(_: PreviewV
   }
   useEffect(() => {
     // To get All Recived Urls
-    ReceiveSharingIntent.getReceivedFiles(
-      (files) => {
-        const link = files?.[0]?.weblink || files?.[0]?.text || ""
-        validateUrl(link)
-      },
-      (error) => {
-        console.log(error)
-      },
-      Constants.expoConfig?.scheme,
-    )
+    const timer = setTimeout(() => {
+      ReceiveSharingIntent.getReceivedFiles(
+        (files) => {
+          const link = files?.[0]?.weblink || files?.[0]?.text || ""
+          validateUrl(link)
+        },
+        (error) => {
+          console.log(error)
+        },
+        Constants.expoConfig?.scheme,
+      )
+    }, 1000)
     return () => {
+      clearTimeout(timer)
       ReceiveSharingIntent.clearReceivedFiles()
     }
   }, [])

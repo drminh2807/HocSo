@@ -17,6 +17,7 @@ export const RootStoreModel = types
   .actions((self) => ({
     playVideo: (videoId: string) => {
       self.videoStore.saveVideo(videoId)
+      self.videoStore.pendingVideoId = ""
       self.learningStore.setProp("videoId", videoId)
       navigate({ name: "ParentPass", params: { mode: "player" } })
     },

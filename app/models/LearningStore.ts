@@ -9,12 +9,12 @@ import {
 } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
 import lodash from "lodash"
-import { addMinutes } from "date-fns"
+import { addSeconds } from "date-fns"
 import { EffectSound, playSound, sleep } from "@services/SoundService"
 import { words } from "./Database"
 
 const MAX_OPTIONS = 4
-const MAX_CORRECT = __DEV__ ? 2 : 4
+const MAX_CORRECT = 4
 
 export const LearningStoreModel = types
   .model("LearningStore")
@@ -38,33 +38,74 @@ export const LearningStoreModel = types
     now: types.optional(types.Date, new Date()),
     showModal: false,
     LEARN_PER_TURN: 5,
-    MINUTE_PER_TURN: 1,
+    MINUTE_PER_TURN: __DEV__ ? 0.1 : 1,
     LANGUAGE: "en",
     videoId: "",
+    disableUI: false,
+    showingResult: false,
   })
   .actions(withSetPropAction)
   .views((self) => ({
     shouldLearnNewWord: () => {
       const total = self.correctArray.reduce((a, b) => a + b, 0)
-      console.log({ total, learnNewWordAt: self.learnNewWordAt, correctArray: self.correctArray })
       return total >= self.learnNewWordAt
     },
-  })) // eslint-disable-line @typescript-eslint/no-unused-vars
+    get shouldLearnViToEn() {
+      return [2, 4].includes(self.correctArray[self.number])
+    },
+  }))
+  .actions((self) => ({
+    showcase: flow(function* () {
+      if (self.shouldLearnViToEn) {
+        self.disableUI = true
+        yield playSound(self.number, true)
+        yield sleep(1000)
+        for (let index = 0; index < self.options.length; index++) {
+          const element = self.options[index]
+          self.selectedNumber = element
+          yield playSound(element, false)
+          yield sleep(1000)
+        }
+        self.selectedNumber = null
+        self.disableUI = false
+      } else {
+        playSound(self.number, self.LANGUAGE === "vi")
+      }
+    }),
+  }))
   .actions((self) => ({
     checkAnswer: flow(function* (number: number) {
+      self.disableUI = true
       self.selectedNumber = number
+      self.showingResult = true
       if (number === self.number) {
         if (self.LANGUAGE === "en") {
-          playSound(self.number, true)
+          if (self.shouldLearnViToEn) {
+            yield playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
+            yield sleep(1000)
+            yield playSound(number, true)
+            yield sleep(1000)
+            yield playSound(number, false)
+          } else {
+            playSound(self.number, true)
+          }
         } else {
           playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
         }
-        yield sleep(2000)
+        yield sleep(1000)
         self.learnCount++
         self.correctArray[self.number]++
       } else {
         playSound("sai1")
-        yield sleep(2000)
+        if (self.shouldLearnViToEn) {
+          yield sleep(1000)
+          yield playSound(self.number, true)
+          yield sleep(1000)
+          yield playSound(self.number, false)
+          yield sleep(1000)
+        } else {
+          yield sleep(2000)
+        }
         self.learnCount -= 0.5
         self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)
         self.correctArray[self.selectedNumber] = Math.max(
@@ -72,42 +113,36 @@ export const LearningStoreModel = types
           self.correctArray[self.selectedNumber] - 1,
         )
       }
+      self.showingResult = false
       if (self.shouldLearnNewWord()) {
         self.number = self.correctArray.length
         self.learnNewWordAt += MAX_CORRECT
         self.correctArray.push(0)
       } else {
-        console.log(2)
         const newNumber = lodash(
           self.correctArray
             .map((item, index) => ({ item, index }))
-            .filter((i) => i.item < MAX_CORRECT && i.index !== self.number),
+            .filter((i) => i.item <= MAX_CORRECT && i.index !== self.number),
         )
           .shuffle()
           .first()?.index
         if (newNumber === undefined) {
-          console.log(3)
           if (self.correctArray.length < words.length) {
-            console.log(4)
             self.number = self.correctArray.length
             self.correctArray.push(0)
           } else {
-            console.log(5)
             // Reset
             self.correctArray = cast([0])
             self.number = 0
           }
         } else {
-          console.log(6)
           self.number = newNumber
         }
       }
       self.selectedNumber = null
       if (self.correctArray[self.number] === 0) {
-        console.log(7)
         self.options = cast([self.number])
       } else {
-        console.log(8)
         self.options = cast(
           lodash(self.correctArray.map((_, i) => i).filter((i) => i !== self.number))
             .shuffle()
@@ -119,23 +154,25 @@ export const LearningStoreModel = types
       }
       if (self.learnCount >= self.LEARN_PER_TURN) {
         self.learnCount = 0
-        self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
+        self.nextLearn = addSeconds(new Date(), self.MINUTE_PER_TURN * 60)
         self.showModal = false
       } else {
-        playSound(self.number, self.LANGUAGE === "vi")
+        self.showcase()
       }
+      self.disableUI = false
       console.log(words[self.number].en)
     }),
-    tick() {
+    tick: flow(function* () {
       self.now = new Date()
       if (!self.showModal && self.nextLearn < self.now) {
         self.showModal = true
-        playSound(self.number, self.LANGUAGE === "vi")
+        self.showcase()
       }
-    },
+    }),
     firstLaunch() {
       if (self.videoId) {
-        self.nextLearn = addMinutes(new Date(), self.MINUTE_PER_TURN)
+        self.showModal = false
+        self.nextLearn = addSeconds(new Date(), self.MINUTE_PER_TURN)
       } else {
         self.showModal = true
       }
