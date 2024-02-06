@@ -158,7 +158,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           )
         })}
         <TouchableOpacity
-          style={[styles.soundButton, { right: right + 10, bottom: bottom + 10 }]}
+          style={[styles.soundButton, { right: 10, bottom: 10 }]}
           disabled={disableUI}
           onPress={() => {
             playSound(number, LANGUAGE === "vi")

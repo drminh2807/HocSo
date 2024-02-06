@@ -152,14 +152,14 @@ export const LearningStoreModel = types
             .value(),
         )
       }
+      self.disableUI = false
       if (self.learnCount >= self.LEARN_PER_TURN) {
         self.learnCount = 0
         self.nextLearn = addSeconds(new Date(), self.MINUTE_PER_TURN * 60)
         self.showModal = false
       } else {
-        self.showcase()
+        yield self.showcase()
       }
-      self.disableUI = false
       console.log(words[self.number].en)
     }),
     tick: flow(function* () {
