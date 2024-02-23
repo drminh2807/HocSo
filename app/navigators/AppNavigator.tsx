@@ -52,7 +52,13 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 
 const AppStack = observer(function AppStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false, navigationBarColor: colors.background }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        navigationBarColor: colors.background,
+        gestureEnabled: false,
+      }}
+    >
       <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
       <Stack.Screen name="Player" component={Screens.PlayerScreen} />
       <Stack.Screen name="ParentPass" component={Screens.ParentPassScreen} />
