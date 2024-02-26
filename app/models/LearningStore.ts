@@ -57,15 +57,16 @@ export const LearningStoreModel = types
   .actions((self) => ({
     showcase: flow(function* () {
       if (self.shouldLearnViToEn) {
-        self.disableUI = true
-        yield playSound(self.number, true)
-        yield sleep(1000)
-        for (let index = 0; index < self.options.length; index++) {
-          const element = self.options[index]
-          self.selectedNumber = element
-          yield playSound(element, false)
+        try {
+          self.disableUI = true
+          yield playSound(self.number, true)
           yield sleep(1000)
-        }
+          for (const element of self.options) {
+            self.selectedNumber = element
+            yield playSound(element, false)
+            yield sleep(1000)
+          }
+        } catch (error) {}
         self.selectedNumber = null
         self.disableUI = false
       } else {
@@ -166,7 +167,7 @@ export const LearningStoreModel = types
       self.now = new Date()
       if (!self.showModal && self.nextLearn < self.now) {
         self.showModal = true
-        self.showcase()
+        yield self.showcase()
       }
     }),
     firstLaunch() {

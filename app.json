@@ -18,7 +18,9 @@
       "url": "https://u.expo.dev/c819e7f4-eb74-4dc0-8ab9-7dd76fcee3c6"
     },
     "jsEngine": "hermes",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
       "package": "com.minhdv.hocso",
@@ -33,7 +35,7 @@
       }
     },
     "ios": {
-      "buildNumber": "6",
+      "buildNumber": "7",
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
       "bundleIdentifier": "com.minhdv.hocso",
@@ -60,7 +62,7 @@
         "expo-build-properties",
         {
           "ios": {
-            "deploymentTarget": "13.0"
+            "deploymentTarget": "13.4"
           }
         }
       ],
@@ -68,7 +70,9 @@
       [
         "./plugins/withAndroidShareExtension/index",
         {
-          "androidIntentFilters": ["text/*"]
+          "androidIntentFilters": [
+            "text/*"
+          ]
         }
       ],
       [
