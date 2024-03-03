@@ -48,7 +48,7 @@ export const LearningStoreModel = types
   .views((self) => ({
     shouldLearnNewWord: () => {
       const total = self.correctArray.reduce((a, b) => a + b, 0)
-      return total >= self.learnNewWordAt
+      return total >= self.learnNewWordAt && self.correctArray.length < words.length
     },
     get shouldLearnViToEn() {
       return [2, 4].includes(self.correctArray[self.number])
