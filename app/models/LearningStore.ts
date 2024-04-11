@@ -38,7 +38,7 @@ export const LearningStoreModel = types
     now: types.optional(types.Date, new Date()),
     showModal: false,
     LEARN_PER_TURN: 5,
-    MINUTE_PER_TURN: __DEV__ ? 0.1 : 1,
+    MINUTE_PER_TURN: 1,
     LANGUAGE: "en",
     videoId: "",
     disableUI: false,

@@ -8,7 +8,6 @@ import * as WebBrowser from "expo-web-browser"
 import { colors } from "@theme/colors"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import useScreenScale from "@utils/useScreenScale"
-import { useStores } from "@models/index"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -18,7 +17,6 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
   }, [])
-  const { learningStore } = useStores()
   const { scale } = useScreenScale()
   return (
     <Screen preset="fixed">
@@ -39,19 +37,13 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
         >
           <Ionicons size={scale(44)} name="book" color={colors.text} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Playlist")}>
-          <Ionicons name="logo-youtube" size={scale(50)} color={colors.text} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            // learningStore.setProp("videoId", "")
-            // navigation.navigate("Player")
-            navigation.navigate("Playlist")
+            navigation.navigate("Player")
           }}
         >
           <Ionicons name="play-circle" size={scale(150)} color={colors.text} />
         </TouchableOpacity>
-        <TouchableOpacity></TouchableOpacity>
       </View>
       <Text
         onPress={() =>
