@@ -11,8 +11,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { playSound } from "@services/SoundService"
 import { WordItem } from "./WordItem"
 import { Header } from "./Header"
-import { navigationRef } from "@navigators/navigationUtilities"
 import useScreenScale from "@utils/useScreenScale"
+import { navigationRef } from "@navigators/navigationUtilities"
 
 export interface LearningModalProps {}
 
@@ -172,16 +172,13 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
 
   return (
     <View style={StyleSheet.absoluteFill}>
-      {!videoId && (
-        <Header
-          leftIcon="back"
-          safeAreaEdges={["left"]}
-          onLeftPress={() => {
-            navigationRef.navigate("Welcome")
-            setProp("showModal", false)
-          }}
-        />
-      )}
+      <Header
+        leftIcon="back"
+        onLeftPress={() => {
+          navigationRef.navigate("Welcome")
+          setProp("showModal", false)
+        }}
+      />
       <View style={[styles.container, { paddingLeft: left, paddingRight: right }]}>
         {shouldLearnViToEn ? renderViToEn() : renderEnToVi()}
       </View>
