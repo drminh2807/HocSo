@@ -1,5 +1,5 @@
-const category = "activity"
-const folder = `/Users/minhdrminh/Documents/flashcards/${category}`
+const category = "bedroom"
+const folder = `/Users/minhdv/My\ Drive/flashcards/${category}`
 const fs = require('fs')
 function pbcopy(data) {
     var proc = require('child_process').spawn('pbcopy');

@@ -1,0 +1,926 @@
+activity	dance	Khiêu vũ
+activity	drink	Uống
+activity	eat	Ăn
+activity	hike	Đi bộ
+activity	jog	Chạy bộ
+activity	play	Chơi
+activity	read	Đọc
+activity	ride	Cưỡi
+activity	run	Chạy
+activity	sing	Hát
+activity	sleep	Ngủ
+activity	watch TV	xem TV
+adjective	bad	Xấu
+adjective	beautiful	Xinh
+adjective	big	To lớn
+adjective	bitter	Vị đắng
+adjective	bright	Sáng
+adjective	cheap	Rẻ
+adjective	clean	Sạch  sẽ
+adjective	cold	Lạnh
+adjective	dark	Tối
+adjective	day	Ngày
+adjective	deep	Sâu
+adjective	dirty	Bẩn
+adjective	dry	Khô
+adjective	empty	Trống
+adjective	expensive	Đắt
+adjective	fast	Nhanh
+adjective	fat	Béo
+adjective	few	Một vài
+adjective	full	Đầy
+adjective	good	Tốt
+adjective	hard	Cứng
+adjective	heavy	Nặng
+adjective	hot	Nóng
+adjective	light	Nhẹ
+adjective	long	Dài
+adjective	many	Nhiều
+adjective	new	Mới
+adjective	night	Đêm
+adjective	noisy	Ồn ào
+adjective	old	Cũ
+adjective	quiet	Im lặng
+adjective	rough	Thô
+adjective	shallow	Nông
+adjective	short	Ngắn
+adjective	slow	Chậm
+adjective	small	Bé nhỏ
+adjective	smooth	Trơn tru
+adjective	soft	Mềm mại
+adjective	strong	Mạnh mẽ
+adjective	sweet	Ngọt
+adjective	tall	Cao
+adjective	thin	Gầy
+adjective	ugly	Xấu xí
+adjective	weak	Yếu đuối
+adjective	wet	Ướt
+adjective	young	Trẻ
+alphabet	A	A
+alphabet	B	B
+alphabet	C	C
+alphabet	D	D
+alphabet	E	E
+alphabet	F	F
+alphabet	G	G
+alphabet	H	H
+alphabet	I	I
+alphabet	J	J
+alphabet	K	K
+alphabet	L	L
+alphabet	M	M
+alphabet	N	N
+alphabet	O	O
+alphabet	P	P
+alphabet	Q	Q
+alphabet	R	R
+alphabet	S	S
+alphabet	T	T
+alphabet	U	U
+alphabet	V	V
+alphabet	W	W
+alphabet	X	X
+alphabet	Y	Y
+alphabet	Z	Z
+amusement-park	amusement park	Công viên giải trí
+amusement-park	boat swing	Đu thuyền
+amusement-park	bouncy castle	Lâu đài bơm hơi
+amusement-park	bumper cars	Xe điện đụng
+amusement-park	chair swing	Ghế đu mây
+amusement-park	cup and saucer	Đu quay cốc và đĩa
+amusement-park	ferris wheel	Đu quay khổng lồ
+amusement-park	go karts	Đua xe go karts
+amusement-park	haunted house	Nhà ma
+amusement-park	merry go round	Đu quay ngựa
+amusement-park	roller coaster	Tàu lượn siêu tốc
+amusement-park	ticket booth	Buồng vé
+animal	Lemur	vượn cáo
+animal	Lizard	Thằn lằn
+animal	Lobster	tôm hùm
+animal	alligator	cá sấu Mỹ
+animal	anteater	Thú ăn kiến
+animal	artic fox	cáo tuyết
+animal	badger	con lửng
+animal	bat	con dơi
+animal	bear	con gấu
+animal	beaver	hải ly
+animal	bird	chim
+animal	boar	con lợn rừng
+animal	bugs	côn trùng
+animal	camel	con lạc đà
+animal	cat	con mèo
+animal	chicken	con gà
+animal	cow	con bò
+animal	crab	con cua
+animal	crocodile	Cá sấu
+animal	deer	con nai
+animal	dog	chó
+animal	dolphin	cá heo
+animal	donkey	con lừa
+animal	duck	con vịt
+animal	eagle	Đại bàng
+animal	eel	con lươn
+animal	elephant	con voi
+animal	fish	cá
+animal	flamingo	Chim hồng hạc
+animal	fox	cáo
+animal	frog	con ếch
+animal	giraffe	hươu cao cổ
+animal	goat	con dê
+animal	gorilla	con khỉ đột
+animal	guinea pig	chuột bạch
+animal	hawk	chim ưng
+animal	hedgehog	nhím
+animal	hen	con gà mái
+animal	hippo	con hà mã
+animal	horse	ngựa
+animal	hyena	Linh cẩu
+animal	iguana	Kỳ nhông
+animal	jellyfish	con sứa
+animal	kangaroo	con chuột túi
+animal	killer whale	cá voi sát thủ
+animal	koala	gấu túi
+animal	leopard	con báo
+animal	lion	con sư tử
+animal	llama	lạc đà không bướu
+animal	mole	chuột chũi
+animal	monkey	con khỉ
+animal	moose	nai sừng tấm
+animal	mouse	con chuột nhỏ
+animal	narwhal	kỳ lân biển
+animal	newt	sa giông
+animal	octopus	bạch tuộc
+animal	ostritch	đà điểu
+animal	otter	rái cá
+animal	owl	con cú
+animal	panda	gấu trúc
+animal	parrot	con vẹt
+animal	peacock	con công
+animal	penguin	chim cánh cụt
+animal	pig	con lợn
+animal	pigeon	chim bồ câu
+animal	plankton	sinh vật phù du
+animal	platypus	thú mỏ vịt
+animal	polar bear	gấu Bắc cực
+animal	puffin	chim hải âu
+animal	quail	chim cút
+animal	queen bee	ong chúa
+animal	rabbit	con thỏ
+animal	racoon	gấu mèo
+animal	rat	con chuột
+animal	rhino	tê giác
+animal	rooster	gà trống
+animal	scorpion	bọ cạp
+animal	seahorse	cá ngựa
+animal	seal	hải cẩu
+animal	shark	cá mập
+animal	sheep	con cừu
+animal	shrimp	con tôm
+animal	skunk	chồn hôi
+animal	sloth	con lười
+animal	snake	con rắn
+animal	squid	con mực
+animal	squirrel	con sóc
+animal	starfish	sao biển
+animal	stingray	cá đuối
+animal	swordfish	cá kiếm
+animal	tarantula	loài nhện
+animal	tiger	con hổ
+animal	turtle	con rùa
+animal	urchin	con nhím
+animal	vulture	con kền kền
+animal	walrus	hải mã
+animal	whale	cá voi
+animal	wolf	chó sói
+animal	yak	bò Tây Tạng
+animal	zebra	ngựa vằn
+bathroom	Q-tip	tăm bông
+bathroom	bath mat	thảm tắm
+bathroom	bathtub	bồn tắm
+bathroom	comb	cái lược
+bathroom	dental floss	chỉ nha khoa
+bathroom	hair dryer	máy sấy tóc
+bathroom	hand towel	khăn tay
+bathroom	lotion	kem dưỡng da
+bathroom	makeup	trang điểm
+bathroom	mouthwash	nước súc miệng
+bathroom	razor	dao cạo
+bathroom	shampoo	dầu gội đầu
+bathroom	shaving cream	kem cạo râu
+bathroom	shower	vòi hoa sen
+bathroom	soap	xà bông
+bathroom	sponge	bọt biển
+bathroom	toilet paper	giấy vệ sinh
+bathroom	toilet	phòng vệ sinh
+bathroom	toothbrush	Bàn chải đánh răng
+bathroom	toothpaste	kem đánh răng
+bathroom	towel	khăn tắm
+number	eight	tám
+number	eighteen	mười tám
+number	eighty	tám mươi
+number	eleven	mười một
+number	fifteen	mười lăm
+number	fifty	năm mươi
+number	five	năm
+number	forty	bốn mươi
+number	four	bốn
+number	fourteen	mười bốn
+number	nine	chín
+number	nineteen	mười chín
+number	ninety	chín mươi
+number	one hundred	một trăm
+number	one	một
+number	seven	bảy
+number	seventeen	mười bảy
+number	seventy	bảy mươi
+number	six	sáu
+number	sixteen	mười sáu
+number	sixty	sáu mươi
+number	ten	mười
+number	thirteen	mười ba
+number	thirty	ba mươi
+number	three	ba
+number	twelve	mười hai
+number	twenty	hai mươi
+number	two	hai
+beach	beach bag	Túi đi biển
+beach	beach ball	Bóng chuyền bãi biển
+beach	bucket	Cái xô
+beach	camera	Máy ảnh
+beach	deckchair	Ghế xếp
+beach	goggles	Kính bơi
+beach	ice box	Thùng đựng đá
+beach	ice cream	Kem
+beach	parasol	Ô che nắng
+beach	sand castle	Lâu đài cát
+beach	sand	Cát
+beach	seagull	Hải âu
+beach	shells	Vỏ sò
+beach	snorkel	Ống thở
+beach	spade	Cái xẻng
+beach	sun hat	Mũ chống nắng
+beach	sun shelter	Dù chống nắng
+beach	sunglasses	Kính râm
+beach	sunscreen	Kem chống nắng
+beach	surfboard	Ván lướt sóng
+beach	swim trunks	Quần bơi
+beach	swimsuit	Đồ bơi
+body-part	arm	Cánh tay
+body-part	body	Cơ thể
+body-part	ear	Tai
+body-part	elbow	Khuỷu tay
+body-part	eye	Mắt
+body-part	eyebrow	Lông mày
+body-part	eyelash	Lông mi
+body-part	face	Khuôn mặt
+body-part	feet	Bàn chân
+body-part	finger	Ngón tay
+body-part	foot	Chân
+body-part	hair	Tóc
+body-part	hand	Bàn tay
+body-part	head	Đầu
+body-part	knee	Đầu gối
+body-part	lips	Môi
+body-part	mouth	Miệng
+body-part	neck	Cổ
+body-part	nose	Mũi
+body-part	shoulder	Vai
+body-part	teeth	Răng
+body-part	thumb	Ngón cái
+body-part	toes	Ngón chân
+body-part	tongue	Lưỡi
+bug	ant	Kiến
+bug	bee	Ong
+bug	beetle	Bọ cánh cứng
+bug	butterfly	Bướm
+bug	caterpillar	Sâu bướm
+bug	dragonfly	Chuồn chuồn
+bug	fly	Ruồi
+bug	grasshopper	Châu chấu
+bug	ladybug	Bọ rùa
+bug	snail	Ốc sên
+bug	spider	Nhện
+bug	worm	con sâu
+christmas	Christmas hat	Mũ giáng sinh
+christmas	Christmas lights	Đèn giáng sinh
+christmas	Christmas tree	Cây thông giáng sinh
+christmas	Christmas	Giáng sinh
+christmas	Santa	Ông già noel
+christmas	bells	Chuông
+christmas	candy cane	Cây kẹo
+christmas	chimney	Ống khói
+christmas	decorations	Đồ trang trí
+christmas	elf	Yêu tinh
+christmas	sleigh	Xe trượt tuyết
+christmas	snowflake	Bông tuyết
+christmas	snowglobe	Quả cầu tuyết
+christmas	snowman	Người tuyết
+christmas	toys	Đồ chơi
+christmas	turkey	Gà tây
+christmas	wreath	Vòng hoa
+classroom	book	Quyển sách
+classroom	calculator	Máy tính cầm tay
+classroom	calendar	Lịch
+classroom	chalkboard	Bảng phấn
+classroom	clock	Đồng đồ
+classroom	computer	Máy vi tính
+classroom	crayons	Bút màu
+classroom	desk	Bàn học
+classroom	eraser	Cục tẩy
+classroom	globe	Khối cầu
+classroom	glue	Keo dính
+classroom	marker	Bút dầu
+classroom	microscope	Kính hiển vi
+classroom	notebook	Quyển vở
+classroom	paper clip	Kẹp giấy
+classroom	pen	Bút
+classroom	pencil sharpener	Gọt bút chì
+classroom	pencil	Bút chì
+classroom	ruler	Thước kẻ
+classroom	scissors	Cái kéo
+classroom	water bottle	Bình nước
+classroom	whiteboard	Bảng trắng
+clothing	apron	Tạp dề
+clothing	backpack	Balo
+clothing	bag	Túi
+clothing	bathrobe	Áo choàng tắm
+clothing	belt	Thắt lưng
+clothing	boots	Giày bốt
+clothing	bow tie	Cái nơ
+clothing	briefcase	Vali
+clothing	bubble coat	Áo bong bóng
+clothing	cap	Mũ lưỡi chai
+clothing	coat	Áo choàng
+clothing	cowboy boots	Bốt cao bồi
+clothing	diaper	Tã lót
+clothing	dress	Cái đầm
+clothing	gloves	Găng tay
+clothing	handbag	Túi xách tay
+clothing	hat	Mũ
+clothing	high heel shoes	Giày cao gót
+clothing	hiking boots	Giày đi bộ
+clothing	jersey	Áo đấu
+clothing	jogger pants	Quần chạy bộ
+clothing	necktie	Cà vạt
+clothing	pants	Quần dài
+clothing	ring	Cái nhẫn
+clothing	sandals	Cái dép
+clothing	scarf	Khăn quàng cổ
+clothing	shoes	Cái giày
+clothing	shorts	Quần đùi
+clothing	skirt	Cái váy
+clothing	slippers	Dép
+clothing	sneakers	Dày thể thao
+clothing	socks	Cái tất
+clothing	sombrero	Mũ trùm đầu
+clothing	suit	Bộ đồ
+clothing	sweater	Áo len
+clothing	swim shorts	Quần đùi bơi
+clothing	t shirt	Áo cộc tay
+clothing	waist coat	Áo thắt lưng
+clothing	wallet	Cái ví
+clothing	wellington boots	Ủng cao su
+clothing	winter hat	Mũ len
+color	black	Đen
+color	blue	Xanh da trời
+color	brown	Nâu
+color	green	Xanh lá cây
+color	grey	Xám
+color	navy	Xanh nước biển
+color	pink	Hồng
+color	purple	Tím
+color	red	Đỏ
+color	silver	Bạc
+color	turquoise	Màu ngọc lam
+color	white	Trắng
+color	yellow	Vàng
+day	friday	Thứ sáu
+day	monday	Thứ hai
+day	saturday	Thứ bảy
+day	sunday	Chủ nhật
+day	thursday	Thứ năm
+day	tuesday	Thứ  ba
+day	wednesday	Thứ tư
+drink	beer	Bia
+drink	coffee	Cà phê
+drink	cola	Nước cola
+drink	green tea	Trà xanh
+drink	hot chocolate	Sô cô la nóng
+drink	lemonade	Nước chanh
+drink	milk	Sữa
+drink	milkshake	Sữa lắc
+drink	soda	Nước ngọt
+drink	tea	Trà
+drink	water	Nước
+drink	wine	Rượu
+family	AUNT	Cô
+family	BROTHER	Anh trai
+family	DAD	Bố
+family	FAMILY	Gia đình
+family	GRANDFATHER	Ông
+family	GRANDMOTHER	Bà
+family	MOM	Mẹ
+family	SISTER	Chị gái
+family	UNCLE	Chú
+feeling	angry	Giận dữ
+feeling	happy	Vui vẻ
+feeling	hungry	Đói
+feeling	sad	Buồn
+feeling	scared	Sợ hãi
+feeling	thirsty	Khát
+feeling	tired	Mệt
+food	apple pie	Bánh táo
+food	bacon	Thịt nướng
+food	bread	Bánh mì
+food	burger	Bánh mì kẹp thịt
+food	cake	Bánh ngọt
+food	candy	Kẹo
+food	cereal	Ngũ cốc
+food	cheese	Phô mai
+food	chocolate	Sô cô la
+food	cookie	Bánh quy
+food	crisp	Giòn
+food	croissant	Bánh sừng bò
+food	curry	Cà ri
+food	donut	Bánh vòng
+food	egg	Trứng
+food	fries	Khoai tây chiên
+food	gravy	Tương cà
+food	gyoza	Há cảo
+food	ham	Giăm bông
+food	honey	Mật ong
+food	hot dog	Xúc xích
+food	jelly	Thạch
+food	mashed potato	Khoai tây nghiền
+food	meatballs	Thịt viên
+food	noodles	Mì
+food	omelet	Trứng ốp la
+food	pancakes	Bánh xèo
+food	pasta	Mỳ ống
+food	peanut butter	Bơ đâu phộng
+food	pickles	Dưa muối
+food	pie	Bánh
+food	pizza	Bánh pizza
+food	popcorn	Bỏng ngô
+food	popsicle	Kem que
+food	pretzel	Bánh quy xoắn
+food	pumpkin pie	Bánh bí ngô
+food	quesadilla	Bánh phô mai thịt gà
+food	rice	Gạo
+food	salad	Xa lát
+food	sandwich	Bánh mì sandwich
+food	sausage	Lạp xưởng
+food	shish kebab	Thịt nướng xiên
+food	soup	Súp
+food	spaghetti	Mì ống Ý
+food	steak	Bít tết
+food	stew	Thịt gầm
+food	sushi	Sushi
+food	taco	Bánh taco
+food	tofu	Đậu phụ
+food	tortilla	Bánh ngô
+food	waffles	Bánh quế
+food	yogurt	Sữa chua
+fruit	apple	Táo
+fruit	avocado	Bơ
+fruit	banana	Chuối
+fruit	cherry	Quả anh đào
+fruit	coconut	Dừa
+fruit	grapefruit	Bưởi chùm
+fruit	grapes	Nho
+fruit	kiwi	Kiwi
+fruit	lemon	Chanh vàng
+fruit	lime	Chanh xanh
+fruit	mango	Xoài
+fruit	melon	Dưa gang
+fruit	orange	Cam
+fruit	papaya	Đu đủ
+fruit	peach	Đào
+fruit	pear	Lê
+fruit	pineapple	Dứa
+fruit	plum	Mận
+fruit	pomegranate	Lựu
+fruit	raspberry	Quả mâm xôi
+fruit	strawberry	Dâu tây
+fruit	watermelon	Dưa hấu
+halloween	black cat	Mèo đen
+halloween	cauldron	cái vạc
+halloween	coffin	Quan tài
+halloween	crows	Quạ
+halloween	death	Cái chết
+halloween	devil	Ác quỷ
+halloween	ghost	Hồn ma
+halloween	grave	Ngôi môi
+halloween	invisible man	Người vô hình
+halloween	monster	Quái vật
+halloween	mummy	Xác ướp
+halloween	skeleton	Bộ xương
+halloween	skull	Đầu lâu
+halloween	spider web	Mạng nhện
+halloween	spiders	Con nhện
+halloween	vampire	Ma cà rồng
+halloween	werewolf	Ma sói
+halloween	witch	Phù thủy
+halloween	zombie	Thây ma
+health	asthma	Ma bí ngô
+health	backache	Đau lưng
+health	broken arm	Gãy tay
+health	broken leg	Gãy chân
+health	cough	Ho
+health	earache	Đau tai
+health	fever	Cảm cúm
+health	headache	Đau đầu
+health	nosebleed	Chảy máu cam
+health	rash	Phát ban
+health	runny nose	Sổ mũi
+health	sneeze	Hắt hơi
+health	sore throat	Đau họng
+health	stomach ache	Đau dạ dày
+health	sun burn	Cháy nắng
+health	toothache	Đau răng
+house	attic	Gác xép
+house	basement	Tầng hầm
+house	bathroom	Phòng tắm
+house	bedroom	Phòng ngủ
+house	dining room	Phòng ăn
+house	garage	Gara để xe
+house	garden	Vườn
+house	hallway	Hành lang
+house	house	Ngôi nhà
+house	laundry room	Phòng giặt
+kitchen	blender	Máy xay
+kitchen	bowl	Cái bát
+kitchen	bread bin	Thùng bánh mì
+kitchen	can opener	Mở nắp chai
+kitchen	chopsticks	Đũa
+kitchen	coffee maker	Dụng cụ pha cà phê
+kitchen	colander	Cái chao
+kitchen	cup	Cốc
+kitchen	cutting board	Cái thớt
+kitchen	dishwasher	Máy rửa bát
+kitchen	dryer	Máy sấy
+kitchen	faucet	Vòi nước
+kitchen	fork	Cái dĩa
+kitchen	freezer	Tủ đông
+kitchen	grater	Cái nạo
+kitchen	kettle	Ấm đun nước
+kitchen	kitchen counter	Kệ nhà bếp
+kitchen	kitchen	Bếp
+kitchen	knife	Dao
+kitchen	ladle	Môi múc canh
+kitchen	measuring mug	Cốc đo lường
+kitchen	microwave	Lò vi sóng
+kitchen	mug	cái ca
+kitchen	oven glove	Găng tay lò nướng
+kitchen	oven	Cái lò
+kitchen	pan	Chảo
+kitchen	plate	Đĩa
+kitchen	pot	Nồi
+kitchen	refrigerator	Tủ lạnh
+kitchen	rolling pin	Con lăn
+kitchen	sink	Chậu rửa
+kitchen	spoon	Cái thìa
+kitchen	tea cup	Cốc uống chè
+kitchen	teapot	Ấm chè
+kitchen	toaster	Máy nướng bánh
+kitchen	trash can	Thùng rác
+kitchen	washing machine	Máy giặt
+kitchen	whisk	Đánh kem
+kitchen	wooden spoon	Thìa gỗ
+living-room	armchair	Ghế bành
+living-room	bookcase	Kệ sách
+living-room	carpet	Thảm
+living-room	chair	Cái ghế
+living-room	coffee table	Bàn cà phê
+living-room	curtains	Rèm cửa
+living-room	cushion	Cái gối
+living-room	door	Cửa ra vào
+living-room	fireplace	Lò sưởi
+living-room	lamp	Cái đèn
+living-room	laptop	Máy tính xách tay
+living-room	living room	Phòng khách
+living-room	plant	Thực vật
+living-room	rug	Tấm thảm
+living-room	shelf	Kệ
+living-room	sofa	Ghế dài
+living-room	table	Cái bàn
+living-room	telephone	Điện thoại di động
+living-room	vase	Lọ cắm hoa
+living-room	window	Cửa sổ
+month	april	Tháng 4
+month	august	Tháng 8
+month	december	Tháng 12
+month	january	Tháng 1
+month	february	Tháng 2 
+month	july	Tháng 7
+month	june	Tháng 6
+month	march	Tháng 3
+month	may	Tháng 5
+month	november	Tháng 11
+month	october	Tháng 10
+month	september	Tháng 9
+occupations	archeologist	Nhà khảo cổ học
+occupations	artist	Nghệ sĩ
+occupations	ballerina	Nữ bale
+occupations	barber	Thợ cắt tóc
+occupations	beautician	Chuyên gia sắc đẹp
+occupations	builder	Thợ xây
+occupations	cashier	Thu ngân
+occupations	chef	Đầu bếp
+occupations	cleaner	Người quét dọn
+occupations	clown	Chú hề
+occupations	dentist	Bác sĩ nha khoa
+occupations	doctor	Bác sĩ
+occupations	farmer	Nông dân
+occupations	firefighter	Lính cứu hỏa
+occupations	fitness instructor	Huấn luyện viên thể hình
+occupations	florist	Người bán hoa
+occupations	football player	Cầu thủ
+occupations	gardener	Người làm vườn
+occupations	helicopter pilot	Phi công máy bay trực thăng
+occupations	miner	Thợ mỏ
+occupations	movie director	Đạo diễn phim
+occupations	nurse	Y tá
+occupations	pilot	Phi công
+occupations	plumber	Thợ sửa ống nước
+occupations	police officer	Cảnh sát
+occupations	race car driver	Tay đua xe
+occupations	scientist	Nhà khoa học
+occupations	scuba diver	Thợ lặn
+occupations	sheriff	Cảnh sát trưởng
+occupations	soldier	Người lính
+occupations	surgeon	Bác sĩ phẫu thuật
+occupations	taxi driver	Tài xế taxi
+occupations	train driver	Người lái tàu
+occupations	veterinarian	Bác sĩ thú y
+occupations	waiter	Bồi bàn nam
+occupations	welder	Thợ hàn
+party	balloons	Bóng bay
+party	birthday cake	Bánh sinh nhật
+party	birthday hat	Mũ sinh nhật
+party	candles	Nến
+party	guests	Khách mời
+party	music	Âm nhạc
+party	party	Bữa tiệc
+party	present	Món quà
+place	airport	Sân bay
+place	apartment	Căn hộ
+place	arctic	Bắc cực
+place	bank	Ngân hàng
+place	barbershop	Tiệm cắt tóc
+place	beach	Bãi biển
+place	book store	Cửa hàng sách
+place	burger restaurant	Nhà hàng burger
+place	church	Nhà thờ
+place	circus	Rạp xiếc
+place	city	Thành phố
+place	clinic	Phòng khám
+place	clothes store	Cửa hàng quần áo
+place	coffee shop	Cửa hàng cà phê
+place	desert	Sa mạc
+place	factory	Nhà máy
+place	fire station	Trạm cứu hỏa
+place	forest	Rừng
+place	gas station	Trạm xăng
+place	highway	Cao tốc
+place	hospital	Bệnh viện
+place	hotel	Khách sạn
+place	mountains	Núi
+place	movie theater	Rạp phim
+place	museum	Bảo tàng
+place	park	Công viên
+place	pharmacy	Hiệu thuốc
+place	police station	Đồn cảnh sát
+place	post office	Bưu cục
+place	restaurant	Nhà hàng
+place	school	Trường học
+place	sea	Biển
+place	store	Cửa hàng
+place	supermarket	Siêu thị
+place	train station	Ga tàu
+place	zoo	Sở thú
+planet	Astronaut	Phi hành gia
+planet	Earth	Trái đất
+planet	Jupiter	Sao mộc
+planet	Mars	Sao hỏa
+planet	Mercury	Sao thủy
+planet	Neptune	Sao hải vương
+planet	Pluto	Sao diêm vương
+planet	Saturn	Sao thổ
+planet	sun	Mặt trời
+planet	Uranus	Sao thiên vương
+planet	Venus	Sao kim
+planet	alien	Người ngoài hành tinh
+planet	asteroid	Tiểu hành tinh
+planet	comet	Sao chổi
+planet	constellation	Chòm sao
+planet	meteor	Thiên thạch
+planet	moon	Mặt trăng
+planet	observatory	Đài quan sát
+planet	satellite	Vệ tinh
+planet	space helmet	Mũ bảo hiểm không gian
+planet	space shuttle	Tàu con thoi
+planet	space station	Trạm không gian
+planet	space suit	Đồ phi hành gia
+planet	space	Không gian
+planet	star	Ngôi sao
+planet	telescope	Kính viễn vọng
+plant	bark	Vỏ cây
+plant	branch	Cành cây
+plant	bush	Bụi cây
+plant	flower	Hoa
+plant	leaves	Lá
+plant	petal	Cánh hoa
+plant	rain	Mưa
+plant	seed	Hạt giống
+plant	soil	Đất
+plant	sprout	Nảy mầm
+plant	tree roots	Rễ cây
+plant	tree	Cây
+plant	trunk	Thân cây
+plant	wind	Gió
+playground	bench	Băng ghế
+playground	drink fountain	Dài phun nước uống
+playground	jungle gym	Tập GYM
+playground	picnic table	Bàn dã ngoại
+playground	playground	Sân chơi
+playground	sandbox	Hộp cát
+playground	seesaw	Bập bênh
+playground	slide	Trượt
+playground	spring rider	Ngựa lò xo
+playground	swing	Xích đu
+playground	tunnel	Đường hầm
+playground	zipline	Đu dây
+prepositions	above	Ở trên
+prepositions	behind	Ở đằng sau
+prepositions	below	Ở dưới
+prepositions	in between	Ở giữa
+prepositions	in front of	Ở trước mặt
+prepositions	in	Ở trong
+season	autumn	Mùa thu
+season	spring	Mùa xuân
+season	summer	Mùa hạ
+season	winter	Mùa đông
+shape	circle	Hình tròn
+shape	crescent	Hình bán nguyệt
+shape	diamond	Hình thoi
+shape	heart	Hình trái tim
+shape	hexagon	Hình lục giác
+shape	pentagon	Hình ngũ giác
+shape	rectangle	Hình chữ nhật
+shape	square	Hình vuông
+shape	triangle	Hình tam giác
+sports	archery	Bắn cung
+sports	badminton	Cầu lông
+sports	baseball	Bóng chày
+sports	basketball	Bóng rổ
+sports	bowling	Bóng bowling
+sports	boxing	Đấm bốc
+sports	cycling	Đạp xe
+sports	darts	Phi tiêu
+sports	fencing	Đấu kiếm
+sports	fishing	Câu cá
+sports	golf	Đánh gôn
+sports	ice hockey	Khúc côn cầu trên băng
+sports	ice skating	Trượt băng
+sports	inline skating	Trượt patin
+sports	pool	Bi-a
+sports	rock climbing	Leo núi
+sports	rowing	Chèo thuyền
+sports	rugby	Bóng bầu dục
+sports	sailing	Đua thuyền
+sports	show jumping	Biểu diễn nhảy
+sports	skiing	Trượt tuyết
+sports	soccer	Bóng đá
+sports	surfing	Lướt sóng
+sports	swimming	Bơi lội
+sports	table tennis	Bóng bàn
+sports	tennis	Quần vợt
+sports	volleyball	Bóng chuyền
+sports	wrestling	Vật
+toy	RC car	Xe đua
+toy	baby doll	Búp bê
+toy	ball	Quả bóng
+toy	block game	Đồ chơi hình khối
+toy	blocks	Hình khối
+toy	board game	Chơi cờ
+toy	bouncing toy	Đồ chơi nhảy
+toy	building blocks	Xếp hình
+toy	inline skates	Giày trượt 1 hàng
+toy	jump rope	Nhảy dây
+toy	modeling clay	Đất sét mô hình
+toy	puzzle	Câu đố
+toy	robot	Rô bốt
+toy	scooter	Xe tay ga
+toy	skateboard	Ván trượt
+toy	swimming pool	Hồ bơi
+toy	tablet	Bảng viết
+toy	toy car	Xe đồ chơi
+toy	toy dinosaur	Khủng long đồ chơi
+toy	toy truck	Xe tải đồ chơi
+toy	videogame	Trò chơi điện tử
+transportation	UFO	Vật tể bay không xác định
+transportation	aeroplane	Tàu vũ trụ
+transportation	ambulance	Xe cứu thương
+transportation	bicycle	Xe đạp
+transportation	boat	Thuyền
+transportation	buggy	Xe lôi
+transportation	bus	Xe buýt
+transportation	camper van	Xe cắm trại
+transportation	car	Xe ô tô
+transportation	cement truck	Xe chở xi măng
+transportation	crane	Cầu trục
+transportation	cruise boat	Du thuyền
+transportation	ferry	Phà
+transportation	fire engine	Xe cứu hỏa
+transportation	forklift	Xe nâng
+transportation	garbage truck	Xe chở rác
+transportation	helicopter	Máy bay trực thăng
+transportation	hot air balloon	Khinh khí cầu
+transportation	jet ski	Máy bay phản lực trượt tuyết
+transportation	monster truck	Xe tải quái vật
+transportation	motorcycle	Xe máy
+transportation	pick up truck	Xe bán tải
+transportation	pirate ship	Thuyền cướp biển
+transportation	police car	Xe cảnh sát
+transportation	rocket	Tên lửa
+transportation	speedboat	Tàu cao tốc
+transportation	submarine	Tàu ngầm
+transportation	subway	Tàu điện ngầm
+transportation	tank	Xe tăng
+transportation	tractor	Máy kéo
+transportation	train	Tàu
+transportation	tricycle	Xe ba bánh
+transportation	truck	Xe tải
+transportation	unicycle	Xe đạp 1 bánh
+transportation	wagon	Toa xe
+vegetable	asparagus	Măng tây
+vegetable	beans	Đậu
+vegetable	beets	củ dền
+vegetable	broccoli	Bông cải xanh
+vegetable	cabbage	Bắp cải
+vegetable	carrot	Cà rốt
+vegetable	cauliflower	Xúp lơ trắng
+vegetable	chilli	Ớt
+vegetable	corn	Ngô
+vegetable	cucumber	Dưa chuột
+vegetable	eggplant	Cà tím
+vegetable	garlic	Tỏi
+vegetable	leek	Tỏi tây
+vegetable	lettuce	Rau xa lách
+vegetable	mushroom	Nấm
+vegetable	onion	Hành tây
+vegetable	pepper	Hat tiêu
+vegetable	potato	Khoai tây
+vegetable	pumpkin	Bí ngô
+vegetable	raddish	Củ cải
+vegetable	spinach	Rau chân vịt
+vegetable	sproats	Rau mầm
+vegetable	sweet potato	Khoai lang
+vegetable	tomato	Cà chua
+verb	brush	Chải
+verb	build	Xây
+verb	catch	Bắt lấy
+verb	climb	Leo
+verb	close	Đóng vào
+verb	cook	Nấu ăn
+verb	cut	Cắt
+verb	draw	Vẽ
+verb	drive	Lái xe
+verb	fix	Sửa
+verb	give	Cho
+verb	go to	Đi đến
+verb	have	Có
+verb	kick	Đá
+verb	like	Thích
+verb	love	Yêu
+verb	make	Làm
+verb	mix	Trộn
+verb	open	Mở
+verb	paint	Sơn
+verb	pull	Kéo
+verb	punch	Đấm
+verb	push	Đẩy
+verb	see	Nhìn
+verb	sit	Ngồi
+verb	stand	Đứng
+verb	study	Học
+verb	take	Lấy
+verb	talk	Nói chuyện
+verb	tell	Nói
+verb	think	Nghĩ
+verb	throw	Ném
+verb	tie	Buộc
+verb	turn off	Tắt
+verb	turn on	Bật
+verb	want	Muốn
+verb	wash	Rửa
+verb	watch	Xem
+verb	wear	Mặc
+verb	write	Viết
+weather	cloudy	Nhiều mây
+weather	rainy	có mưa
+weather	snowy	Tuyết rơi
+weather	stormy	Bão
+weather	sunny	Nắng
+weather	windy	có gió
