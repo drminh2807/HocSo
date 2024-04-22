@@ -13,6 +13,7 @@ import { WordItem } from "./WordItem"
 import { Header } from "./Header"
 import useScreenScale from "@utils/useScreenScale"
 import { navigationRef } from "@navigators/navigationUtilities"
+import { Restart } from "fiction-expo-restart"
 
 export interface LearningModalProps {}
 
@@ -177,6 +178,10 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
         onLeftPress={() => {
           navigationRef.navigate("Welcome")
           setProp("showModal", false)
+        }}
+        rightIcon="debug"
+        onRightPress={() => {
+          Restart()
         }}
       />
       <View style={[styles.container, { paddingLeft: left, paddingRight: right }]}>

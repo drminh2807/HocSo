@@ -5664,7 +5664,7 @@ expo-updates-interface@~0.9.0:
   resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.9.3.tgz#32caf6fe48b517c904be901dac46d2c964ca8407"
   integrity sha512-zBkJmLP5Bmcz2s14PZDcHFzRjnyiG/TwlQfIvpnV4NS+EYyR4vgbC0J3zUEi7Vvhm5m4gjsTpU6X1oKn6br+HQ==
 
-expo-updates@~0.16.4:
+expo-updates@^0.16.4, expo-updates@~0.16.4:
   version "0.16.4"
   resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.16.4.tgz#6d05438cf7304add03645a598211ac4ef3cc4f64"
   integrity sha512-hEUotP10sBiYn6dvkYC2rIa+kAmsBuaMp32sIVNAYEwKMQJqEwqNAKTU6CpJ4Aoc//BYL2Hv8qNo/UsT4rATRg==
@@ -5874,6 +5874,13 @@ fetch-retry@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-4.1.1.tgz#fafe0bb22b54f4d0a9c788dff6dd7f8673ca63f3"
   integrity sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==
+
+fiction-expo-restart@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fiction-expo-restart/-/fiction-expo-restart-2.0.0.tgz#f588d2667786760b7048ab6b6a243427eb355610"
+  integrity sha512-MQriTM+i4tE3zOVQWf7Cn+Ll7mMjWwxxrjnvU7Q1U0p1jpzQyqnpHtUWr/jL7gYsHJ/Ia/V0yHNJUWk7RPIpfQ==
+  dependencies:
+    expo-updates "^0.16.4"
 
 file-entry-cache@^6.0.1:
   version "6.0.1"

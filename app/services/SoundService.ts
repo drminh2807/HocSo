@@ -8,11 +8,7 @@ const allSounds: Record<EffectSound, number> = {
   dung2: require("assets/audio/dung2.wav"),
   sai1: require("assets/audio/sai1.wav"),
 }
-let sound: Audio.SoundObject
 export const playSound = async (name: EffectSound | number, vi = false) => {
-  try {
-    await sound.sound.stopAsync()
-  } catch (error) {}
   try {
     let soundFile: AVPlaybackSource
     if (typeof name === "number") {
@@ -24,7 +20,11 @@ export const playSound = async (name: EffectSound | number, vi = false) => {
     } else {
       soundFile = allSounds[name]
     }
-    sound = await Audio.Sound.createAsync(soundFile, { shouldPlay: true })
+    const { sound } = await Audio.Sound.createAsync(soundFile, { shouldPlay: true }, (status) => {
+      if ("didJustFinish" in status && status.didJustFinish) {
+        sound.unloadAsync()
+      }
+    })
   } catch (error) {
     console.log("Play sound error", error)
   }

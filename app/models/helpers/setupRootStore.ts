@@ -30,6 +30,7 @@ export async function setupRootStore(rootStore: RootStore) {
     restoredState = (await storage.load(ROOT_STATE_STORAGE_KEY)) as RootStoreSnapshot | null
     if (restoredState) {
       restoredState.learningStore.selectedNumber = null
+      restoredState.learningStore.disableUI = false
     }
     applySnapshot(rootStore, restoredState)
   } catch (e) {
