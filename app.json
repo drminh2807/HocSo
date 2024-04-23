@@ -64,23 +64,7 @@
           }
         }
       ],
-      "expo-localization",
-      [
-        "./plugins/withAndroidShareExtension/index",
-        {
-          "androidIntentFilters": ["text/*"]
-        }
-      ],
-      [
-        "expo-config-plugin-ios-share-extension",
-        {
-          "activationRules": {
-            "NSExtensionActivationSupportsText": true,
-            "NSExtensionActivationSupportsWebURLWithMaxCount": 1,
-            "NSExtensionActivationSupportsWebPageWithMaxCount": 1
-          }
-        }
-      ]
+      "expo-localization"
     ],
     "extra": {
       "eas": {

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import { Alert, StyleSheet, View } from "react-native"
+import React from "react"
+import { StyleSheet, View } from "react-native"
 import { observer } from "mobx-react-lite"
 import { colors } from "app/theme"
 import { Text } from "app/components/Text"
@@ -7,9 +7,6 @@ import Modal from "react-native-modal"
 import { Image } from "expo-image"
 import { Icon } from "./Icon"
 import { Button } from "./Button"
-import ReceiveSharingIntent from "react-native-receive-sharing-intent"
-import Constants from "expo-constants"
-import getVideoId from "@utils/getVideoId"
 import usePreviewImageSize from "@utils/usePreviewImageSize"
 import { useStores } from "@models/index"
 
@@ -20,33 +17,6 @@ export const PreviewVideoModal = observer(function PreviewVideoModal(_: PreviewV
     playVideo,
     videoStore: { pendingVideoId, setPendingVideoId },
   } = useStores()
-  const validateUrl = (url: string, showAlert = true) => {
-    const videoId = getVideoId(url)
-    if (videoId) {
-      setPendingVideoId(videoId)
-    } else if (showAlert) {
-      Alert.alert("Lỗi", "Link video không hợp lệ")
-    }
-  }
-  useEffect(() => {
-    // To get All Recived Urls
-    const timer = setTimeout(() => {
-      ReceiveSharingIntent.getReceivedFiles(
-        (files) => {
-          const link = files?.[0]?.weblink || files?.[0]?.text || ""
-          validateUrl(link)
-        },
-        (error) => {
-          console.log(error)
-        },
-        Constants.expoConfig?.scheme,
-      )
-    }, 1000)
-    return () => {
-      clearTimeout(timer)
-      ReceiveSharingIntent.clearReceivedFiles()
-    }
-  }, [])
 
   const { width, height } = usePreviewImageSize()
   return (
