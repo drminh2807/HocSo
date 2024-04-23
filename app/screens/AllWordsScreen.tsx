@@ -27,7 +27,7 @@ export const AllWordsScreen: FC<AllWordsScreenProps> = observer(function AllWord
               borderColor="transparent"
               word={item}
               onPress={() => {
-                playSound(item.enSound)
+                playSound(item)
               }}
             />
             <Text style={styles.text}>{item.en}</Text>

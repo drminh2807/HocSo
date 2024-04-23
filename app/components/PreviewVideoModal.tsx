@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react"
-import { Alert, AppState, StyleSheet, View } from "react-native"
+import React, { useEffect } from "react"
+import { Alert, StyleSheet, View } from "react-native"
 import { observer } from "mobx-react-lite"
 import { colors } from "app/theme"
 import { Text } from "app/components/Text"
@@ -12,7 +12,6 @@ import Constants from "expo-constants"
 import getVideoId from "@utils/getVideoId"
 import usePreviewImageSize from "@utils/usePreviewImageSize"
 import { useStores } from "@models/index"
-import * as Clipboard from "expo-clipboard"
 
 export interface PreviewVideoModalProps {}
 
@@ -21,7 +20,6 @@ export const PreviewVideoModal = observer(function PreviewVideoModal(_: PreviewV
     playVideo,
     videoStore: { pendingVideoId, setPendingVideoId },
   } = useStores()
-  const appState = useRef(AppState.currentState)
   const validateUrl = (url: string, showAlert = true) => {
     const videoId = getVideoId(url)
     if (videoId) {
@@ -48,21 +46,6 @@ export const PreviewVideoModal = observer(function PreviewVideoModal(_: PreviewV
       clearTimeout(timer)
       ReceiveSharingIntent.clearReceivedFiles()
     }
-  }, [])
-
-  const fetchCopiedText = async () => {
-    const text = await Clipboard.getStringAsync()
-    validateUrl(text, false)
-  }
-  useEffect(() => {
-    fetchCopiedText()
-    const subscription = AppState.addEventListener("change", (nextAppState) => {
-      if (appState.current.match(/inactive|background/) && nextAppState === "active") {
-        fetchCopiedText()
-      }
-      appState.current = nextAppState
-    })
-    return subscription.remove
   }, [])
 
   const { width, height } = usePreviewImageSize()

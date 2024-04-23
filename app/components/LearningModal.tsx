@@ -94,7 +94,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           disabled={disableUI}
           onPress={() => {
             setProp("selectedNumber", item)
-            playSound(item)
+            playSound(words[item])
           }}
         >
           <Ionicons name="volume-high" size={40} color="black" />
@@ -111,7 +111,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           word={words[number]}
           borderColor="white"
           disabled={disableUI}
-          onPress={() => playSound(number, true)}
+          onPress={() => playSound(words[number], true)}
         />
         <View style={styles.row}>
           {options.length > 0 ? renderEnText(options[0]) : undefined}
@@ -162,7 +162,7 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           style={[styles.soundButton, { right: 10, bottom: 10 }]}
           disabled={disableUI}
           onPress={() => {
-            playSound(number, LANGUAGE === "vi")
+            playSound(words[number], LANGUAGE === "vi")
           }}
         >
           <Ionicons name="volume-high" size={40} color="black" />

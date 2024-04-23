@@ -11,4 +11,6 @@ config.transformer.getTransformOptions = async () => ({
   },
 });
 
+config.resolver.sourceExts.push("cjs")
+
 module.exports = config;

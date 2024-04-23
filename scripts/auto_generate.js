@@ -14,10 +14,8 @@ const firstLine =
   "\
 export interface Word {\n\
   en: string\n\
+  dashEn: string\n\
   vi: string\n\
-  viSound: number\n\
-  enSound: number\n\
-  image: number\n\
   category: string\n\
 }\n\
 \n\
@@ -29,7 +27,7 @@ const lines = fs.readFileSync("./word_list.csv", "utf8")
 const words = lines.split("\n").map((line) => {
   const [category, en, vi] = line.split("\t")
   const dashEn = en.replace(/\s+/g, "-")
-  return `{ en: "${en}", vi: "${vi}", viSound: require("assets/audio/vi/${dashEn}.wav"), enSound: require("assets/audio/en/${dashEn}.wav"), image: require("assets/flashcards/${category}/${dashEn}.jpg"), category: "${category}"  }, `
+  return JSON.stringify({ category, en, vi, dashEn }) + ","
 })
 const allLines = [firstLine, ...words, "]"].join("\n")
 // Save the JSON string to a file

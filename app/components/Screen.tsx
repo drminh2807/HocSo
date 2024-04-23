@@ -1,6 +1,6 @@
 import { useScrollToTop } from "@react-navigation/native"
 import { StatusBar, StatusBarProps } from "expo-status-bar"
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
   KeyboardAvoidingView,
   KeyboardAvoidingViewProps,
@@ -14,6 +14,7 @@ import {
 } from "react-native"
 import { colors } from "../theme"
 import { ExtendedEdge, useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
+import * as ScreenOrientation from "expo-screen-orientation"
 
 interface BaseScreenProps {
   /**
@@ -196,6 +197,10 @@ export function Screen(props: ScreenProps) {
     StatusBarProps,
     statusBarStyle = "dark",
   } = props
+
+  useEffect(() => {
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
+  }, [])
 
   const $containerInsets = useSafeAreaInsetsStyle(safeAreaEdges)
 

@@ -1,7 +1,8 @@
 import * as React from "react"
-import { Image, StyleSheet, TouchableOpacity, useWindowDimensions } from "react-native"
+import { StyleSheet, TouchableOpacity, useWindowDimensions } from "react-native"
 import { observer } from "mobx-react-lite"
 import { Word } from "@models/Database"
+import { Image } from "expo-image"
 
 export interface WordItemProps {
   borderColor?: string
@@ -35,8 +36,8 @@ export const WordItem = observer(function WordItem({
       ]}
     >
       <Image
-        source={word.image}
-        resizeMode="cover"
+        source={`https://firebasestorage.googleapis.com/v0/b/hocsochobe.appspot.com/o/images%2F${word.dashEn}.jpg?alt=media`}
+        contentFit="cover"
         style={[
           styles.image,
           {
