@@ -60,17 +60,17 @@ export const LearningStoreModel = types
         try {
           self.disableUI = true
           yield playSound(words[self.number], true)
-          yield sleep(1000)
+          yield sleep(500)
           for (const element of self.options) {
             self.selectedNumber = element
             yield playSound(words[element], false)
-            yield sleep(1000)
+            yield sleep(500)
           }
         } catch (error) {}
         self.selectedNumber = null
         self.disableUI = false
       } else {
-        playSound(words[self.number], self.LANGUAGE === "vi")
+        yield playSound(words[self.number], self.LANGUAGE === "vi")
       }
     }),
   }))
@@ -83,27 +83,24 @@ export const LearningStoreModel = types
         if (self.LANGUAGE === "en") {
           if (self.shouldLearnViToEn) {
             yield playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
-            yield sleep(1000)
+            yield sleep(500)
             yield playSound(words[number], true)
-            yield sleep(1000)
+            yield sleep(500)
             yield playSound(words[number], false)
           } else {
-            playSound(words[self.number], true)
+            yield playSound(words[self.number], true)
           }
         } else {
-          playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
+          yield playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
         }
         yield sleep(1000)
         self.learnCount++
         self.correctArray[self.number]++
       } else {
-        playSound("sai1")
+        yield playSound("sai1")
         if (self.shouldLearnViToEn) {
-          yield sleep(1000)
           yield playSound(words[self.number], true)
-          yield sleep(1000)
           yield playSound(words[self.number], false)
-          yield sleep(1000)
         } else {
           yield sleep(2000)
         }

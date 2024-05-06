@@ -13,9 +13,10 @@ import { WordItem } from "./WordItem"
 import { Header } from "./Header"
 import useScreenScale from "@utils/useScreenScale"
 import { navigationRef } from "@navigators/navigationUtilities"
-import { Restart } from "fiction-expo-restart"
 
-export interface LearningModalProps {}
+export interface LearningModalProps {
+  togglePlay(): void
+}
 
 interface BorderButtonProps {
   onPress?: () => void
@@ -48,7 +49,7 @@ const BorderButton: FC<BorderButtonProps> = ({ onPress, children, style, disable
 /**
  * Describe your component here
  */
-export const LearningModal = observer(function LearningModal(_: LearningModalProps) {
+export const LearningModal = observer(function LearningModal({ togglePlay }: LearningModalProps) {
   const {
     learningStore: {
       number,
@@ -179,10 +180,11 @@ export const LearningModal = observer(function LearningModal(_: LearningModalPro
           navigationRef.navigate("Welcome")
           setProp("showModal", false)
         }}
-        rightIcon="debug"
-        onRightPress={() => {
-          Restart()
-        }}
+        RightActionComponent={
+          <TouchableOpacity onPress={togglePlay} style={{ padding: 16 }}>
+            <Ionicons name="play" size={24} color="black" />
+          </TouchableOpacity>
+        }
       />
       <View style={[styles.container, { paddingLeft: left, paddingRight: right }]}>
         {shouldLearnViToEn ? renderViToEn() : renderEnToVi()}

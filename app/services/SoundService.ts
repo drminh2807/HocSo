@@ -1,6 +1,7 @@
 import { Word } from "@models/Database"
 import { AVPlaybackSource, Audio } from "expo-av"
 import { getSingleGif } from "./CacheManager"
+import { Sound } from "expo-av/build/Audio"
 
 export type EffectSound = "dung1" | "dung2" | "sai1"
 
@@ -18,10 +19,18 @@ export const playSound = async (name: EffectSound | Word, vi = false) => {
       const uri = await getSingleGif(vi ? "vi" : "en", name.dashEn, "wav")
       soundFile = { uri }
     }
-    const { sound } = await Audio.Sound.createAsync(soundFile, { shouldPlay: true }, (status) => {
-      if ("didJustFinish" in status && status.didJustFinish) {
-        sound.unloadAsync()
-      }
+    return new Promise<void>((resolve, reject) => {
+      let sound: Sound
+      Audio.Sound.createAsync(soundFile, { shouldPlay: true }, (status) => {
+        if ("didJustFinish" in status && status.didJustFinish) {
+          sound.unloadAsync()
+          resolve()
+        }
+      })
+        .then((result) => {
+          sound = result.sound
+        })
+        .catch(reject)
     })
   } catch (error) {
     console.log("Play sound error", error)

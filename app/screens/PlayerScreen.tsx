@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react"
+import React, { FC, useCallback, useEffect, useRef } from "react"
 import { observer } from "mobx-react-lite"
 import { BackHandler, StyleSheet } from "react-native"
 import { AppStackScreenProps } from "@navigators"
@@ -25,10 +25,13 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
     }
   }, [])
   const webViewRef = useRef<WebView>(null)
-  useEffect(() => {
+  const togglePlay = useCallback(() => {
     webViewRef.current?.injectJavaScript(
       'document.getElementById("player-play-pause-button").click()',
     )
+  }, [])
+  useEffect(() => {
+    togglePlay()
   }, [showModal])
 
   return (
@@ -42,7 +45,7 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
         sharedCookiesEnabled
         userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
       />
-      <LearningModal />
+      <LearningModal togglePlay={togglePlay} />
     </Screen>
   )
 })
