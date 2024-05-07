@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef } from "react"
 import { observer } from "mobx-react-lite"
-import { BackHandler, StyleSheet } from "react-native"
+import { BackHandler, Platform, StyleSheet } from "react-native"
 import { AppStackScreenProps } from "@navigators"
 import { LearningModal, Screen } from "@components"
 import { WebView } from "react-native-webview"
@@ -19,6 +19,7 @@ export const PlayerScreen: FC<PlayerScreenProps> = observer(function PlayerScree
   }
 
   useEffect(() => {
+    if (Platform.OS === "web") return
     const backHandler = BackHandler.addEventListener("hardwareBackPress", onBack)
     return () => {
       backHandler.remove()

@@ -1,7 +1,8 @@
 import { Word } from "@models/Database"
 import { AVPlaybackSource, Audio } from "expo-av"
-import { getSingleGif } from "./CacheManager"
+import { audioUrl, getSingleAudio } from "./CacheManager"
 import { Sound } from "expo-av/build/Audio"
+import { Platform } from "react-native"
 
 export type EffectSound = "dung1" | "dung2" | "sai1"
 
@@ -15,8 +16,11 @@ export const playSound = async (name: EffectSound | Word, vi = false) => {
     let soundFile: AVPlaybackSource
     if (typeof name === "string") {
       soundFile = allSounds[name]
+    } else if (Platform.OS === "web") {
+      const uri = audioUrl(vi ? "vi" : "en", name.dashEn, "wav")
+      soundFile = { uri }
     } else {
-      const uri = await getSingleGif(vi ? "vi" : "en", name.dashEn, "wav")
+      const uri = await getSingleAudio(vi ? "vi" : "en", name.dashEn, "wav")
       soundFile = { uri }
     }
     return new Promise<void>((resolve, reject) => {

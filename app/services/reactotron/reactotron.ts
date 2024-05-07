@@ -98,8 +98,12 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
 
     let scriptHostname
     if (__DEV__) {
-      const scriptURL = NativeModules.SourceCode.scriptURL
-      scriptHostname = scriptURL.split("://")[1].split(":")[0]
+      if (Platform.OS === "web") {
+        scriptHostname = 'http://localhost:19006'
+      } else {
+        const scriptURL = NativeModules.SourceCode.scriptURL
+        scriptHostname = scriptURL.split("://")[1].split(":")[0]
+      }
     }
     // configure reactotron
     Reactotron.configure({

@@ -10,7 +10,10 @@ module.exports = async function (env, argv) {
   if (config.mode === "development") {
     config.devServer.compress = false
   }
-
+  config.resolve.fallback = {
+    ...config.resolve.fallback,
+    crypto: require.resolve("expo-crypto"),
+  }
   // Or prevent minimizing the bundle when you build.
   // if (config.mode === "production") {
   //   config.optimization.minimize = false
