@@ -6,8 +6,12 @@ const audioDir = (folder: string) => cacheDir + "/" + folder
 const audioFileUri = (folder: string, name: string, extension: string) =>
   audioDir(folder) + "/" + name + "." + extension
 
-export const audioUrl = (folder: string, name: string, extension: string) =>
-  `https://firebasestorage.googleapis.com/v0/b/hocsochobe.appspot.com/o/${folder}%2F${name}.${extension}?alt=media`
+export const audioUrl = (folder: string, name: string, extension: string, downloadFile = true) =>
+  `https://firebasestorage.googleapis.com/v0/b/hocsochobe.appspot.com/o/${folder}%2F${name}.${extension}` +
+  (downloadFile ? "?alt=media" : "")
+
+export const checkAudioExists = (folder: string, name: string, extension: string) =>
+  fetch(audioUrl(folder, name, extension, false)).then((res) => res.status === 200)
 
 // Checks if audio directory exists. If not, creates it
 async function ensureDirExists(folder: string) {
@@ -27,7 +31,6 @@ export async function getSingleAudio(folder: string, name: string, extension: st
   const fileInfo = await FileSystem.getInfoAsync(fileUri)
 
   if (!fileInfo.exists) {
-    console.log("Audio isn't cached locally. Downloading…")
     await FileSystem.downloadAsync(audioUrl(folder, name, extension), fileUri)
   }
 

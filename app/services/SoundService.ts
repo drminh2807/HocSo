@@ -19,8 +19,6 @@ const tryPlayFile = (soundFile: AVPlaybackSource) =>
       if ("didJustFinish" in status && status.didJustFinish) {
         sound.unloadAsync()
         resolve()
-      } else if (status.isLoaded === false) {
-        reject(new Error("Could not load sound"))
       }
     })
       .then((result) => {
@@ -42,8 +40,10 @@ export const playSound = async (name: EffectSound | Word, vi = false) => {
       soundFile = { uri }
     }
     await tryPlayFile(soundFile)
+    return true
   } catch (error) {
     console.log(`Play sound "${name?.en}" error`, error)
+    return false
   }
 }
 

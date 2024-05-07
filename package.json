@@ -68,6 +68,8 @@
     "mobx": "6.6.0",
     "mobx-react-lite": "3.4.0",
     "mobx-state-tree": "5.1.5",
+    "p-queue": "^8.0.1",
+    "queue": "6",
     "react": "18.2.0",
     "react-async-hook": "^4.0.0",
     "react-native": "0.73.6",
