@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Header, Screen, Text, WordItem } from "app/components"
 import { words } from "@models/Database"
-import { playSound } from "@services/SoundService"
+import { playSound, sleep } from "@services/SoundService"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -26,8 +26,10 @@ export const AllWordsScreen: FC<AllWordsScreenProps> = observer(function AllWord
             <WordItem
               borderColor="transparent"
               word={item}
-              onPress={() => {
-                playSound(item)
+              onPress={async () => {
+                await playSound(item)
+                await sleep(300)
+                await playSound(item, true)
               }}
             />
             <Text style={styles.text}>{item.en}</Text>
