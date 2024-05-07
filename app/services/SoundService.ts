@@ -11,6 +11,24 @@ const allSounds: Record<EffectSound, number> = {
   dung2: require("assets/audio/dung2.wav"),
   sai1: require("assets/audio/sai1.wav"),
 }
+
+const tryPlayFile = (soundFile: AVPlaybackSource) =>
+  new Promise<void>((resolve, reject) => {
+    let sound: Sound
+    Audio.Sound.createAsync(soundFile, { shouldPlay: true }, (status) => {
+      if ("didJustFinish" in status && status.didJustFinish) {
+        sound.unloadAsync()
+        resolve()
+      } else if (status.isLoaded === false) {
+        reject(new Error("Could not load sound"))
+      }
+    })
+      .then((result) => {
+        sound = result.sound
+      })
+      .catch(reject)
+  })
+
 export const playSound = async (name: EffectSound | Word, vi = false) => {
   try {
     let soundFile: AVPlaybackSource
@@ -23,21 +41,9 @@ export const playSound = async (name: EffectSound | Word, vi = false) => {
       const uri = await getSingleAudio(vi ? "vi" : "en", name.dashEn, "wav")
       soundFile = { uri }
     }
-    return new Promise<void>((resolve, reject) => {
-      let sound: Sound
-      Audio.Sound.createAsync(soundFile, { shouldPlay: true }, (status) => {
-        if ("didJustFinish" in status && status.didJustFinish) {
-          sound.unloadAsync()
-          resolve()
-        }
-      })
-        .then((result) => {
-          sound = result.sound
-        })
-        .catch(reject)
-    })
+    await tryPlayFile(soundFile)
   } catch (error) {
-    console.log("Play sound error", error)
+    console.log(`Play sound "${name?.en}" error`, error)
   }
 }
 
