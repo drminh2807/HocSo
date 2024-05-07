@@ -32,3 +32,5 @@ export async function getSingleGif(folder: string, name: string, extension: stri
 
   return fileUri
 }
+
+export const clearCache = () => FileSystem.deleteAsync(FileSystem.cacheDirectory ?? "")

@@ -24,10 +24,10 @@
     "clean-all": "npx react-native clean-project-auto",
     "expo:start": "expo start",
     "expo:android": "expo start --android",
-    "expo:ios": "expo start --ios",
+    "expo:ios": "expo start --ios --go",
     "expo:web": "expo start --web",
     "android": "expo run:android",
-    "ios": "expo run:ios",
+    "ios": "expo start --ios --go",
     "postinstall": "patch-package"
   },
   "overrides": {
