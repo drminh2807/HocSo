@@ -12,7 +12,7 @@
 import "./i18n"
 import "./utils/ignoreWarnings"
 import { useFonts } from "expo-font"
-import React from "react"
+import React, { useEffect } from "react"
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context"
 import * as Linking from "expo-linking"
 import { useInitialRootStore } from "./models"
@@ -24,6 +24,9 @@ import { setupReactotron } from "./services/reactotron"
 import Config from "./config"
 import { RootSiblingParent } from "react-native-root-siblings"
 import { PreviewVideoModal } from "./components"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { clearCache } from "@services/CacheManager"
+import { Image } from "expo-image"
 
 // Set up Reactotron, which is a free desktop app for inspecting and debugging
 // React Native apps. Learn more here: https://github.com/infinitered/reactotron
@@ -89,6 +92,20 @@ function App(props: AppProps) {
     // Note: (vanilla iOS) You might notice the splash-screen logo change size. This happens in debug/development mode. Try building the app for release.
     setTimeout(hideSplashScreen, 500)
   })
+
+  useEffect(() => {
+    const fetchCacheVersion = async () => {
+      const lastVersion = await AsyncStorage.getItem("cacheVersion")
+      const currentVersion = 1
+      const lastVersionNumber = lastVersion ? Number(lastVersion) : 0
+      if (lastVersionNumber !== currentVersion) {
+        clearCache()
+        Image.clearDiskCache()
+        await AsyncStorage.setItem("cacheVersion", String(currentVersion))
+      }
+    }
+    fetchCacheVersion()
+  }, [])
 
   // Before we show the app, we have to wait for our state to be ready.
   // In the meantime, don't render anything. This will be the background

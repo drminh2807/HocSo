@@ -7,8 +7,6 @@ import { Button, CounterButton, Header, Screen, Text } from "@components"
 import { useStores } from "app/models"
 import { colors } from "@theme/colors"
 import { typography } from "@theme/typography"
-import { clearCache } from "@services/CacheManager"
-import { Image } from "expo-image"
 
 interface SettingScreenProps extends NativeStackScreenProps<AppStackScreenProps<"Setting">> {}
 
@@ -83,8 +81,6 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
                 {
                   text: "Khôi phục",
                   onPress: async () => {
-                    clearCache()
-                    Image.clearDiskCache()
                     reset()
                     navigation.popToTop()
                   },

@@ -1,9 +1,10 @@
 import * as FileSystem from "expo-file-system"
 
-const gifDir = (folder: string) => FileSystem.cacheDirectory + folder
+const cacheDir = FileSystem.cacheDirectory + "audio"
+const gifDir = (folder: string) => cacheDir + "/" + folder
 
 const gifFileUri = (folder: string, name: string, extension: string) =>
-  FileSystem.cacheDirectory + folder + "/" + name + "." + extension
+  gifDir(folder) + "/" + name + "." + extension
 
 const gifUrl = (folder: string, name: string, extension: string) =>
   `https://firebasestorage.googleapis.com/v0/b/hocsochobe.appspot.com/o/${folder}%2F${name}.${extension}?alt=media`
@@ -33,4 +34,4 @@ export async function getSingleGif(folder: string, name: string, extension: stri
   return fileUri
 }
 
-export const clearCache = () => FileSystem.deleteAsync(FileSystem.cacheDirectory ?? "")
+export const clearCache = () => FileSystem.deleteAsync(cacheDir)
