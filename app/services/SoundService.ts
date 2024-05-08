@@ -3,6 +3,7 @@ import { AVPlaybackSource, Audio } from "expo-av"
 import { audioUrl, getSingleAudio } from "./CacheManager"
 import { Sound } from "expo-av/build/Audio"
 import { Platform } from "react-native"
+import _ from "lodash"
 
 export type EffectSound = "dung1" | "dung2" | "sai1"
 
@@ -29,14 +30,15 @@ const tryPlayFile = (soundFile: AVPlaybackSource) =>
 
 export const playSound = async (name: EffectSound | Word, vi = false) => {
   try {
+    const enFolder = _.sample(["en", "en_ana", "en_chris"]) ?? "en"
     let soundFile: AVPlaybackSource
     if (typeof name === "string") {
       soundFile = allSounds[name]
     } else if (Platform.OS === "web") {
-      const uri = audioUrl(vi ? "vi" : "en", name.dashEn, "wav")
+      const uri = audioUrl(vi ? "vi" : enFolder, name.dashEn, "wav")
       soundFile = { uri }
     } else {
-      const uri = await getSingleAudio(vi ? "vi" : "en", name.dashEn, "wav")
+      const uri = await getSingleAudio(vi ? "vi" : enFolder, name.dashEn, "wav")
       soundFile = { uri }
     }
     await tryPlayFile(soundFile)

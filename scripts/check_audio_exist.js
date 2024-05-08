@@ -1,7 +1,7 @@
 const { initializeApp, cert } = require("firebase-admin/app")
 const { getStorage } = require("firebase-admin/storage")
 
-const serviceAccount = require("/Users/minh/hocsochobe-firebase-adminsdk-qpowc-eb8e799512.json")
+const serviceAccount = require("/Users/minhdv/hocsochobe.json")
 
 initializeApp({
   credential: cert(serviceAccount),
@@ -19,11 +19,9 @@ const main = async () => {
   wordListFile.split("\n").forEach((line) => {
     const [category, en, vi] = line.split("\t")
     const dashEn = en.replace(/\s+/g, "-")
-    const existVi = fileNames.includes(`vi/${dashEn}.wav`)
-    const existAnaEn = fileNames.includes(`en/${dashEn}.wav`)
-    const existEn = fileNames.includes(`en/${dashEn}.wav`)
-    if (!existEn) {
-      console.log(`${dashEn} ${existEn}`)
+    const existVi = fileNames.includes(`en_chris/${dashEn}.wav`)
+    if (!existVi) {
+      console.log(`${category};${en}`)
     }
   })
   console.log("Done")

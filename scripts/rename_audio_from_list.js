@@ -1,5 +1,5 @@
-const input = `/Users/minhdv/Downloads/audio`
-const output = `/Users/minhdv/Downloads/en_audio`
+const input = `/Users/minhdv/Downloads/raw_chris`
+const output = `/Users/minhdv/Downloads/chris`
 const wordListPath = "./word_list.csv"
 const fs = require("fs")
 const wordListFile = fs.readFileSync(wordListPath, "utf8")

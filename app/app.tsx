@@ -96,7 +96,7 @@ function App(props: AppProps) {
   useEffect(() => {
     const fetchCacheVersion = async () => {
       const lastVersion = await AsyncStorage.getItem("cacheVersion")
-      const currentVersion = 2
+      const currentVersion = 3
       const lastVersionNumber = lastVersion ? Number(lastVersion) : 0
       if (lastVersionNumber !== currentVersion) {
         clearCache()
