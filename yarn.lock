@@ -4003,12 +4003,13 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@~18.2.79":
-  version "18.2.79"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.79.tgz#c40efb4f255711f554d47b449f796d1c7756d865"
-  integrity sha512-RwGAGXPl9kSXwdNTafkOEuFrTBD5SA2B3iEB96xi8+xu5ddUa/cpvyVCSNn+asgLCTHkb5ZxN8gbuibYJi4s1w==
+"@types/react@18.2.55":
+  version "18.2.55"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.55.tgz#38141821b7084404b5013742bc4ae08e44da7a67"
+  integrity sha512-Y2Tz5P4yz23brwm2d7jNon39qoAtMMmalOQv6+fEFt1mT+FcM3D841wDpoUvFXhaYenuROCy3FZYqdTjM7qVyA==
   dependencies:
     "@types/prop-types" "*"
+    "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/retry@0.12.0":
@@ -6790,10 +6791,10 @@ expo-asset@~10.0.6:
     invariant "^2.2.4"
     md5-file "^3.2.3"
 
-expo-av@~14.0.3:
-  version "14.0.3"
-  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-14.0.3.tgz#6bffabd97a73a0ceb5bbdee0b7751987aa4359f3"
-  integrity sha512-gOsTBEUxpg6IG+IGgRPA195vAzU7bI/8CyR35/gJUZ7IMBlymn1gVFFhLjCnDxcj7IE4L+c6p8poFgim4j5pHw==
+expo-av@~14.0.4:
+  version "14.0.4"
+  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-14.0.4.tgz#b9ab0496c271487f7a30063521aadd200fb950c0"
+  integrity sha512-R2UjERSVeqghma5dTPiTZbgf43zfLZAx/Ehd+s/VwNc2Cx2X34rWoEZcuT8XAq/NX0zpowsqVJeBrYSuzPfaLw==
 
 expo-build-properties@~0.12.1:
   version "0.12.1"
@@ -6955,7 +6956,7 @@ expo-structured-headers@~3.8.0:
   resolved "https://registry.yarnpkg.com/expo-structured-headers/-/expo-structured-headers-3.8.0.tgz#11797a4c3a7a6770b21126cecffcda148030e361"
   integrity sha512-R+gFGn0x5CWl4OVlk2j1bJTJIz4KO8mPoCHpRHmfqMjmrMvrOM0qQSY3V5NHXwp1yT/L2v8aUmFQsBRIdvi1XA==
 
-expo-updates-interface@~0.16.0:
+expo-updates-interface@~0.16.2:
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.16.2.tgz#ad1ac2ca8ee5a8cc84052ea3c18a11da64da569b"
   integrity sha512-929XBU70q5ELxkKADj1xL0UIm3HvhYhNAOZv5DSk7rrKvLo7QDdPyl+JVnwZm9LrkNbH4wuE2rLoKu1KMgZ+9A==
@@ -6982,10 +6983,10 @@ expo-updates@^0.16.4:
     fbemitter "^3.0.0"
     resolve-from "^5.0.0"
 
-expo-updates@~0.25.10:
-  version "0.25.10"
-  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.25.10.tgz#73a0352c681bae09975b0852c4a2b2396ecaf07b"
-  integrity sha512-GAaGnELwdOYhNOG5HUpHdonzt9aGjOTxzEqjm8qdcZju86zwDT/a+0M1XzkqTodhNdNYC7AYoIod55KEvxeLlA==
+expo-updates@~0.25.11:
+  version "0.25.11"
+  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.25.11.tgz#a477139cfd5f67c7b5fdf41eba3f6dad471eeb14"
+  integrity sha512-ZO+e6bLsEBMz+JdEOlJXGf+3w606si7zKKEEzkwDQWJWP20W0WQAG+MDYgTEgxQboc+jTC+T0MvvOvkVb8cFIQ==
   dependencies:
     "@expo/code-signing-certificates" "0.0.5"
     "@expo/config" "~9.0.0-beta.0"
@@ -6997,7 +6998,7 @@ expo-updates@~0.25.10:
     expo-eas-client "~0.12.0"
     expo-manifests "~0.14.0"
     expo-structured-headers "~3.8.0"
-    expo-updates-interface "~0.16.0"
+    expo-updates-interface "~0.16.2"
     fast-glob "^3.3.2"
     fbemitter "^3.0.0"
     ignore "^5.3.1"
@@ -7008,10 +7009,10 @@ expo-web-browser@~13.0.3:
   resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-13.0.3.tgz#dceb05dbc187b498ca937b02adf385b0232a4e92"
   integrity sha512-HXb7y82ApVJtqk8tManyudtTrCtx8xcUnVzmJECeHCB0SsWSQ+penVLZxJkcyATWoJOsFMnfVSVdrTcpKKGszQ==
 
-expo@^51.0.1:
-  version "51.0.1"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-51.0.1.tgz#733e82390bc748a53e03170d6dab0f1181448efb"
-  integrity sha512-q+3cnPmNcgKhx4AK0NO9n2Y4VLpvkyRx1O1H5okdUE+3Z8paIMlQsPnl4SnQu6YRY7ar1OmS7txUqRAmr1Sxxg==
+expo@~51.0.2:
+  version "51.0.2"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-51.0.2.tgz#14de27d8d8addec5848285a6e4bd8792d07fc3f2"
+  integrity sha512-aRKrheMMQBcNDg2SBjW5kcSN5G58bdIpsxeSQ65Bx18DFLXjPv5UaU9kzIWRAcxaPtgictn9ut9IJQVZKChNxQ==
   dependencies:
     "@babel/runtime" "^7.20.0"
     "@expo/cli" "0.18.10"
@@ -11688,10 +11689,10 @@ react-native-modal@^13.0.1:
     prop-types "^15.6.2"
     react-native-animatable "1.3.3"
 
-react-native-reanimated@3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.10.0.tgz#7367f0ae9c79193315f4f1ef4d359bfac678a761"
-  integrity sha512-oiQiO+iJ8HTXTli94+Cl5R7nd+TzZf+3MYnMKWtnVDDCxFsqBgpkKO2Xp2ZhZyseXY/JDdH0//E7LlPQRRxpXg==
+react-native-reanimated@~3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.10.1.tgz#3c37d1100bbba0065df39c96aab0c1ff1b50c0fa"
+  integrity sha512-sfxg6vYphrDc/g4jf/7iJ7NRi+26z2+BszPmvmk0Vnrz6FL7HYljJqTf531F1x6tFmsf+FEAmuCtTUIXFLVo9w==
   dependencies:
     "@babel/plugin-transform-arrow-functions" "^7.0.0-0"
     "@babel/plugin-transform-nullish-coalescing-operator" "^7.0.0-0"
