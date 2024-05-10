@@ -1,3 +1,111 @@
+animal	cat	con mèo
+animal	dog	chó
+animal	cow	con bò
+animal	bat	con dơi
+animal	bird	chim
+animal	crab	con cua
+animal	deer	con nai
+animal	dolphin	cá heo
+animal	donkey	con lừa
+animal	duck	con vịt
+animal	elephant	con voi
+animal	frog	con ếch
+animal	giraffe	hươu cao cổ
+animal	goat	con dê
+animal	hippo	con hà mã
+animal	horse	ngựa
+animal	leopard	con báo
+animal	lion	con sư tử
+animal	monkey	con khỉ
+animal	fish	cá
+animal	rabbit	con thỏ
+animal	squid	con mực
+animal	pig	con lợn
+animal	tiger	con hổ
+animal	turtle	con rùa
+animal	sheep	con cừu
+animal	shrimp	con tôm
+animal	chicken	con gà
+animal	hen	con gà mái
+animal	rooster	gà trống
+number	one	một
+number	two	hai
+number	three	ba
+number	four	bốn
+number	five	năm
+number	six	sáu
+number	seven	bảy
+number	nine	chín
+animal	Lemur	vượn cáo
+animal	Lizard	Thằn lằn
+animal	Lobster	tôm hùm
+animal	alligator	cá sấu Mỹ
+animal	anteater	Thú ăn kiến
+animal	artic fox	cáo tuyết
+animal	badger	con lửng
+animal	bear	con gấu
+animal	beaver	hải ly
+animal	boar	con lợn rừng
+animal	bugs	côn trùng
+animal	camel	con lạc đà
+animal	crocodile	Cá sấu
+animal	eagle	Đại bàng
+animal	eel	con lươn
+animal	flamingo	Chim hồng hạc
+animal	fox	cáo
+animal	gorilla	con khỉ đột
+animal	guinea pig	chuột bạch
+animal	hawk	chim ưng
+animal	hedgehog	nhím
+animal	hyena	Linh cẩu
+animal	iguana	Kỳ nhông
+animal	jellyfish	con sứa
+animal	kangaroo	con chuột túi
+animal	killer whale	cá voi sát thủ
+animal	koala	gấu túi
+animal	llama	lạc đà không bướu
+animal	mole	chuột chũi
+animal	moose	nai sừng tấm
+animal	mouse	con chuột nhỏ
+animal	narwhal	kỳ lân biển
+animal	newt	sa giông
+animal	octopus	bạch tuộc
+animal	ostritch	đà điểu
+animal	otter	rái cá
+animal	owl	con cú
+animal	panda	gấu trúc
+animal	parrot	con vẹt
+animal	peacock	con công
+animal	penguin	chim cánh cụt
+animal	pigeon	chim bồ câu
+animal	plankton	sinh vật phù du
+animal	platypus	thú mỏ vịt
+animal	polar bear	gấu Bắc cực
+animal	puffin	chim hải âu
+animal	quail	chim cút
+animal	queen bee	ong chúa
+animal	racoon	gấu mèo
+animal	rat	con chuột
+animal	rhino	tê giác
+animal	scorpion	bọ cạp
+animal	seahorse	cá ngựa
+animal	seal	hải cẩu
+animal	shark	cá mập
+animal	skunk	chồn hôi
+animal	sloth	con lười
+animal	snake	con rắn
+animal	squirrel	con sóc
+animal	starfish	sao biển
+animal	stingray	cá đuối
+animal	swordfish	cá kiếm
+animal	tarantula	loài nhện
+animal	urchin	con nhím
+animal	vulture	con kền kền
+animal	walrus	hải mã
+animal	whale	cá voi
+animal	wolf	chó sói
+animal	yak	bò Tây Tạng
+animal	zebra	ngựa vằn
 activity	dance	Khiêu vũ
 activity	drink	Uống
 activity	eat	Ăn
@@ -94,106 +202,6 @@ amusement-park	haunted house	Nhà ma
 amusement-park	merry go round	Đu quay ngựa
 amusement-park	roller coaster	Tàu lượn siêu tốc
 amusement-park	ticket booth	Buồng vé
-animal	Lemur	vượn cáo
-animal	Lizard	Thằn lằn
-animal	Lobster	tôm hùm
-animal	alligator	cá sấu Mỹ
-animal	anteater	Thú ăn kiến
-animal	artic fox	cáo tuyết
-animal	badger	con lửng
-animal	bat	con dơi
-animal	bear	con gấu
-animal	beaver	hải ly
-animal	bird	chim
-animal	boar	con lợn rừng
-animal	bugs	côn trùng
-animal	camel	con lạc đà
-animal	cat	con mèo
-animal	chicken	con gà
-animal	cow	con bò
-animal	crab	con cua
-animal	crocodile	Cá sấu
-animal	deer	con nai
-animal	dog	chó
-animal	dolphin	cá heo
-animal	donkey	con lừa
-animal	duck	con vịt
-animal	eagle	Đại bàng
-animal	eel	con lươn
-animal	elephant	con voi
-animal	fish	cá
-animal	flamingo	Chim hồng hạc
-animal	fox	cáo
-animal	frog	con ếch
-animal	giraffe	hươu cao cổ
-animal	goat	con dê
-animal	gorilla	con khỉ đột
-animal	guinea pig	chuột bạch
-animal	hawk	chim ưng
-animal	hedgehog	nhím
-animal	hen	con gà mái
-animal	hippo	con hà mã
-animal	horse	ngựa
-animal	hyena	Linh cẩu
-animal	iguana	Kỳ nhông
-animal	jellyfish	con sứa
-animal	kangaroo	con chuột túi
-animal	killer whale	cá voi sát thủ
-animal	koala	gấu túi
-animal	leopard	con báo
-animal	lion	con sư tử
-animal	llama	lạc đà không bướu
-animal	mole	chuột chũi
-animal	monkey	con khỉ
-animal	moose	nai sừng tấm
-animal	mouse	con chuột nhỏ
-animal	narwhal	kỳ lân biển
-animal	newt	sa giông
-animal	octopus	bạch tuộc
-animal	ostritch	đà điểu
-animal	otter	rái cá
-animal	owl	con cú
-animal	panda	gấu trúc
-animal	parrot	con vẹt
-animal	peacock	con công
-animal	penguin	chim cánh cụt
-animal	pig	con lợn
-animal	pigeon	chim bồ câu
-animal	plankton	sinh vật phù du
-animal	platypus	thú mỏ vịt
-animal	polar bear	gấu Bắc cực
-animal	puffin	chim hải âu
-animal	quail	chim cút
-animal	queen bee	ong chúa
-animal	rabbit	con thỏ
-animal	racoon	gấu mèo
-animal	rat	con chuột
-animal	rhino	tê giác
-animal	rooster	gà trống
-animal	scorpion	bọ cạp
-animal	seahorse	cá ngựa
-animal	seal	hải cẩu
-animal	shark	cá mập
-animal	sheep	con cừu
-animal	shrimp	con tôm
-animal	skunk	chồn hôi
-animal	sloth	con lười
-animal	snake	con rắn
-animal	squid	con mực
-animal	squirrel	con sóc
-animal	starfish	sao biển
-animal	stingray	cá đuối
-animal	swordfish	cá kiếm
-animal	tarantula	loài nhện
-animal	tiger	con hổ
-animal	turtle	con rùa
-animal	urchin	con nhím
-animal	vulture	con kền kền
-animal	walrus	hải mã
-animal	whale	cá voi
-animal	wolf	chó sói
-animal	yak	bò Tây Tạng
-animal	zebra	ngựa vằn
 bathroom	Q-tip	tăm bông
 bathroom	bath mat	thảm tắm
 bathroom	bathtub	bồn tắm
@@ -221,28 +229,20 @@ number	eighty	tám mươi
 number	eleven	mười một
 number	fifteen	mười lăm
 number	fifty	năm mươi
-number	five	năm
 number	forty	bốn mươi
-number	four	bốn
 number	fourteen	mười bốn
-number	nine	chín
 number	nineteen	mười chín
 number	ninety	chín mươi
 number	one hundred	một trăm
-number	one	một
-number	seven	bảy
 number	seventeen	mười bảy
 number	seventy	bảy mươi
-number	six	sáu
 number	sixteen	mười sáu
 number	sixty	sáu mươi
 number	ten	mười
 number	thirteen	mười ba
 number	thirty	ba mươi
-number	three	ba
 number	twelve	mười hai
 number	twenty	hai mươi
-number	two	hai
 beach	beach bag	Túi đi biển
 beach	beach ball	Bóng chuyền bãi biển
 beach	bucket	Cái xô

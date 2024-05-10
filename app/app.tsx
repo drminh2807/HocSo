@@ -27,6 +27,7 @@ import { PreviewVideoModal } from "./components"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { clearCache } from "@services/CacheManager"
 import { Image } from "expo-image"
+import { ActionSheetProvider } from "@expo/react-native-action-sheet"
 
 // Set up Reactotron, which is a free desktop app for inspecting and debugging
 // React Native apps. Learn more here: https://github.com/infinitered/reactotron
@@ -122,18 +123,20 @@ function App(props: AppProps) {
 
   // otherwise, we're ready to render the app
   return (
-    <RootSiblingParent>
-      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <ErrorBoundary catchErrors={Config.catchErrors}>
-          <AppNavigator
-            linking={linking}
-            initialState={initialNavigationState}
-            onStateChange={onNavigationStateChange}
-          />
-          <PreviewVideoModal />
-        </ErrorBoundary>
-      </SafeAreaProvider>
-    </RootSiblingParent>
+    <ActionSheetProvider>
+      <RootSiblingParent>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <ErrorBoundary catchErrors={Config.catchErrors}>
+            <AppNavigator
+              linking={linking}
+              initialState={initialNavigationState}
+              onStateChange={onNavigationStateChange}
+            />
+            <PreviewVideoModal />
+          </ErrorBoundary>
+        </SafeAreaProvider>
+      </RootSiblingParent>
+    </ActionSheetProvider>
   )
 }
 

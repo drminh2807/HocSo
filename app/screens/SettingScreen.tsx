@@ -1,12 +1,13 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { Alert, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
+import { TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, CounterButton, Header, Screen, Text } from "@components"
 import { useStores } from "app/models"
 import { colors } from "@theme/colors"
 import { typography } from "@theme/typography"
+import { useActionSheet } from "@expo/react-native-action-sheet"
 
 interface SettingScreenProps extends NativeStackScreenProps<AppStackScreenProps<"Setting">> {}
 
@@ -21,6 +22,8 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
   const {
     learningStore: { MINUTE_PER_TURN, LEARN_PER_TURN, setProp, LANGUAGE, reset },
   } = useStores()
+  const { showActionSheetWithOptions } = useActionSheet()
+
   return (
     <Screen style={$root} safeAreaEdges={["left", "right"]}>
       <Header leftIcon="back" onLeftPress={() => navigation.goBack()} />
@@ -73,20 +76,29 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
         <Button
           text="Khôi phục cài đặt gốc và tiến trình học"
           onPress={() => {
-            Alert.alert(
-              "Khôi phục cài đặt gốc và tiến trình học",
-              "Bạn có chắc chắn muốn khôi phục cài đặt gốc và tiến trình học?",
-              [
-                { text: "Hủy", style: "cancel" },
-                {
-                  text: "Khôi phục",
-                  onPress: async () => {
+            const options = ["Khôi phục", "Huỷ"]
+            const destructiveButtonIndex = 0
+            const cancelButtonIndex = 1
+
+            showActionSheetWithOptions(
+              {
+                title: "Khôi phục cài đặt gốc và tiến trình học",
+                message: "Bạn có chắc chắn muốn khôi phục cài đặt gốc và tiến trình học?",
+                options,
+                cancelButtonIndex,
+                destructiveButtonIndex,
+              },
+              (selectedIndex: number) => {
+                switch (selectedIndex) {
+                  case destructiveButtonIndex:
                     reset()
                     navigation.popToTop()
-                  },
-                  style: "destructive",
-                },
-              ],
+                    break
+
+                  case cancelButtonIndex:
+                  // Canceled
+                }
+              },
             )
           }}
         />
