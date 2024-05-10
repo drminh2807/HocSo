@@ -90,3 +90,4 @@ dist/
 fastlane/.env.default
 ios/
 android/
+.firebase/

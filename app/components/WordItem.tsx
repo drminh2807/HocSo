@@ -10,7 +10,7 @@ export interface WordItemProps {
   onPress?: () => void
   word: Word
 }
-
+const blurhash = "LEHV6nWB2yk8pyo0adR*.7kCMdnj"
 /**
  * Describe your component here
  */
@@ -38,6 +38,7 @@ export const WordItem = observer(function WordItem({
       <Image
         source={`https://firebasestorage.googleapis.com/v0/b/hocsochobe.appspot.com/o/images%2F${word.dashEn}.jpg?alt=media`}
         contentFit="cover"
+        placeholder={{ blurhash }}
         style={[
           styles.image,
           {

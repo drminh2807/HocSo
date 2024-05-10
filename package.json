@@ -20,6 +20,8 @@
     "build:android:prod": "eas build --profile production --platform android --local",
     "prebuild:clean": "npx expo prebuild --clean",
     "prebuild": "npx expo prebuild",
+    "predeploy": "expo export:web",
+    "deploy-hosting": "npm run predeploy && firebase deploy --only hosting",
     "clean": "npx react-native-clean-project",
     "clean-all": "npx react-native clean-project-auto",
     "expo:start": "expo start",
