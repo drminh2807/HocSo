@@ -23,7 +23,7 @@ import { customFontsToLoad } from "./theme"
 import { setupReactotron } from "./services/reactotron"
 import Config from "./config"
 import { RootSiblingParent } from "react-native-root-siblings"
-import { PreviewVideoModal } from "./components"
+import { PreviewVideoModal, TodayLockModal } from "./components"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { clearCache } from "@services/CacheManager"
 import { Image } from "expo-image"
@@ -133,6 +133,7 @@ function App(props: AppProps) {
               onStateChange={onNavigationStateChange}
             />
             <PreviewVideoModal />
+            <TodayLockModal />
           </ErrorBoundary>
         </SafeAreaProvider>
       </RootSiblingParent>

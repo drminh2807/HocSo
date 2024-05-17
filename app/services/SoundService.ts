@@ -5,10 +5,11 @@ import { Sound } from "expo-av/build/Audio"
 import { Platform } from "react-native"
 import _ from "lodash"
 
-export type EffectSound = "dung1" | "dung2" | "sai1"
+export type EffectSound = "dung1" | "dung2" | "sai1" | "end"
 
 const allSounds: Record<EffectSound, number> = {
   dung1: require("assets/audio/dung1.wav"),
+  end: require("assets/audio/end.mp3"),
   dung2: require("assets/audio/dung2.wav"),
   sai1: require("assets/audio/sai1.wav"),
 }

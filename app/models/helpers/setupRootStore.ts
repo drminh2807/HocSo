@@ -31,6 +31,7 @@ export async function setupRootStore(rootStore: RootStore) {
     if (restoredState) {
       restoredState.learningStore.selectedNumber = null
       restoredState.learningStore.disableUI = false
+      restoredState.learningStore.isShowingLock = false
     }
     applySnapshot(rootStore, restoredState)
   } catch (e) {

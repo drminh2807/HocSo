@@ -9,9 +9,10 @@ import {
 } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
 import lodash from "lodash"
-import { addSeconds } from "date-fns"
+import { addSeconds, isToday } from "date-fns"
 import { EffectSound, playSound, sleep } from "@services/SoundService"
 import { words } from "./Database"
+import { navigate } from "@navigators/navigationUtilities"
 
 const MAX_OPTIONS = 4
 const MAX_CORRECT = 4
@@ -39,10 +40,14 @@ export const LearningStoreModel = types
     showModal: false,
     LEARN_PER_TURN: 5,
     MINUTE_PER_TURN: 1,
+    MINUTE_PER_DAY: 60,
     LANGUAGE: "en",
+    minutesToday: 0,
+    lastLock: types.optional(types.Date, new Date(0)),
     videoId: "",
     disableUI: false,
     showingResult: false,
+    isShowingLock: false,
   })
   .actions(withSetPropAction)
   .views((self) => ({
@@ -52,6 +57,9 @@ export const LearningStoreModel = types
     },
     get shouldLearnViToEn() {
       return [2, 4].includes(self.correctArray[self.number])
+    },
+    get shouldLock() {
+      return isToday(self.lastLock)
     },
   }))
   .actions((self) => ({
@@ -73,6 +81,13 @@ export const LearningStoreModel = types
         yield playSound(words[self.number], self.LANGUAGE === "vi")
       }
     }),
+    showLock() {
+      self.isShowingLock = true
+      playSound("end")
+    },
+    hideLock() {
+      self.isShowingLock = false
+    },
   }))
   .actions((self) => ({
     checkAnswer: flow(function* (number: number) {
@@ -163,8 +178,16 @@ export const LearningStoreModel = types
     tick: flow(function* () {
       self.now = new Date()
       if (!self.showModal && self.nextLearn < self.now) {
-        self.showModal = true
-        yield self.showcase()
+        self.minutesToday += self.MINUTE_PER_TURN
+        if (self.minutesToday > self.MINUTE_PER_DAY) {
+          self.lastLock = new Date()
+          self.minutesToday = 0
+          self.showLock()
+          navigate({ name: "Welcome", params: undefined })
+        } else {
+          self.showModal = true
+          yield self.showcase()
+        }
       }
     }),
     firstLaunch() {

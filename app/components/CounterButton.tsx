@@ -9,6 +9,7 @@ export interface CounterButtonProps {
   onChange: (value: number) => void
   min: number
   max: number
+  step: number
 }
 
 /**
@@ -19,6 +20,7 @@ export const CounterButton = observer(function CounterButton({
   onChange,
   min,
   max,
+  step = 1
 }: CounterButtonProps) {
   return (
     <View style={$container}>
@@ -26,7 +28,7 @@ export const CounterButton = observer(function CounterButton({
         style={$button}
         onPress={() => {
           if (value > min) {
-            onChange(value - 1)
+            onChange(value - step)
           }
         }}
       >
@@ -39,7 +41,7 @@ export const CounterButton = observer(function CounterButton({
         style={$button}
         onPress={() => {
           if (value < max) {
-            onChange(value + 1)
+            onChange(value + step)
           }
         }}
       >

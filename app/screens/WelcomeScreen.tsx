@@ -8,12 +8,16 @@ import * as WebBrowser from "expo-web-browser"
 import { colors } from "@theme/colors"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import useScreenScale from "@utils/useScreenScale"
+import { useStores } from "@models/index"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
 export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen({
   navigation,
 }) {
+  const {
+    learningStore: { shouldLock, showLock },
+  } = useStores()
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
   }, [])
@@ -39,7 +43,11 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Player")
+            if (shouldLock) {
+              showLock()
+            } else {
+              navigation.navigate("Player")
+            }
           }}
         >
           <Ionicons name="play-circle" size={scale(150)} color={colors.text} />

@@ -20,7 +20,7 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
   navigation,
 }) {
   const {
-    learningStore: { MINUTE_PER_TURN, LEARN_PER_TURN, setProp, LANGUAGE, reset },
+    learningStore: { MINUTE_PER_TURN, MINUTE_PER_DAY, LEARN_PER_TURN, setProp, LANGUAGE, reset },
   } = useStores()
   const { showActionSheetWithOptions } = useActionSheet()
 
@@ -28,6 +28,16 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
     <Screen style={$root} safeAreaEdges={["left", "right"]}>
       <Header leftIcon="back" onLeftPress={() => navigation.goBack()} />
       <View style={$container}>
+        <View style={$item}>
+          <Text style={$text} text="Tổng số phút xem video mỗi ngày" />
+          <CounterButton
+            value={MINUTE_PER_DAY}
+            onChange={(value) => setProp("MINUTE_PER_DAY", value)}
+            min={30}
+            max={120}
+            step={15}
+          />
+        </View>
         <View style={$item}>
           <Text style={$text} text="Số phút xem video mỗi lượt" />
           <CounterButton
