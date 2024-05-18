@@ -44,6 +44,7 @@ export const LearningStoreModel = types
     LANGUAGE: "en",
     minutesToday: 0,
     lastLock: types.optional(types.Date, new Date(0)),
+    lastMinuteToday: types.optional(types.Date, new Date(0)),
     videoId: "",
     disableUI: false,
     showingResult: false,
@@ -178,7 +179,12 @@ export const LearningStoreModel = types
     tick: flow(function* () {
       self.now = new Date()
       if (!self.showModal && self.nextLearn < self.now) {
-        self.minutesToday += self.MINUTE_PER_TURN
+        if (isToday(self.lastMinuteToday)) {
+          self.minutesToday += self.MINUTE_PER_TURN
+        } else {
+          self.lastMinuteToday = new Date()
+          self.minutesToday = 0
+        }
         if (self.minutesToday > self.MINUTE_PER_DAY) {
           self.lastLock = new Date()
           self.minutesToday = 0
