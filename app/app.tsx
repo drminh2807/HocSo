@@ -28,6 +28,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { clearCache } from "@services/CacheManager"
 import { Image } from "expo-image"
 import { ActionSheetProvider } from "@expo/react-native-action-sheet"
+import { loadProgress } from "@models/ProgressContext"
 
 // Set up Reactotron, which is a free desktop app for inspecting and debugging
 // React Native apps. Learn more here: https://github.com/infinitered/reactotron
@@ -106,6 +107,7 @@ function App(props: AppProps) {
       }
     }
     fetchCacheVersion()
+    loadProgress()
   }, [])
 
   // Before we show the app, we have to wait for our state to be ready.

@@ -52,7 +52,7 @@ const BorderButton: FC<BorderButtonProps> = ({ onPress, children, style, disable
 export const LearningModal = observer(function LearningModal({ togglePlay }: LearningModalProps) {
   const {
     learningStore: {
-      number,
+      learningWordIndex,
       tick,
       showModal,
       options,
@@ -65,6 +65,9 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
       shouldLearnViToEn,
       disableUI,
       showingResult,
+      newWordCount,
+      expertWordCount,
+      learningWordCount,
     },
   } = useStores()
 
@@ -84,7 +87,7 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
         <BorderButton
           style={{
             borderColor:
-              showingResult && item === number
+              showingResult && item === learningWordIndex
                 ? "green"
                 : showingResult && item === selectedNumber
                 ? "#FF8080"
@@ -109,10 +112,10 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
     return (
       <View style={styles.viToEnContainer}>
         <WordItem
-          word={words[number]}
+          word={words[learningWordIndex]}
           borderColor="white"
           disabled={disableUI}
-          onPress={() => playSound(words[number], true)}
+          onPress={() => playSound(words[learningWordIndex], true)}
         />
         <View style={styles.row}>
           {options.length > 0 ? renderEnText(options[0]) : undefined}
@@ -143,7 +146,7 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
         {options.map((option) => {
           const color =
             option === selectedNumber
-              ? selectedNumber === number
+              ? selectedNumber === learningWordIndex
                 ? "green"
                 : "red"
               : "transparent"
@@ -163,7 +166,7 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
           style={[styles.soundButton, { right: 10, bottom: 10 }]}
           disabled={disableUI}
           onPress={() => {
-            playSound(words[number], LANGUAGE === "vi")
+            playSound(words[learningWordIndex], LANGUAGE === "vi")
           }}
         >
           <Ionicons name="volume-high" size={40} color="black" />
@@ -174,7 +177,13 @@ export const LearningModal = observer(function LearningModal({ togglePlay }: Lea
 
   return (
     <View style={StyleSheet.absoluteFill}>
+      <View style={styles.progress}>
+        <View style={{ flex: newWordCount, backgroundColor: "#B3E2A7" }} />
+        <View style={{ flex: learningWordCount, backgroundColor: "#80B9AD" }} />
+        <View style={{ flex: expertWordCount, backgroundColor: "#6295A2" }} />
+      </View>
       <Header
+        safeAreaEdges={[]}
         leftIcon="back"
         onLeftPress={() => {
           navigationRef.navigate("Welcome")
@@ -218,6 +227,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
+  },
+  progress: {
+    flexDirection: "row",
+    height: 16,
   },
   row: {
     flexDirection: "row",

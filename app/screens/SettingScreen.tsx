@@ -8,6 +8,7 @@ import { useStores } from "app/models"
 import { colors } from "@theme/colors"
 import { typography } from "@theme/typography"
 import { useActionSheet } from "@expo/react-native-action-sheet"
+import { clearProgress } from "@models/ProgressContext"
 
 interface SettingScreenProps extends NativeStackScreenProps<AppStackScreenProps<"Setting">> {}
 
@@ -102,6 +103,7 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
                 switch (selectedIndex) {
                   case destructiveButtonIndex:
                     reset()
+                    clearProgress()
                     navigation.popToTop()
                     break
 

@@ -13,27 +13,24 @@ import { addSeconds, isToday } from "date-fns"
 import { EffectSound, playSound, sleep } from "@services/SoundService"
 import { words } from "./Database"
 import { navigate } from "@navigators/navigationUtilities"
+import { progressArray, updateProgress } from "./ProgressContext"
 
 const MAX_OPTIONS = 4
-const MAX_CORRECT = 4
+export const ProgressModel = types.model("ProgressModel").props({
+  level: 0,
+  index: 0,
+})
 
 export const LearningStoreModel = types
   .model("LearningStore")
   .props({
     selectedNumber: types.maybeNull(types.number),
     options: types.optional(types.array(types.number), [0]),
-    number: 0,
-    correctArray: types.optional(types.array(types.number), [0]),
-    // options: types.optional(types.array(types.number), [10]),
-    // number: 10,
-    // maxNumber: 13,
-    // correctArray: types.optional(
-    //   types.array(types.number),
-    //   Array(MAX_NUMBER)
-    //     .fill(0)
-    //     .map((_, i) => (i < 10 ? MAX_CORRECT : 0)),
-    // ),
-    learnNewWordAt: 4,
+    learningWordIndex: 0,
+    learningWordLevel: 0,
+    newWordCount: 1,
+    learningWordCount: 0,
+    expertWordCount: 0,
     learnCount: 0,
     nextLearn: types.optional(types.Date, new Date(0)),
     now: types.optional(types.Date, new Date()),
@@ -52,12 +49,11 @@ export const LearningStoreModel = types
   })
   .actions(withSetPropAction)
   .views((self) => ({
-    shouldLearnNewWord: () => {
-      const total = self.correctArray.reduce((a, b) => a + b, 0)
-      return total >= self.learnNewWordAt && self.correctArray.length < words.length
+    get learningWord() {
+      return words[self.learningWordIndex]
     },
     get shouldLearnViToEn() {
-      return [2, 4].includes(self.correctArray[self.number])
+      return self.learningWordLevel % 2 === 1
     },
     get shouldLock() {
       return isToday(self.lastLock)
@@ -68,7 +64,7 @@ export const LearningStoreModel = types
       if (self.shouldLearnViToEn) {
         try {
           self.disableUI = true
-          yield playSound(words[self.number], true)
+          yield playSound(self.learningWord, true)
           yield sleep(500)
           for (const element of self.options) {
             self.selectedNumber = element
@@ -79,7 +75,7 @@ export const LearningStoreModel = types
         self.selectedNumber = null
         self.disableUI = false
       } else {
-        yield playSound(words[self.number], self.LANGUAGE === "vi")
+        yield playSound(self.learningWord, self.LANGUAGE === "vi")
       }
     }),
     showLock() {
@@ -95,7 +91,7 @@ export const LearningStoreModel = types
       self.disableUI = true
       self.selectedNumber = number
       self.showingResult = true
-      if (number === self.number) {
+      if (number === self.learningWordIndex) {
         if (self.LANGUAGE === "en") {
           if (self.shouldLearnViToEn) {
             yield playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
@@ -104,68 +100,51 @@ export const LearningStoreModel = types
             yield sleep(500)
             yield playSound(words[number], false)
           } else {
-            yield playSound(words[self.number], true)
+            yield playSound(self.learningWord, true)
           }
         } else {
           yield playSound(<EffectSound>["dung1", "dung2"][self.learnCount % 2])
         }
         yield sleep(1000)
         self.learnCount++
-        self.correctArray[self.number]++
+        updateProgress(true)
       } else {
         yield playSound("sai1")
         if (self.shouldLearnViToEn) {
-          yield playSound(words[self.number], true)
-          yield playSound(words[self.number], false)
+          yield playSound(self.learningWord, true)
+          yield playSound(self.learningWord, false)
         } else {
           yield sleep(2000)
         }
         self.learnCount -= 0.5
-        self.correctArray[self.number] = Math.max(0, self.correctArray[self.number] - 1)
-        self.correctArray[self.selectedNumber] = Math.max(
-          0,
-          self.correctArray[self.selectedNumber] - 1,
-        )
+        updateProgress(false)
       }
+      self.learningWordIndex = progressArray[0].index
+      self.learningWordLevel = progressArray[0].level
+      self.newWordCount = progressArray.filter((word) => word.level === 0).length
+      self.learningWordCount = progressArray.filter(
+        (word) => word.level > 0 && word.level < 5,
+      ).length
+      self.expertWordCount = progressArray.filter((word) => word.level >= 5).length
+
       self.showingResult = false
-      if (self.shouldLearnNewWord()) {
-        self.number = self.correctArray.length
-        self.learnNewWordAt += MAX_CORRECT
-        self.correctArray.push(0)
-      } else {
-        const newNumber = lodash(
-          self.correctArray
-            .map((item, index) => ({ item, index }))
-            .filter((i) => i.item <= MAX_CORRECT && i.index !== self.number),
-        )
-          .shuffle()
-          .first()?.index
-        if (newNumber === undefined) {
-          if (self.correctArray.length < words.length) {
-            self.number = self.correctArray.length
-            self.correctArray.push(0)
-          } else {
-            // Reset
-            self.correctArray = cast([0])
-            self.number = 0
-          }
-        } else {
-          self.number = newNumber
-        }
-      }
-      self.selectedNumber = null
-      if (self.correctArray[self.number] === 0) {
-        self.options = cast([self.number])
-      } else {
+      if (self.learningWordLevel) {
         self.options = cast(
-          lodash(self.correctArray.map((_, i) => i).filter((i) => i !== self.number))
+          lodash(
+            progressArray
+              .filter((item, index) => index > 0 && item.level > 0)
+              .map((item) => item.index),
+          )
             .shuffle()
-            .take(Math.min(MAX_OPTIONS, self.correctArray.length) - 1)
-            .push(self.number)
+            .take(MAX_OPTIONS - 1)
+            .push(self.learningWordIndex)
             .shuffle()
             .value(),
         )
+      } else {
+        self.options = cast([self.learningWordIndex])
       }
+      self.selectedNumber = null
       self.disableUI = false
       if (self.learnCount >= self.LEARN_PER_TURN) {
         self.learnCount = 0
@@ -174,7 +153,7 @@ export const LearningStoreModel = types
       } else {
         yield self.showcase()
       }
-      console.log(words[self.number].en)
+      console.log(self.learningWord.en, self.learningWordLevel, self.learningWordIndex)
     }),
     tick: flow(function* () {
       self.now = new Date()
