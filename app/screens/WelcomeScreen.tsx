@@ -16,7 +16,7 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
   navigation,
 }) {
   const {
-    learningStore: { shouldLock, showLock },
+    learningStore: { shouldLockElseUnlock, showLock },
   } = useStores()
   useEffect(() => {
     Audio.setAudioModeAsync({ playsInSilentModeIOS: true })
@@ -43,7 +43,7 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            if (shouldLock) {
+            if (shouldLockElseUnlock()) {
               showLock()
             } else {
               navigation.navigate("Player")

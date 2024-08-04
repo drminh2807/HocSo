@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
+import { Alert, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, CounterButton, Header, Screen, Text } from "@components"
@@ -84,6 +84,14 @@ export const SettingScreen: FC<SettingScreenProps> = observer(function SettingSc
             </TouchableOpacity>
           </View>
         </View>
+        <Button
+          text="Mở khoá giới hạn học hôm nay"
+          onPress={() => {
+            setProp("lastLock", new Date(0))
+            setProp("minutesToday", 0)
+            Alert.alert("Đã mở khoá giới hạn học")
+          }}
+        />
         <Button
           text="Khôi phục cài đặt gốc và tiến trình học"
           onPress={() => {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import React, { ReactNode } from "react"
 import {
   StyleProp,
   TextStyle,
@@ -14,7 +14,7 @@ import { Icon, IconTypes } from "./Icon"
 import { Text, TextProps } from "./Text"
 
 export interface HeaderProps {
-  TitleComponent?: ReactElement
+  TitleComponent?: ReactNode
   /**
    * The layout of the title relative to the action components.
    * - `center` will force the title to always be centered relative to the header. If the title or the action buttons are too long, the title will be cut off.
@@ -74,10 +74,10 @@ export interface HeaderProps {
    */
   leftTx?: TextProps["tx"]
   /**
-   * Left action custom ReactElement if the built in action props don't suffice.
+   * Left action custom ReactNode if the built in action props don't suffice.
    * Overrides `leftIcon`, `leftTx` and `leftText`.
    */
-  LeftActionComponent?: ReactElement
+  LeftActionComponent?: ReactNode
   /**
    * Optional options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
@@ -107,10 +107,10 @@ export interface HeaderProps {
    */
   rightTx?: TextProps["tx"]
   /**
-   * Right action custom ReactElement if the built in action props don't suffice.
+   * Right action custom ReactNode if the built in action props don't suffice.
    * Overrides `rightIcon`, `rightTx` and `rightText`.
    */
-  RightActionComponent?: ReactElement
+  RightActionComponent?: ReactNode
   /**
    * Optional options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
@@ -134,7 +134,7 @@ interface HeaderActionProps {
   tx?: TextProps["tx"]
   txOptions?: TextProps["txOptions"]
   onPress?: TouchableOpacityProps["onPress"]
-  ActionComponent?: ReactElement
+  ActionComponent?: ReactNode
 }
 
 /**

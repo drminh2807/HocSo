@@ -187,7 +187,7 @@ function ScreenWithScrolling(props: ScreenProps) {
   )
 }
 
-export function Screen(props: ScreenProps) {
+export const Screen = (props: ScreenProps) => {
   const {
     backgroundColor = colors.background,
     KeyboardAvoidingViewProps,

@@ -55,11 +55,17 @@ export const LearningStoreModel = types
     get shouldLearnViToEn() {
       return self.learningWordLevel % 2 === 1
     },
-    get shouldLock() {
-      return isToday(self.lastLock)
-    },
   }))
   .actions((self) => ({
+    shouldLockElseUnlock() {
+      const shouldLock = isToday(self.lastLock)
+      if (shouldLock && self.minutesToday >= self.MINUTE_PER_DAY) {
+        self.lastLock = new Date(0)
+        self.minutesToday = 0
+        return false
+      }
+      return shouldLock
+    },
     showcase: flow(function* () {
       if (self.shouldLearnViToEn) {
         try {
